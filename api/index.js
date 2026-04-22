@@ -18,8 +18,8 @@ app.use(express.json());
 let dbReady = false;
 app.use(async (_req, _res, next) => {
   if (!dbReady) {
-    const uri    = process.env.MONGODB_URI;
-    const ns     = process.env.MONGODB_NS || "wcs";
+    const uri    = (process.env.MONGODB_URI || "").trim();
+    const ns     = (process.env.MONGODB_NS  || "wcs").trim();
     if (!uri) return _res.status(503).json({ error: "MONGODB_URI is not configured." });
     await connectDb(uri, ns);
     dbReady = true;
@@ -30,6 +30,7 @@ app.use(async (_req, _res, next) => {
 app.get("/health", (_req, res) =>
   res.json({ ok: true, env: "vercel" })
 );
+
 
 app.use("/api/v1",    routes);
 app.use("/api/admin", adminRoutes);
