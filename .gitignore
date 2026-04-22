@@ -1,0 +1,24 @@
+# Dependencies
+node_modules/
+
+# Build output
+frontend/dist/
+frontend/.vite/
+
+# Environment — never commit real secrets
+backend/.env
+!backend/.env.example
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+*.suo
+*.sw?
+
+# Logs
+*.log
+npm-debug.log*
+
+# MongoDB data (if running locally inside project)
+data/
