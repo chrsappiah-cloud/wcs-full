@@ -1,0 +1,58 @@
+services:
+  # ── World Class Scholars — unified web service ────────────────────────────
+  - type: web
+    name: worldclassscholars          # → worldclassscholars.onrender.com
+    runtime: node
+    plan: free
+
+    # Build: compile the Vue SPA, then install backend deps
+    buildCommand: |
+      cd frontend && npm ci && npm run build
+      cd ../backend && npm ci
+
+    # Start: Express serves the API + the compiled Vue SPA
+    startCommand: cd backend && npm start
+
+    # Auto-deploy when main branch changes
+    autoDeploy: true
+    branch: main
+
+    envVars:
+      - key: NODE_ENV
+        value: production
+
+      - key: PORT
+        value: 10000              # Render's internal port
+
+      - key: MONGODB_NS
+        value: wcs
+
+      - key: JWT_EXPIRES_IN
+        value: 7d
+
+      - key: OPEN_LIBRARY_BASE
+        value: https://openlibrary.org
+
+      # ── Set these in the Render dashboard (Settings → Environment) ──────
+      # Never commit real values — Render encrypts secrets at rest.
+      - key: MONGODB_URI
+        sync: false               # paste your Atlas connection string in the dashboard
+
+      - key: JWT_SECRET
+        sync: false               # paste a strong random secret in the dashboard
+
+  # ── Optional: seed job (run once manually after first deploy) ─────────────
+  # Uncomment, run it once from Render dashboard → Jobs, then comment out again.
+  # - type: cron
+  #   name: wcs-seed
+  #   runtime: node
+  #   schedule: "0 0 1 1 *"      # runs annually — change to @once for manual trigger
+  #   buildCommand: cd backend && npm ci
+  #   startCommand: cd backend && npm run seed
+  #   envVars:
+  #     - key: MONGODB_URI
+  #       sync: false
+  #     - key: MONGODB_NS
+  #       value: wcs
+  #     - key: JWT_SECRET
+  #       sync: false
