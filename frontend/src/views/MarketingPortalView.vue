@@ -67,8 +67,10 @@ async function loadCommerce() {
   commerceError.value = null;
   try {
     commerce.value = await api.getAppleCommerce();
-  } catch {
-    commerceError.value = "Commerce API unavailable. Configure WCS_COMMERCE_BASE_URL on the server.";
+  } catch (e) {
+    commerceError.value =
+      "Could not reach the site API. Start the wcs-full backend (port 3001) and refresh.";
+    console.error(e);
   } finally {
     commerceLoading.value = false;
   }
@@ -270,13 +272,21 @@ watch(() => route.query.tab, () => {
         <div class="section-head">
           <h3>Apple commerce API (live)</h3>
         </div>
-        <p v-if="commerceLoading" class="muted">Connecting to WCS commerce backend…</p>
+        <p v-if="commerceLoading" class="muted">Loading Apple commerce status…</p>
         <p v-else-if="commerceError" class="alert">{{ commerceError }}</p>
         <template v-else-if="commerce">
+          <p v-if="!commerce.configured" class="attribution-banner" style="margin-bottom:16px">
+            Running in <strong>simulation mode</strong> (catalog &amp; health from this site).
+            Set <code>WCS_COMMERCE_BASE_URL</code> on the server to connect the live wcs-ios commerce API
+            (e.g. <code>http://127.0.0.1:8080</code> locally).
+          </p>
+          <p v-else-if="commerce.fallbackReason" class="attribution-banner" style="margin-bottom:16px">
+            Live backend unreachable — showing simulation data. {{ commerce.fallbackReason }}
+          </p>
           <div class="kpis" style="grid-template-columns:repeat(2,1fr);margin-bottom:20px">
             <div class="card kpi">
-              <strong :style="{ color: commerce.configured ? '#4ade80' : 'var(--muted)' }">
-                {{ commerce.configured ? "Connected" : "Simulation" }}
+              <strong :style="{ color: commerce.configured ? '#4ade80' : 'var(--accent)' }">
+                {{ commerce.configured ? "Live" : "Simulation" }}
               </strong>
               <span class="small">WCS commerce backend</span>
             </div>
@@ -301,14 +311,18 @@ watch(() => route.query.tab, () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Open
+                Open live
               </a>
-              <span v-else class="pill">Configure URL</span>
+              <span v-else class="pill">Via site API</span>
             </div>
           </div>
-          <p v-if="commerce.live?.health" class="small" style="margin-top:16px">
-            System health: {{ commerce.live.health.health?.backend ?? "—" }} /
-            {{ commerce.live.health.health?.middleware ?? "—" }}
+          <p v-if="commerce.live?.health?.health" class="small" style="margin-top:16px">
+            System health: {{ commerce.live.health.health.backend ?? "—" }} /
+            {{ commerce.live.health.health.middleware ?? "—" }} ·
+            Apple Server API: {{ commerce.live.health.health.apple_server_api ?? "—" }}
+          </p>
+          <p v-if="commerce.live?.catalog?.products?.length" class="small" style="margin-top:8px">
+            Live catalog: {{ commerce.live.catalog.products.length }} products
           </p>
         </template>
 
