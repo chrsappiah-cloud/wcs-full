@@ -2,10 +2,30 @@
   "version": 2,
   "buildCommand": "npm run build",
   "outputDirectory": "frontend/dist",
+  "headers": [
+    {
+      "source": "/robots.txt",
+      "headers": [{ "key": "Content-Type", "value": "text/plain; charset=utf-8" }]
+    },
+    {
+      "source": "/sitemap.xml",
+      "headers": [{ "key": "Content-Type", "value": "application/xml; charset=utf-8" }]
+    },
+    {
+      "source": "/llms.txt",
+      "headers": [{ "key": "Content-Type", "value": "text/plain; charset=utf-8" }]
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Robots-Tag", "value": "index, follow" }
+      ]
+    }
+  ],
   "rewrites": [
-    { "source": "/health",       "destination": "/api/index.js" },
-    { "source": "/api/:path*",   "destination": "/api/index.js" },
-    { "source": "/((?!api).*)",  "destination": "/index.html"   }
+    { "source": "/health", "destination": "/api/index.js" },
+    { "source": "/api/:path*", "destination": "/api/index.js" },
+    { "source": "/((?!api|robots\\.txt|sitemap\\.xml|llms\\.txt|llms-full\\.txt|assets).*)", "destination": "/index.html" }
   ],
   "functions": {
     "api/index.js": {

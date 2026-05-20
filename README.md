@@ -16,6 +16,12 @@ A full MEVN-stack digital campus for **World Class Scholars**, founded by Dr Chr
 
 ---
 
+## SEO & AI discovery
+
+See [docs/SEO_AND_AI_DISCOVERY.md](docs/SEO_AND_AI_DISCOVERY.md) for Google Search Console, Bing, and AI crawler setup (`robots.txt`, `sitemap.xml`, `llms.txt`).
+
+---
+
 ## iOS marketing portal
 
 Public route: **`/marketing`** on [wcs-full.vercel.app](https://wcs-full.vercel.app).
