@@ -513,3 +513,85 @@ h3 { font-size: clamp(17px, 2vw, 22px); }
   text-decoration: none;
 }
 .footer-col-link:hover { color: var(--accent); }
+
+/* ── Marketing portal ─────────────────────────────────────────── */
+.marketing-hero .founder-card { text-align: center; }
+.founder-card-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin: 0 auto 16px;
+  border: 2px solid var(--accent);
+}
+.marketing-app-grid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}
+.marketing-app-card { position: relative; overflow: hidden; }
+.marketing-app-accent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  opacity: .85;
+}
+.marketing-feature-list {
+  margin: 12px 0 16px;
+  padding-left: 18px;
+  color: var(--muted);
+  font-size: 14px;
+}
+.marketing-app-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+.marketing-detail-grid { align-items: start; }
+.referral-list { display: grid; gap: 16px; margin-top: 12px; }
+.referral-row {
+  display: grid;
+  gap: 8px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+.referral-row:last-child { border-bottom: none; padding-bottom: 0; }
+.referral-row-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+.referral-url {
+  font-size: 11px;
+  word-break: break-all;
+  flex: 1 1 100%;
+  padding: 8px 10px;
+  background: var(--surface-2);
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+.marketing-social-grid { flex-wrap: wrap; }
+.social-icon {
+  display: inline-flex;
+  width: 28px;
+  height: 28px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: var(--surface-2);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.attribution-banner {
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--accent);
+  font-size: 14px;
+}
+.podcast-list { display: grid; gap: 10px; }

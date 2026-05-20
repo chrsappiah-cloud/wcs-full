@@ -11,6 +11,7 @@ import ResourceView      from "../views/ResourceView.vue";
 import LoginView         from "../views/LoginView.vue";
 import MyCoursesView     from "../views/MyCoursesView.vue";
 import ApiStatusView     from "../views/ApiStatusView.vue";
+import MarketingPortalView from "../views/MarketingPortalView.vue";
 import DashboardView     from "../views/admin/DashboardView.vue";
 import CmsView           from "../views/admin/CmsView.vue";
 import PublishingView    from "../views/admin/PublishingView.vue";
@@ -30,6 +31,8 @@ const router = createRouter({
     { path: "/resources/:slug", name: "resource", component: ResourceView, props: true },
     { path: "/login",        name: "login",      component: LoginView },
     { path: "/api-status",   name: "api-status", component: ApiStatusView },
+    { path: "/marketing",    name: "marketing",  component: MarketingPortalView },
+    { path: "/marketing/:appSlug", name: "marketing-app", component: MarketingPortalView, props: true },
 
     // Authenticated
     { path: "/my-courses",   name: "my-courses", component: MyCoursesView, meta: { requiresAuth: true } },

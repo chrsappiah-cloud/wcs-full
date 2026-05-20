@@ -27,6 +27,7 @@ const platform = {
     { label: "Courses", to: "/courses" },
     { label: "Future Lab", to: "/future-lab" },
     { label: "Art Verse", to: "/art-verse" },
+    { label: "iOS Marketing", to: "/marketing" },
   ],
 };
 
@@ -75,6 +76,16 @@ const aboutPage = {
         label: "YouTube",
         handle: "World Class Scholars",
         url: "https://www.youtube.com/channel/UC2a-_QUygsGAKWzEdKHEP9Q",
+      },
+      {
+        label: "Facebook",
+        handle: "Verified profile",
+        url: "https://christopherappiahthompson.link/facebook",
+      },
+      {
+        label: "Link in bio",
+        handle: "christopherappiahthompson.link",
+        url: "https://christopherappiahthompson.link",
       },
     ],
     works: [

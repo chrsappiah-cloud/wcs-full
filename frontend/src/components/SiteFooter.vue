@@ -49,6 +49,7 @@ const avatar = computed(() => store.founderAvatar);
       <div>
         <h3 class="footer-col-heading">Next phase</h3>
         <ul class="footer-col-list">
+          <li><RouterLink to="/marketing" class="footer-col-link">iOS Marketing</RouterLink></li>
           <li><RouterLink to="/api-status" class="footer-col-link">Live APIs</RouterLink></li>
           <li><RouterLink to="/admin/cms" class="footer-col-link">CMS</RouterLink></li>
           <li><RouterLink to="/login" class="footer-col-link">Auth</RouterLink></li>

@@ -32,6 +32,7 @@ onMounted(async () => {
         </p>
         <div class="hero-actions">
           <RouterLink class="btn primary" to="/library">Search the library</RouterLink>
+          <RouterLink class="btn" to="/marketing">iOS TestFlight referrals</RouterLink>
           <RouterLink class="btn" to="/about">Founder &amp; impact</RouterLink>
         </div>
 

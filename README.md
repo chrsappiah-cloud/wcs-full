@@ -16,6 +16,16 @@ A full MEVN-stack digital campus for **World Class Scholars**, founded by Dr Chr
 
 ---
 
+## iOS marketing portal
+
+Public route: **`/marketing`** on [wcs-full.vercel.app](https://wcs-full.vercel.app).
+
+- TestFlight referral kits per iOS app with copyable links for each social handle ([christopherappiahthompson.link](https://christopherappiahthompson.link))
+- Digital artwork and podcast links from the founder Gravatar profile
+- Data lives in `frontend/src/config/marketingPortal.js` — update `testFlightCode` when App Store Connect public links are ready
+
+---
+
 ## Project layout
 
 ```
