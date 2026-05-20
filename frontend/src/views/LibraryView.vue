@@ -16,7 +16,9 @@ async function runSearch() {
   loading.value = true;
   error.value = null;
   try {
-    results.value = await api.librarySearch({ q: q.value.trim(), source: source.value });
+    const query = q.value.trim();
+    results.value = await api.librarySearch({ q: query, source: source.value });
+    api.track("search", "/library", { q: query, source: source.value });
   } catch (e) {
     error.value = e;
   } finally {
@@ -53,15 +55,15 @@ watch([q, source], () => { clearTimeout(t); t = setTimeout(runSearch, 300); });
         <div class="list">
           <div class="result">
             <div><strong>Open Library connector</strong><p class="small">Edition metadata, cover imagery, authors, subjects, and lending-linked references.</p></div>
-            <span class="pill">Books API</span>
+            <span class="pill">Open Library</span>
           </div>
           <div class="result">
             <div><strong>Google Books connector</strong><p class="small">Preview links, descriptions, identifiers, categories, and indexed discovery.</p></div>
-            <span class="pill">Preview API</span>
+            <span class="pill">Google Books</span>
           </div>
           <div class="result">
             <div><strong>Internet Archive connector</strong><p class="small">Digitized texts, scans, OCR-linked media and archival records.</p></div>
-            <span class="pill">Archive API</span>
+            <span class="pill">Internet Archive</span>
           </div>
           <div class="result">
             <div><strong>Gutendex connector</strong><p class="small">Open-domain texts for learning pathways, curriculum bundles and humanities reading packs.</p></div>
@@ -79,7 +81,7 @@ watch([q, source], () => { clearTimeout(t); t = setTimeout(runSearch, 300); });
           <template v-else>Search workflow blueprint</template>
         </h3>
 
-        <p v-if="error" class="alert">Search failed. Is the backend running on port 3001?</p>
+        <p v-if="error" class="alert">Search is temporarily unavailable. Please try again later.</p>
 
         <template v-if="!loading && !error">
           <!-- Internal results -->
@@ -125,7 +127,7 @@ watch([q, source], () => { clearTimeout(t); t = setTimeout(runSearch, 300); });
           <template v-if="!q.trim()">
             <p>Query orchestration, source adapters, response normalization, ranking, caching, and enrichment sit behind a clean service layer.</p>
             <ul class="small" style="line-height:1.8">
-              <li>Source adapters isolate each third-party API.</li>
+              <li>Source adapters connect each catalog without exposing technical details on this page.</li>
               <li>Normalized schemas unify title, creator, subjects, preview, and identifiers.</li>
               <li>Future AI enrichment can summarize, cluster, and recommend reading pathways.</li>
               <li>Admin curation can spotlight collections relevant to dementia care, justice, education, and creative healing.</li>

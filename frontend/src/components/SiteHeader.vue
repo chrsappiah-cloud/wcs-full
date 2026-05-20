@@ -8,9 +8,8 @@ const platformStore = usePlatformStore();
 const auth   = useAuthStore();
 const router = useRouter();
 
-const nav    = computed(() => platformStore.platform?.nav ?? []);
+const nav    = computed(() => platformStore.displayNav);
 const title  = computed(() => platformStore.platform?.name ?? "World Class Scholars");
-const avatar = computed(() => platformStore.founderAvatar);
 
 function toggleTheme() {
   const html = document.documentElement;
@@ -40,21 +39,22 @@ function logout() {
         <RouterLink class="nav-link" to="/marketing?tab=app-store">App Store</RouterLink>
         <template v-if="auth.isAdmin">
           <RouterLink class="nav-link admin-link" to="/admin">Dashboard</RouterLink>
+          <RouterLink class="nav-link admin-link" to="/admin/analytics">Analytics</RouterLink>
           <RouterLink class="nav-link admin-link" to="/admin/cms">CMS</RouterLink>
           <RouterLink class="nav-link admin-link" to="/admin/publishing">Publishing</RouterLink>
+          <RouterLink class="nav-link admin-link" to="/admin/access">Access</RouterLink>
+          <RouterLink class="nav-link admin-link" to="/admin/enquiries">Enquiries</RouterLink>
+          <RouterLink class="nav-link admin-link" to="/admin/payments">Payments</RouterLink>
+          <RouterLink class="nav-link admin-link" to="/admin/system">System</RouterLink>
         </template>
+        <RouterLink v-if="auth.isLoggedIn" class="nav-link" to="/account">My Access</RouterLink>
         <RouterLink v-if="auth.isLoggedIn && !auth.isAdmin" class="nav-link" to="/my-courses">My Courses</RouterLink>
       </nav>
 
       <div style="display:flex;gap:8px;flex-shrink:0">
         <button class="btn" @click="toggleTheme" aria-label="Switch theme">Theme</button>
         <template v-if="auth.isLoggedIn">
-          <img
-            :src="avatar"
-            alt="Profile"
-            class="nav-avatar"
-            :title="auth.user?.name"
-          />
+          <span class="small muted" :title="auth.user?.name">{{ auth.user?.name }}</span>
           <button class="btn" @click="logout">Sign out</button>
         </template>
         <RouterLink v-else class="btn primary" to="/login">Sign in</RouterLink>

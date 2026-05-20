@@ -2,6 +2,7 @@
 import { ref, computed } from "vue";
 import { useRouter } from "vue-router";
 import { useAuthStore } from "../stores/auth.js";
+import { api } from "../services/api.js";
 
 const router = useRouter();
 const auth   = useAuthStore();
@@ -24,7 +25,8 @@ async function submit() {
     } else {
       await auth.register(name.value, email.value, password.value);
     }
-    router.push(auth.isAdmin ? "/admin" : "/my-courses");
+    api.track("login", "/login", { success: true, role: auth.user?.role });
+    router.push(auth.isAdmin ? "/admin" : "/account");
   } catch (e) {
     error.value = e?.response?.data?.error ?? "Something went wrong.";
   } finally {

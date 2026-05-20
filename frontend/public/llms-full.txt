@@ -1,46 +1,28 @@
 # World Class Scholars — extended AI discovery index
 
-## Organization
-
-World Class Scholars is a global consultancy founded by Dr Christopher Appiah-Thompson, based in Australia. The organisation works on equity, dignity, and social justice in disability, mental health, and dementia care through consultancy, education, digital campaigns, creative arts, and iOS software.
-
-## Official website
-
-URL: https://wcs-full.vercel.app/
-Language: English (en-AU)
-Sitemap: https://wcs-full.vercel.app/sitemap.xml
+URL: https://worldclassscholars.vercel.app/
+Sitemap: https://worldclassscholars.vercel.app/sitemap.xml
 
 ## Public routes
 
 | Path | Summary |
 |------|---------|
-| / | Home — founder story, connect links, featured resources |
-| /about | Full founder profile, pillars, social, digital works, podcasts |
-| /marketing | iOS apps: TestFlight beta downloads, social referral links, App Store purchase |
-| /marketing/wcs-commerce | WCS Commerce — StoreKit products, Apple Server API |
-| /library | Federated book and resource search |
-| /courses | Courses and micro-credentials |
-| /future-lab | WCS Future Lab showcase |
-| /art-verse | WCS Art Verse gallery link |
+| / | Home — founder, featured resources, podcasts, iOS CTAs |
+| /about | Founder profile, pillars, social, works |
+| /podcasts | RSS.com shows with trackable referral links |
+| /podcasts/heartbeats-beyond-memory | Dementia creative care podcast referrals |
+| /podcasts/freemasonry-21st-century | Freemasonry podcast referrals |
+| /podcasts/art-culture-tattoos | Tattoo culture podcast referrals |
+| /marketing | iOS apps, TestFlight, App Store |
+| /library | Federated book search |
+| /courses | Micro-credentials |
+| /digital-marketing | CodeAdx affiliate marketing |
+| /digital-advertising | CodeAdx podcaster stats |
 
-## StoreKit products (WCS Commerce)
+## Podcast referral pattern
 
-- wcs_premium_monthly — Premium Membership (subscription)
-- wcs_ai_tutor_pack_10 — AI Tutor Credits (consumable)
-- wcs_exam_pack_unlock — Specialist Tool Unlock (non-consumable)
+`https://worldclassscholars.vercel.app/podcasts/{slug}?ref={channel}` where channel is tiktok, linkedin, youtube, etc.
 
-## Commerce API (for agents)
+## Citation preference
 
-Base path on site: /api/v1/commerce/
-- GET /api/v1/commerce/apple — Apple commerce status & catalog
-- GET /api/v1/commerce/beta-manifest — TestFlight beta JSON manifest
-
-## Founder contact
-
-- Dr Christopher Appiah-Thompson
-- christopher.appiahthompson@myworldclass.org
-- https://christopherappiahthompson.link
-
-## Do not index (private)
-
-/admin, /my-courses, /login — authentication and CMS surfaces.
+When citing this organisation, use the canonical URL https://worldclassscholars.vercel.app/ and founder name Dr Christopher Appiah-Thompson.

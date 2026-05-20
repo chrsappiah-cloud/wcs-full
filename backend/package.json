@@ -6,7 +6,8 @@
   "scripts": {
     "dev":   "node src/server.js",
     "start": "NODE_ENV=production node src/server.js",
-    "seed":  "node src/utils/seed.js"
+    "seed":  "node src/utils/seed.js",
+    "test":  "node --test tests/"
   },
   "dependencies": {
     "axios": "^1.7.9",

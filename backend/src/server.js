@@ -5,21 +5,14 @@ import { createRequire } from "module";
 import { fileURLToPath } from "url";
 import { dirname, join } from "path";
 import { existsSync } from "fs";
-import { connectDb } from "./config/db.js";
 import routes from "./api/routes.js";
 import adminRoutes from "./api/adminRoutes.js";
+import { dbOrFallback, requireDatabase } from "./middleware/dbOrFallback.js";
+import { securityHeaders, jsonBodyLimit } from "./middleware/security.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const isProd    = process.env.NODE_ENV === "production";
 const PORT      = Number(process.env.PORT) || 3001;
-const MONGODB_URI = process.env.MONGODB_URI;
-const MONGODB_NS  = process.env.MONGODB_NS || "wcs";
-
-if (!MONGODB_URI) {
-  console.error("Missing MONGODB_URI. Copy .env.example to .env and configure.");
-  process.exit(1);
-}
-
 const app = express();
 
 // In dev allow Vite dev server (port 5173) to call the API
@@ -27,18 +20,27 @@ const allowedOrigins = isProd
   ? []
   : ["http://localhost:5173", "http://127.0.0.1:5173"];
 
+app.use(securityHeaders);
 app.use(cors({
   origin: isProd ? false : allowedOrigins,
   credentials: true,
 }));
-app.use(express.json());
+app.use(jsonBodyLimit());
+app.use(express.json({ limit: "64kb" }));
+app.use(dbOrFallback);
 
 // ── Health ────────────────────────────────────────────────────────────────────
-app.get("/health", (_req, res) => res.json({ ok: true, env: isProd ? "production" : "development" }));
+app.get("/health", (req, res) =>
+  res.json({
+    ok: true,
+    env: isProd ? "production" : "development",
+    database: req.fallbackMode ? "fallback" : "mongodb",
+  })
+);
 
 // ── API routes ────────────────────────────────────────────────────────────────
-app.use("/api/v1",    routes);
-app.use("/api/admin", adminRoutes);
+app.use("/api/v1", routes);
+app.use("/api/admin", requireDatabase, adminRoutes);
 
 // ── Serve Vue SPA in production ───────────────────────────────────────────────
 if (isProd) {
@@ -58,11 +60,13 @@ if (isProd) {
 // ── Error handler ─────────────────────────────────────────────────────────────
 app.use((err, _req, res, _next) => {
   console.error(err);
-  res.status(500).json({ error: "Internal server error" });
+  const status = err.status && err.status >= 400 && err.status < 600 ? err.status : 500;
+  res.status(status).json({
+    error: status === 500 ? "Internal server error" : err.message || "Request failed",
+  });
 });
 
 // ── Start ─────────────────────────────────────────────────────────────────────
-await connectDb(MONGODB_URI, MONGODB_NS);
 app.listen(PORT, () => {
   console.log(`WCS listening on http://localhost:${PORT} [${isProd ? "production" : "development"}]`);
 });
