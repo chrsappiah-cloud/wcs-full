@@ -2,7 +2,7 @@ import {
   commerceApiEndpoints,
   iosApps,
   storeProducts,
-} from "../data/iosCommerce.js";
+} from "../lib/iosCommerce.js";
 
 const COMMERCE_BASE = (process.env.WCS_COMMERCE_BASE_URL || "").trim().replace(/\/$/, "");
 
