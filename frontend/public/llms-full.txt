@@ -1,0 +1,46 @@
+# World Class Scholars — extended AI discovery index
+
+## Organization
+
+World Class Scholars is a global consultancy founded by Dr Christopher Appiah-Thompson, based in Australia. The organisation works on equity, dignity, and social justice in disability, mental health, and dementia care through consultancy, education, digital campaigns, creative arts, and iOS software.
+
+## Official website
+
+URL: https://wcs-full.vercel.app/
+Language: English (en-AU)
+Sitemap: https://wcs-full.vercel.app/sitemap.xml
+
+## Public routes
+
+| Path | Summary |
+|------|---------|
+| / | Home — founder story, connect links, featured resources |
+| /about | Full founder profile, pillars, social, digital works, podcasts |
+| /marketing | iOS apps: TestFlight beta downloads, social referral links, App Store purchase |
+| /marketing/wcs-commerce | WCS Commerce — StoreKit products, Apple Server API |
+| /library | Federated book and resource search |
+| /courses | Courses and micro-credentials |
+| /future-lab | WCS Future Lab showcase |
+| /art-verse | WCS Art Verse gallery link |
+
+## StoreKit products (WCS Commerce)
+
+- wcs_premium_monthly — Premium Membership (subscription)
+- wcs_ai_tutor_pack_10 — AI Tutor Credits (consumable)
+- wcs_exam_pack_unlock — Specialist Tool Unlock (non-consumable)
+
+## Commerce API (for agents)
+
+Base path on site: /api/v1/commerce/
+- GET /api/v1/commerce/apple — Apple commerce status & catalog
+- GET /api/v1/commerce/beta-manifest — TestFlight beta JSON manifest
+
+## Founder contact
+
+- Dr Christopher Appiah-Thompson
+- christopher.appiahthompson@myworldclass.org
+- https://christopherappiahthompson.link
+
+## Do not index (private)
+
+/admin, /my-courses, /login — authentication and CMS surfaces.
