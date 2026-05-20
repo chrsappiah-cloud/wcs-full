@@ -18,6 +18,8 @@ export const api = {
   getFeaturedResources: () => client.get("/resources/featured").then(r => r.data),
   getResource:        (slug) => client.get(`/resources/${slug}`).then(r => r.data),
   librarySearch:      (params) => client.get("/library/search", { params }).then(r => r.data),
+  getAppleCommerce:   () => client.get("/commerce/apple").then(r => r.data),
+  getBetaManifest:    () => client.get("/commerce/beta-manifest").then(r => r.data),
 
   // Analytics
   track: (event, path, meta = {}) =>

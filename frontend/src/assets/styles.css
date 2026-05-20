@@ -595,3 +595,37 @@ h3 { font-size: clamp(17px, 2vw, 22px); }
   font-size: 14px;
 }
 .podcast-list { display: grid; gap: 10px; }
+
+.marketing-tabs-section { padding-top: 0; }
+.marketing-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 4px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface-2);
+  width: fit-content;
+}
+.marketing-tab {
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  padding: 10px 18px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+}
+.marketing-tab.active {
+  background: var(--primary);
+  color: var(--bg);
+}
+.apple-service-card {
+  text-decoration: none;
+  transition: border-color .2s, transform .2s;
+}
+.apple-service-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}

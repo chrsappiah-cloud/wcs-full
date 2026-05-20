@@ -100,4 +100,8 @@ jobs:
           echo "Platform endpoint OK"
           curl -sf "http://localhost:3001/api/v1/library/search?q=open&source=internal" | grep -q "query"
           echo "Library search OK"
+          curl -sf http://localhost:3001/api/v1/commerce/beta-manifest | grep -q "wcs-ios-beta-manifest"
+          echo "Beta manifest OK"
+          curl -sf http://localhost:3001/api/v1/commerce/apple | grep -q "storeProducts"
+          echo "Apple commerce OK"
           kill $SERVER_PID

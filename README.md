@@ -20,9 +20,15 @@ A full MEVN-stack digital campus for **World Class Scholars**, founded by Dr Chr
 
 Public route: **`/marketing`** on [wcs-full.vercel.app](https://wcs-full.vercel.app).
 
-- TestFlight referral kits per iOS app with copyable links for each social handle ([christopherappiahthompson.link](https://christopherappiahthompson.link))
-- Digital artwork and podcast links from the founder Gravatar profile
-- Data lives in `frontend/src/config/marketingPortal.js` — update `testFlightCode` when App Store Connect public links are ready
+| Tab | Purpose |
+| --- | --- |
+| **Apps & referrals** | Per-app social referral URLs from [christopherappiahthompson.link](https://christopherappiahthompson.link) |
+| **TestFlight beta** | Download `wcs-ios-beta-manifest.json` and open public invite links |
+| **App Store purchase** | StoreKit products, Apple Server API routes, live commerce backend status |
+
+Set `WCS_COMMERCE_BASE_URL` on the server to activate live links to the WCS commerce API (`/v1/catalog`, `/v1/purchases/*`, `/v1/apple/notifications`).
+
+Config: `frontend/src/config/marketingPortal.js` — update `testFlightCode` when App Store Connect public links are ready.
 
 ---
 

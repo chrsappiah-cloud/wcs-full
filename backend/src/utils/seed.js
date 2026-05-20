@@ -27,7 +27,7 @@ const platform = {
     { label: "Courses", to: "/courses" },
     { label: "Future Lab", to: "/future-lab" },
     { label: "Art Verse", to: "/art-verse" },
-    { label: "iOS Marketing", to: "/marketing" },
+    { label: "Apps & Store", to: "/marketing" },
   ],
 };
 

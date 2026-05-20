@@ -1,6 +1,5 @@
 /**
- * Marketing portal data — sourced from https://christopherappiahthompson.link
- * (Gravatar profile JSON + public link-in-bio, May 2026).
+ * Marketing portal — sourced from https://christopherappiahthompson.link
  */
 
 export const founderProfile = {
@@ -16,7 +15,6 @@ export const founderProfile = {
     "Global consultancy championing equity, dignity, and social justice in disability, mental health, and dementia care — bridging research, practice, lived experience, and creative storytelling.",
 };
 
-/** Verified social handles from Gravatar / link-in-bio */
 export const socialChannels = [
   {
     id: "linkedin",
@@ -35,14 +33,14 @@ export const socialChannels = [
   {
     id: "youtube",
     label: "YouTube",
-    handle: "UC2a-_QUygsGAKWzEdKHEP9Q",
+    handle: "World Class Scholars",
     url: "https://www.youtube.com/channel/UC2a-_QUygsGAKWzEdKHEP9Q",
     icon: "yt",
   },
   {
     id: "facebook",
     label: "Facebook",
-    handle: "Verified via Gravatar",
+    handle: "Verified profile",
     url: "https://christopherappiahthompson.link/facebook",
     icon: "fb",
   },
@@ -55,38 +53,12 @@ export const socialChannels = [
   },
 ];
 
-/** Digital artwork & creative platforms from link-in-bio */
 export const digitalArtworks = [
-  {
-    label: "WCS Art Verse",
-    category: "Gallery",
-    url: "https://wcs-art-verse.com",
-    image: null,
-  },
-  {
-    label: "NightCafe — CKRIZ",
-    category: "AI digital art",
-    url: "https://creator.nightcafe.studio/u/CKRIZ",
-    image: null,
-  },
-  {
-    label: "Gumroad — healing arts download",
-    category: "Digital product",
-    url: "https://chrspiah.gumroad.com/l/qylmdn",
-    image: null,
-  },
-  {
-    label: "myworldclass.net",
-    category: "Brand hub",
-    url: "https://myworldclass.net",
-    image: null,
-  },
-  {
-    label: "WCS Future Lab",
-    category: "Research lab",
-    url: "https://www.wcsflab.com/",
-    image: null,
-  },
+  { label: "WCS Art Verse", category: "Gallery", url: "https://wcs-art-verse.com" },
+  { label: "NightCafe — CKRIZ", category: "AI digital art", url: "https://creator.nightcafe.studio/u/CKRIZ" },
+  { label: "Gumroad — healing arts", category: "Digital product", url: "https://chrspiah.gumroad.com/l/qylmdn" },
+  { label: "myworldclass.net", category: "Brand hub", url: "https://myworldclass.net" },
+  { label: "WCS Future Lab", category: "Research lab", url: "https://www.wcsflab.com/" },
 ];
 
 export const podcasts = [
@@ -104,65 +76,142 @@ export const podcasts = [
   },
 ];
 
+/** Apple commerce surfaces — App Store, TestFlight, Server API */
+export const appleStoreServices = [
+  {
+    id: "testflight",
+    label: "TestFlight",
+    description: "Install WCS iOS betas before App Store release.",
+    url: "https://testflight.apple.com/",
+    action: "Open TestFlight",
+  },
+  {
+    id: "app-store",
+    label: "App Store",
+    description: "Discover and purchase WCS apps when published on the App Store.",
+    url: "https://apps.apple.com/developer/world-class-scholars/id0",
+    action: "Browse App Store",
+    fallbackSearch: "https://apps.apple.com/search?term=World+Class+Scholars",
+  },
+  {
+    id: "app-store-connect",
+    label: "App Store Connect",
+    description: "Manage subscriptions, TestFlight builds, and in-app purchases.",
+    url: "https://appstoreconnect.apple.com/",
+    action: "App Store Connect",
+  },
+  {
+    id: "server-api",
+    label: "App Store Server API",
+    description: "Transaction history, subscription status, and notification verification.",
+    url: "https://developer.apple.com/documentation/appstoreserverapi",
+    action: "Server API docs",
+  },
+  {
+    id: "storekit",
+    label: "StoreKit",
+    description: "In-app purchases and subscriptions inside WCS iOS apps.",
+    url: "https://developer.apple.com/documentation/storekit",
+    action: "StoreKit docs",
+  },
+  {
+    id: "notifications",
+    label: "App Store Server Notifications",
+    description: "Webhook endpoint for purchase lifecycle events on the WCS commerce backend.",
+    url: "https://developer.apple.com/documentation/appstoreservernotifications",
+    action: "Notifications docs",
+  },
+];
+
+/** WCS Commerce catalog — matches wcs-ios pilot StoreKit products */
+export const storeProducts = [
+  {
+    productId: "wcs_premium_monthly",
+    name: "WCS Premium Monthly",
+    type: "Auto-renewable subscription",
+    entitlement: "premium_membership",
+    appSlug: "wcs-commerce",
+  },
+  {
+    productId: "wcs_ai_tutor_pack_10",
+    name: "AI Tutor Pack (10)",
+    type: "Consumable",
+    entitlement: "ai_tutor_credits",
+    appSlug: "wcs-commerce",
+  },
+  {
+    productId: "wcs_exam_pack_unlock",
+    name: "Exam Pack Unlock",
+    type: "Non-consumable",
+    entitlement: "specialist_tool_unlock",
+    appSlug: "wcs-commerce",
+  },
+];
+
+/** Commerce API paths on the WCS backend (proxied when WCS_COMMERCE_BASE_URL is set) */
+export const commerceApiEndpoints = [
+  { method: "GET", path: "/v1/catalog", purpose: "Pilot product catalog" },
+  { method: "POST", path: "/v1/purchases/app-account-token", purpose: "App account token for StoreKit" },
+  { method: "POST", path: "/v1/purchases/ingest", purpose: "Ingest signed App Store transaction" },
+  { method: "GET", path: "/v1/entitlements/me", purpose: "Current entitlements" },
+  { method: "POST", path: "/v1/purchases/reconcile", purpose: "Restore purchases" },
+  { method: "POST", path: "/v1/apple/notifications", purpose: "App Store Server Notifications webhook" },
+  { method: "GET", path: "/v1/offers/eligibility", purpose: "Promotional offer eligibility" },
+  { method: "POST", path: "/v1/offers/signature", purpose: "Signed offer for StoreKit" },
+];
+
 const SITE_ORIGIN =
   typeof window !== "undefined" ? window.location.origin : "https://wcs-full.vercel.app";
 
-/**
- * iOS apps promoted via TestFlight — update `testFlightCode` when App Store Connect
- * public links are issued. Referral URLs route through this site for attribution.
- */
 export const iosApps = [
   {
     slug: "wcs-commerce",
     name: "WCS Commerce",
-    tagline: "Server-first subscriptions, entitlements & middleware activation",
+    tagline: "Premium membership, tutor packs & specialist unlocks via the App Store",
     description:
-      "Pilot commerce platform for premium membership, AI tutor packs, and specialist unlocks — aligned with the WCS commerce backend contract.",
+      "Purchase subscriptions and consumables through StoreKit. Entitlements sync with the WCS commerce backend and Apple Server API.",
     bundleId: "wcs.wcs-ios",
+    appStoreSearchUrl: "https://apps.apple.com/search?term=WCS+Commerce",
     testFlightCode: null,
     testFlightUrl: null,
     accent: "#4f98a3",
-    artworkLabel: "Commerce platform",
-    features: ["StoreKit pilot catalog", "Integration simulator", "Entitlement ledger"],
+    products: storeProducts,
   },
   {
     slug: "wcs-agentic",
     name: "WCS Agentic",
-    tagline: "Agentic operations for scholarship workflows",
-    description:
-      "iOS command surface for WCS agentic platform operations, onboarding flows, and TestFlight-ready release automation.",
+    tagline: "Scholarship operations on iPhone & iPad",
+    description: "Agentic workflows for World Class Scholars platform teams and pilot partners.",
     bundleId: "wcs.WCS-Agentic",
+    appStoreSearchUrl: "https://apps.apple.com/search?term=WCS+Agentic",
     testFlightCode: null,
     testFlightUrl: null,
     accent: "#8ef2ff",
-    artworkLabel: "Agentic campus",
-    features: ["Operations dashboard", "Platform agents", "Release CI/CD"],
+    products: [],
   },
   {
     slug: "wcs-goldtest",
     name: "WCS Gold Test",
-    tagline: "Gold-standard TestFlight validation harness",
-    description:
-      "Reference build for validating TestFlight invite flows and public beta distribution patterns across the WCS iOS portfolio.",
+    tagline: "Public TestFlight beta harness",
+    description: "Join the gold-standard beta channel to validate releases before wider campaigns.",
     bundleId: "wcs.WCS-GoldTest",
+    appStoreSearchUrl: "https://apps.apple.com/search?term=WCS+Gold",
     testFlightCode: "WCSGOLDTEST",
     testFlightUrl: "https://testflight.apple.com/join/WCSGOLDTEST",
     accent: "#c9a227",
-    artworkLabel: "Gold test",
-    features: ["Public invite link", "Status surface", "Campaign QA"],
+    products: [],
   },
   {
     slug: "wcs-care",
     name: "WCS Care",
-    tagline: "Humane aged-care & dementia support experiences",
-    description:
-      "Care-sector iOS experience with direct TestFlight join for field pilots and social referral campaigns.",
+    tagline: "Dementia & aged-care field pilot",
+    description: "Humane care experiences with a live TestFlight join link for referral campaigns.",
     bundleId: "wcs.care",
+    appStoreSearchUrl: "https://apps.apple.com/search?term=WCS+Care",
     testFlightCode: "WCSCare",
     testFlightUrl: "https://testflight.apple.com/join/WCSCare",
     accent: "#01696f",
-    artworkLabel: "Care pilot",
-    features: ["TestFlight join", "Marketing config", "Care storytelling"],
+    products: [],
   },
 ];
 
@@ -171,6 +220,12 @@ iosApps.forEach((app) => {
     app.testFlightUrl = `https://testflight.apple.com/join/${app.testFlightCode}`;
   }
 });
+
+export const marketingTabs = [
+  { id: "apps", label: "Apps & referrals" },
+  { id: "testflight", label: "TestFlight beta" },
+  { id: "app-store", label: "App Store purchase" },
+];
 
 export function marketingLandingUrl(appSlug, channelId) {
   const params = new URLSearchParams();
@@ -191,4 +246,42 @@ export function resolveAttribution(searchParams) {
 
 export function findApp(slug) {
   return iosApps.find((app) => app.slug === slug) ?? null;
+}
+
+/** JSON bundle for TestFlight campaign tooling and beta testers */
+export function buildBetaManifest() {
+  const generatedAt = new Date().toISOString();
+  return {
+    schema: "wcs-ios-beta-manifest/1.0",
+    generatedAt,
+    founder: founderProfile,
+    socialChannels,
+    apps: iosApps.map((app) => ({
+      slug: app.slug,
+      name: app.name,
+      bundleId: app.bundleId,
+      testFlightUrl: app.testFlightUrl,
+      testFlightCode: app.testFlightCode,
+      appStoreSearchUrl: app.appStoreSearchUrl,
+      referralLinks: Object.fromEntries(
+        socialChannels.map((ch) => [ch.id, buildReferralLink(app.slug, ch.id)])
+      ),
+      products: app.products ?? [],
+    })),
+    storeProducts,
+    appleStoreServices,
+    commerceApiEndpoints,
+  };
+}
+
+export function downloadBetaManifest(filename = "wcs-ios-beta-manifest.json") {
+  const blob = new Blob([JSON.stringify(buildBetaManifest(), null, 2)], {
+    type: "application/json",
+  });
+  const url = URL.createObjectURL(blob);
+  const anchor = document.createElement("a");
+  anchor.href = url;
+  anchor.download = filename;
+  anchor.click();
+  URL.revokeObjectURL(url);
 }
