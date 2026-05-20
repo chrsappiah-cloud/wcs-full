@@ -4,6 +4,7 @@ import * as library from "../controllers/libraryController.js";
 import * as auth from "../controllers/authController.js";
 import * as analytics from "../controllers/analyticsController.js";
 import * as enrollment from "../controllers/enrollmentController.js";
+import * as commerce from "../controllers/commerceController.js";
 import { requireAuth } from "../middleware/requireAuth.js";
 
 const router = Router();
@@ -17,6 +18,10 @@ router.get("/art-verse",          content.getArtVerse);
 router.get("/resources/featured", content.getFeaturedResources);
 router.get("/resources/:slug",    content.getResourceBySlug);
 router.get("/library/search",     library.librarySearch);
+
+// ── Apple commerce & TestFlight beta data ─────────────────────────────────────
+router.get("/commerce/apple",     commerce.getAppleCommerce);
+router.get("/commerce/beta-manifest", commerce.getBetaManifest);
 
 // ── Auth ──────────────────────────────────────────────────────────────────────
 router.post("/auth/register", auth.register);

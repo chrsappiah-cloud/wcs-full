@@ -37,7 +37,7 @@ function logout() {
         <RouterLink v-for="item in nav" :key="item.to" class="nav-link" :to="item.to">
           {{ item.label }}
         </RouterLink>
-        <RouterLink class="nav-link" to="/api-status">Live APIs</RouterLink>
+        <RouterLink class="nav-link" to="/marketing?tab=app-store">App Store</RouterLink>
         <template v-if="auth.isAdmin">
           <RouterLink class="nav-link admin-link" to="/admin">Dashboard</RouterLink>
           <RouterLink class="nav-link admin-link" to="/admin/cms">CMS</RouterLink>
