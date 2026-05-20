@@ -4,6 +4,9 @@ import { RouterLink, RouterView } from "vue-router";
 import App from "./App.vue";
 import router from "./router/index.js";
 import "./assets/styles.css";
+import { injectPodcastJsonLd } from "./lib/seo.js";
+
+injectPodcastJsonLd();
 
 const app = createApp(App);
 app.component("RouterLink", RouterLink);

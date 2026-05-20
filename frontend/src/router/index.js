@@ -6,16 +6,24 @@ import HomeView          from "../views/HomeView.vue";
 import LibraryView       from "../views/LibraryView.vue";
 import AboutView         from "../views/AboutView.vue";
 import CoursesView       from "../views/CoursesView.vue";
-import FutureLabView     from "../views/FutureLabView.vue";
-import ArtVerseView      from "../views/ArtVerseView.vue";
+import CodeAdxProgramView from "../views/CodeAdxProgramView.vue";
+import PodcastsView from "../views/PodcastsView.vue";
+import PodcastDetailView from "../views/PodcastDetailView.vue";
 import ResourceView      from "../views/ResourceView.vue";
 import LoginView         from "../views/LoginView.vue";
 import MyCoursesView     from "../views/MyCoursesView.vue";
+import AccountAccessView from "../views/AccountAccessView.vue";
 import ApiStatusView     from "../views/ApiStatusView.vue";
 import MarketingPortalView from "../views/MarketingPortalView.vue";
 import DashboardView     from "../views/admin/DashboardView.vue";
 import CmsView           from "../views/admin/CmsView.vue";
 import PublishingView    from "../views/admin/PublishingView.vue";
+import AccessView        from "../views/admin/AccessView.vue";
+import AnalyticsDashboardView from "../views/admin/AnalyticsDashboardView.vue";
+import ContactView from "../views/ContactView.vue";
+import EnquiriesView from "../views/admin/EnquiriesView.vue";
+import SystemView from "../views/admin/SystemView.vue";
+import PaymentsAdminView from "../views/admin/PaymentsAdminView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -62,23 +70,49 @@ const router = createRouter({
       },
     },
     {
-      path: "/future-lab",
-      name: "future-lab",
-      component: FutureLabView,
+      path: "/podcasts",
+      name: "podcasts",
+      component: PodcastsView,
       meta: {
-        seoTitle: "Future Lab",
-        seoDescription: "WCS Future Lab research and innovation showcase.",
+        seoTitle: "RSS.com podcasts",
+        seoDescription:
+          "Heartbeats Beyond Memory, Freemasonry, and tattoo culture podcasts on RSS.com with trackable social referral links.",
       },
     },
     {
-      path: "/art-verse",
-      name: "art-verse",
-      component: ArtVerseView,
+      path: "/podcasts/:slug",
+      name: "podcast-detail",
+      component: PodcastDetailView,
+      props: true,
       meta: {
-        seoTitle: "Art Verse",
-        seoDescription: "WCS Art Verse — digital gallery and creative healing arts.",
+        seoTitle: "Podcast referrals",
+        seoDescription: "Trackable referral links and RSS.com subscribe for World Class Scholars podcasts.",
       },
     },
+    {
+      path: "/digital-marketing",
+      name: "digital-marketing",
+      component: CodeAdxProgramView,
+      meta: {
+        programSlug: "digital-marketing",
+        seoTitle: "Digital Marketing — CodeAdx",
+        seoDescription:
+          "Digital marketing promotions — podcasts, Gumroad, NightCafe, and creative campaigns via CodeAdx and christopherappiahthompson.link.",
+      },
+    },
+    {
+      path: "/digital-advertising",
+      name: "digital-advertising",
+      component: CodeAdxProgramView,
+      meta: {
+        programSlug: "digital-advertising",
+        seoTitle: "Digital Advertising — CodeAdx",
+        seoDescription:
+          "Podcast and display advertising analytics through the CodeAdx podcaster stats dashboard.",
+      },
+    },
+    { path: "/future-lab", redirect: "/digital-marketing" },
+    { path: "/art-verse", redirect: "/digital-advertising" },
     {
       path: "/resources/:slug",
       name: "resource",
@@ -99,7 +133,7 @@ const router = createRouter({
       path: "/api-status",
       name: "api-status",
       component: ApiStatusView,
-      meta: { robots: "noindex, nofollow" },
+      meta: { requiresAdmin: true, robots: "noindex, nofollow" },
     },
     {
       path: "/marketing",
@@ -109,6 +143,16 @@ const router = createRouter({
         seoTitle: "iOS apps, TestFlight & App Store",
         seoDescription:
           "TestFlight beta downloads, social referral links, and App Store purchases for WCS iOS apps.",
+      },
+    },
+    {
+      path: "/contact",
+      name: "contact",
+      component: ContactView,
+      meta: {
+        seoTitle: "Contact & feedback",
+        seoDescription:
+          "Send general enquiries and feedback to World Class Scholars support, or contact administration for partnerships.",
       },
     },
     {
@@ -123,9 +167,45 @@ const router = createRouter({
     },
 
     { path: "/my-courses", name: "my-courses", component: MyCoursesView, meta: { requiresAuth: true, robots: "noindex, nofollow" } },
+    {
+      path: "/account",
+      name: "account",
+      component: AccountAccessView,
+      meta: {
+        requiresAuth: true,
+        seoTitle: "My access",
+        seoDescription: "Subscriptions, entitlements, and course access for your World Class Scholars account.",
+        robots: "noindex, nofollow",
+      },
+    },
     { path: "/admin", name: "admin", component: DashboardView, meta: { requiresAdmin: true, robots: "noindex, nofollow" } },
+    {
+      path: "/admin/analytics",
+      name: "admin-analytics",
+      component: AnalyticsDashboardView,
+      meta: { requiresAdmin: true, robots: "noindex, nofollow" },
+    },
+    {
+      path: "/admin/enquiries",
+      name: "admin-enquiries",
+      component: EnquiriesView,
+      meta: { requiresAdmin: true, robots: "noindex, nofollow" },
+    },
+    {
+      path: "/admin/payments",
+      name: "admin-payments",
+      component: PaymentsAdminView,
+      meta: { requiresAdmin: true, robots: "noindex, nofollow" },
+    },
+    {
+      path: "/admin/system",
+      name: "admin-system",
+      component: SystemView,
+      meta: { requiresAdmin: true, robots: "noindex, nofollow" },
+    },
     { path: "/admin/cms", name: "admin-cms", component: CmsView, meta: { requiresAdmin: true, robots: "noindex, nofollow" } },
     { path: "/admin/publishing", name: "admin-pub", component: PublishingView, meta: { requiresAdmin: true, robots: "noindex, nofollow" } },
+    { path: "/admin/access", name: "admin-access", component: AccessView, meta: { requiresAdmin: true, robots: "noindex, nofollow" } },
   ],
 });
 

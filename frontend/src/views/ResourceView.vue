@@ -20,7 +20,7 @@ watch(() => props.slug, load);
 <template>
   <section class="section">
     <div class="container narrow">
-      <p v-if="error" class="alert">Resource not found or API unavailable.</p>
+      <p v-if="error" class="alert">Resource not found or temporarily unavailable.</p>
 
       <template v-else-if="doc">
         <span class="eyebrow">{{ doc.category || 'Resource' }}</span>

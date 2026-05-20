@@ -1,10 +1,7 @@
 <script setup>
-import { computed, onMounted, ref, watch } from "vue";
+import { computed, ref } from "vue";
 import { useRoute, useRouter } from "vue-router";
-import { api } from "../services/api.js";
 import {
-  appleStoreServices,
-  buildBetaManifest,
   buildReferralLink,
   digitalArtworks,
   downloadBetaManifest,
@@ -13,17 +10,21 @@ import {
   iosApps,
   marketingTabs,
   podcasts,
+  publicAppleStoreServices,
   resolveAttribution,
   socialChannels,
   storeProducts,
 } from "../config/marketingPortal.js";
+import FounderContactLinks from "../components/FounderContactLinks.vue";
+import { api } from "../services/api.js";
+
+function trackProduct(productId, appSlug = "wcs-commerce") {
+  api.track("subscription_attempt", "/marketing", { productId, appSlug });
+}
 
 const route = useRoute();
 const router = useRouter();
 const copiedKey = ref(null);
-const commerce = ref(null);
-const commerceError = ref(null);
-const commerceLoading = ref(true);
 
 const selectedSlug = computed(() => route.params.appSlug ?? null);
 const selectedApp = computed(() => (selectedSlug.value ? findApp(selectedSlug.value) : null));
@@ -62,34 +63,6 @@ function setTab(tabId) {
   activeTab.value = tabId;
 }
 
-async function loadCommerce() {
-  commerceLoading.value = true;
-  commerceError.value = null;
-  try {
-    commerce.value = await api.getAppleCommerce();
-  } catch (e) {
-    commerceError.value =
-      "Could not reach the site API. Start the wcs-full backend (port 3001) and refresh.";
-    console.error(e);
-  } finally {
-    commerceLoading.value = false;
-  }
-}
-
-function downloadFromApi() {
-  const blob = new Blob([JSON.stringify(buildBetaManifest(), null, 2)], { type: "application/json" });
-  const url = URL.createObjectURL(blob);
-  const anchor = document.createElement("a");
-  anchor.href = url;
-  anchor.download = "wcs-ios-beta-manifest.json";
-  anchor.click();
-  URL.revokeObjectURL(url);
-}
-
-onMounted(loadCommerce);
-watch(() => route.query.tab, () => {
-  if (activeTab.value === "app-store" && !commerce.value) loadCommerce();
-});
 </script>
 
 <template>
@@ -112,15 +85,14 @@ watch(() => route.query.tab, () => {
           <div class="hero-actions">
             <RouterLink v-if="selectedApp" class="btn" to="/marketing">All apps</RouterLink>
             <RouterLink class="btn" to="/about">{{ founderProfile.name }}</RouterLink>
-            <a class="btn primary" href="mailto:christopher.appiahthompson@myworldclass.org">Email Christopher</a>
+            <a class="btn primary" :href="`mailto:${founderProfile.personalEmail}`">Email Christopher</a>
           </div>
         </div>
         <aside class="card founder-card">
-          <img :src="founderProfile.avatar" :alt="founderProfile.name" class="founder-card-avatar" />
           <h3>{{ founderProfile.name }}</h3>
           <p class="small">{{ founderProfile.title }}</p>
           <p class="small">{{ founderProfile.location }} · {{ founderProfile.phone }}</p>
-          <a :href="`mailto:${founderProfile.email}`" class="accent-link small">{{ founderProfile.email }}</a>
+          <FounderContactLinks />
         </aside>
       </div>
     </section>
@@ -210,12 +182,8 @@ watch(() => route.query.tab, () => {
         <div class="card" style="margin-bottom:24px">
           <div class="hero-actions">
             <button type="button" class="btn primary" @click="downloadBetaManifest()">Download beta manifest (JSON)</button>
-            <button type="button" class="btn" @click="downloadFromApi">Refresh from live API</button>
             <a class="btn" href="https://testflight.apple.com/" target="_blank" rel="noopener noreferrer">Open TestFlight app</a>
           </div>
-          <p class="small" style="margin-top:12px">
-            API endpoint: <code>GET /api/v1/commerce/beta-manifest</code>
-          </p>
         </div>
         <div class="marketing-app-grid">
           <article v-for="app in iosApps" :key="app.slug" class="card">
@@ -237,13 +205,13 @@ watch(() => route.query.tab, () => {
         <div class="section-head">
           <h2>Purchase through the App Store</h2>
           <p class="lede">
-            WCS Commerce uses StoreKit and the App Store Server API. Buy in-app; entitlements sync to the WCS backend.
+            WCS Commerce subscriptions and in-app purchases are available on the App Store. Entitlements sync to your WCS account.
           </p>
         </div>
 
         <div class="grid-3" style="margin-bottom:28px">
           <a
-            v-for="service in appleStoreServices"
+            v-for="service in publicAppleStoreServices"
             :key="service.id"
             :href="service.url"
             target="_blank"
@@ -260,7 +228,16 @@ watch(() => route.query.tab, () => {
           <h3>StoreKit products (WCS Commerce)</h3>
         </div>
         <div class="list" style="margin-bottom:28px">
-          <div v-for="product in storeProducts" :key="product.productId" class="result">
+          <div
+            v-for="product in storeProducts"
+            :key="product.productId"
+            class="result"
+            role="button"
+            tabindex="0"
+            style="cursor:pointer"
+            @click="trackProduct(product.productId)"
+            @keydown.enter="trackProduct(product.productId)"
+          >
             <div>
               <strong>{{ product.name }}</strong>
               <p class="small">{{ product.type }} · <code>{{ product.productId }}</code> · {{ product.entitlement }}</p>
@@ -268,63 +245,6 @@ watch(() => route.query.tab, () => {
             <span class="pill">In-app purchase</span>
           </div>
         </div>
-
-        <div class="section-head">
-          <h3>Apple commerce API (live)</h3>
-        </div>
-        <p v-if="commerceLoading" class="muted">Loading Apple commerce status…</p>
-        <p v-else-if="commerceError" class="alert">{{ commerceError }}</p>
-        <template v-else-if="commerce">
-          <p v-if="!commerce.configured" class="attribution-banner" style="margin-bottom:16px">
-            Running in <strong>simulation mode</strong> (catalog &amp; health from this site).
-            Set <code>WCS_COMMERCE_BASE_URL</code> on the server to connect the live wcs-ios commerce API
-            (e.g. <code>http://127.0.0.1:8080</code> locally).
-          </p>
-          <p v-else-if="commerce.fallbackReason" class="attribution-banner" style="margin-bottom:16px">
-            Live backend unreachable — showing simulation data. {{ commerce.fallbackReason }}
-          </p>
-          <div class="kpis" style="grid-template-columns:repeat(2,1fr);margin-bottom:20px">
-            <div class="card kpi">
-              <strong :style="{ color: commerce.configured ? '#4ade80' : 'var(--accent)' }">
-                {{ commerce.configured ? "Live" : "Simulation" }}
-              </strong>
-              <span class="small">WCS commerce backend</span>
-            </div>
-            <div class="card kpi">
-              <strong>{{ commerce.endpoints?.length ?? 0 }}</strong>
-              <span class="small">Apple Server API routes</span>
-            </div>
-          </div>
-          <p v-if="commerce.commerceBaseUrl" class="small">
-            Base URL: <code>{{ commerce.commerceBaseUrl }}</code>
-          </p>
-          <div class="list">
-            <div v-for="ep in commerce.endpoints" :key="ep.path" class="result">
-              <div>
-                <strong>{{ ep.method }} {{ ep.path }}</strong>
-                <p class="small">{{ ep.purpose }}</p>
-              </div>
-              <a
-                v-if="commerce.commerceBaseUrl"
-                class="btn"
-                :href="`${commerce.commerceBaseUrl}${ep.path}`"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Open live
-              </a>
-              <span v-else class="pill">Via site API</span>
-            </div>
-          </div>
-          <p v-if="commerce.live?.health?.health" class="small" style="margin-top:16px">
-            System health: {{ commerce.live.health.health.backend ?? "—" }} /
-            {{ commerce.live.health.health.middleware ?? "—" }} ·
-            Apple Server API: {{ commerce.live.health.health.apple_server_api ?? "—" }}
-          </p>
-          <p v-if="commerce.live?.catalog?.products?.length" class="small" style="margin-top:8px">
-            Live catalog: {{ commerce.live.catalog.products.length }} products
-          </p>
-        </template>
 
         <div class="marketing-app-grid" style="margin-top:28px">
           <article v-for="app in iosApps" :key="app.slug" class="card">
@@ -349,17 +269,37 @@ watch(() => route.query.tab, () => {
             <span class="social-handle">{{ channel.handle }}</span>
           </a>
         </div>
-        <div class="works-grid" style="margin-top:24px">
-          <a v-for="work in digitalArtworks" :key="work.url" :href="work.url" target="_blank" rel="noopener noreferrer" class="card work-card">
+        <div class="promo-gallery" style="margin-top:24px">
+          <a
+            v-for="work in digitalArtworks"
+            :key="work.id || work.url"
+            :href="work.url"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="card promo-card"
+          >
+            <div v-if="work.imageUrl" class="promo-card-image-wrap">
+              <img :src="work.imageUrl" :alt="work.title || work.label" class="promo-card-image" loading="lazy" />
+            </div>
             <span class="tag">{{ work.category }}</span>
-            <strong>{{ work.label }}</strong>
+            <h3 class="promo-card-title">{{ work.title || work.label }}</h3>
+            <span class="accent-link small">Visit &rarr;</span>
           </a>
         </div>
-        <ul class="podcast-list" style="margin-top:24px">
-          <li v-for="pod in podcasts" :key="pod.url">
-            <a :href="pod.url" target="_blank" rel="noopener noreferrer" class="accent-link">{{ pod.label }}</a>
-          </li>
-        </ul>
+        <div class="section-head" style="margin-top:32px">
+          <h3>RSS.com podcasts — referral campaigns</h3>
+          <p class="lede small">Trackable links for TikTok, LinkedIn, and YouTube before listeners open RSS.com.</p>
+        </div>
+        <div class="marketing-app-grid">
+          <article v-for="pod in podcasts" :key="pod.slug" class="card">
+            <h3>{{ pod.label }}</h3>
+            <div class="hero-actions">
+              <RouterLink class="btn primary" :to="`/podcasts/${pod.slug}`">Referral kit</RouterLink>
+              <a class="btn" :href="pod.url" target="_blank" rel="noopener noreferrer">RSS.com</a>
+            </div>
+          </article>
+        </div>
+        <RouterLink to="/podcasts" class="accent-link small" style="display:inline-block;margin-top:16px">View all podcasts &rarr;</RouterLink>
       </div>
     </section>
   </div>

@@ -1,6 +1,8 @@
 <script setup>
 import { onMounted, ref } from "vue";
 import { api } from "../services/api.js";
+import { founderProfile } from "../config/marketingPortal.js";
+import { ADMIN_EMAIL, SUPPORT_EMAIL } from "../config/contactEmails.js";
 
 const page = ref(null);
 const error = ref(null);
@@ -39,16 +41,20 @@ onMounted(async () => {
         <!-- Founder -->
         <div v-if="page.founder" class="founder-section block">
           <div class="founder-header">
-            <img
-              v-if="page.founder.avatar"
-              :src="page.founder.avatar"
-              :alt="page.founder.name"
-              class="founder-avatar"
-            />
             <div>
               <h2 class="founder-name">{{ page.founder.name }}</h2>
-              <p class="muted small">{{ page.founder.location }} &mdash;
-                <a :href="`mailto:${page.founder.email}`" class="accent-link">{{ page.founder.email }}</a>
+              <p class="muted small">{{ page.founder.location }}</p>
+              <p class="small" style="margin-top:8px">
+                <a :href="`mailto:${SUPPORT_EMAIL}`" class="accent-link">{{ SUPPORT_EMAIL }}</a>
+                <span class="muted"> · support</span>
+                <br />
+                <a :href="`mailto:${ADMIN_EMAIL}`" class="accent-link">{{ ADMIN_EMAIL }}</a>
+                <span class="muted"> · admin</span>
+                <br />
+                <a :href="`mailto:${founderProfile.personalEmail}`" class="accent-link">{{ founderProfile.personalEmail }}</a>
+                <span class="muted"> · personal</span>
+                <br />
+                <RouterLink to="/contact" class="accent-link">Send feedback or an enquiry</RouterLink>
               </p>
             </div>
           </div>
@@ -96,11 +102,25 @@ onMounted(async () => {
             <h3 class="sub-heading">Podcasts</h3>
             <ul class="podcast-list">
               <li v-for="p in page.founder.podcasts" :key="p.url">
-                <a :href="p.url" target="_blank" rel="noopener noreferrer" class="podcast-link">
-                  🎙 {{ p.label }}
+                <RouterLink
+                  v-if="p.referralPath || p.slug"
+                  :to="p.referralPath || `/podcasts/${p.slug}`"
+                  class="podcast-link accent-link"
+                >
+                  {{ p.label }}
+                </RouterLink>
+                <a
+                  :href="p.url"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="accent-link small"
+                  style="margin-left:8px"
+                >
+                  RSS.com
                 </a>
               </li>
             </ul>
+            <RouterLink to="/podcasts" class="btn small" style="margin-top:12px">Podcast referral kits</RouterLink>
           </div>
         </div>
       </template>

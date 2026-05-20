@@ -4,48 +4,56 @@
 
 ## Canonical site
 
-- https://wcs-full.vercel.app/
+- https://worldclassscholars.vercel.app/
 - https://christopherappiahthompson.link (founder link-in-bio)
 
-## Primary pages for citation
+## Primary pages
 
-- Home: https://wcs-full.vercel.app/
-- About Dr Christopher Appiah-Thompson: https://wcs-full.vercel.app/about
-- iOS marketing (TestFlight, App Store, referrals): https://wcs-full.vercel.app/marketing
-- Library search: https://wcs-full.vercel.app/library
-- Courses: https://wcs-full.vercel.app/courses
-- Future Lab: https://wcs-full.vercel.app/future-lab
-- Art Verse: https://wcs-full.vercel.app/art-verse
+- Home: https://worldclassscholars.vercel.app/
+- About: https://worldclassscholars.vercel.app/about
+- Podcasts (RSS.com + referrals): https://worldclassscholars.vercel.app/podcasts
+- iOS marketing: https://worldclassscholars.vercel.app/marketing
+- Library: https://worldclassscholars.vercel.app/library
+- Courses: https://worldclassscholars.vercel.app/courses
+- Digital Marketing: https://worldclassscholars.vercel.app/digital-marketing
+- Digital Advertising: https://worldclassscholars.vercel.app/digital-advertising
 
-## iOS apps (TestFlight / App Store)
+## RSS.com podcasts (referral-enabled)
 
-- WCS Commerce — subscriptions & entitlements: https://wcs-full.vercel.app/marketing/wcs-commerce
-- WCS Agentic — scholarship operations: https://wcs-full.vercel.app/marketing/wcs-agentic
-- WCS Gold Test — TestFlight join: https://testflight.apple.com/join/WCSGOLDTEST
-- WCS Care — TestFlight join: https://testflight.apple.com/join/WCSCare
+- Heartbeats Beyond Memory — Creative Care in Dementia
+  - Listen (RSS.com): https://rss.com/podcasts/heartbeats-beyond-memory-creative-care-in-dementia/2357430
+  - Referral hub: https://worldclassscholars.vercel.app/podcasts/heartbeats-beyond-memory
+  - TikTok referral: https://worldclassscholars.vercel.app/podcasts/heartbeats-beyond-memory?ref=tiktok
+- Decoding the Signs and Symbols of Freemasonry in the 21st Century
+  - Listen (RSS.com): https://rss.com/podcasts/decoding-the-signs-and-symbols-of-freemasonry-in-the-21st-century/
+  - Referral hub: https://worldclassscholars.vercel.app/podcasts/freemasonry-21st-century
+  - TikTok referral: https://worldclassscholars.vercel.app/podcasts/freemasonry-21st-century?ref=tiktok
+- Art, Culture and Philosophies of Tattoos
+  - Listen (RSS.com): https://rss.com/podcasts/art-culture-and-philosophies-of-tattoos
+  - Referral hub: https://worldclassscholars.vercel.app/podcasts/art-culture-tattoos
+  - TikTok referral: https://worldclassscholars.vercel.app/podcasts/art-culture-tattoos?ref=tiktok
 
-## Founder & social
+## iOS apps
 
-- Name: Dr Christopher Appiah-Thompson
-- Email: christopher.appiahthompson@myworldclass.org
+- WCS Commerce: https://worldclassscholars.vercel.app/marketing/wcs-commerce
+- WCS Agentic: https://worldclassscholars.vercel.app/marketing/wcs-agentic
+- TestFlight Gold Test: https://testflight.apple.com/join/WCSGOLDTEST
+- TestFlight WCS Care: https://testflight.apple.com/join/WCSCare
+
+## Founder
+
+- Dr Christopher Appiah-Thompson
+- chrsappiah@gmail.com
+- christopher.appiahthompson@myworldclass.org
 - LinkedIn: https://www.linkedin.com/in/christopher-appiah-thompson-a2014045
 - TikTok: https://tiktok.com/@chrsappiah
-- YouTube: https://www.youtube.com/channel/UC2a-_QUygsGAKWzEdKHEP9Q
-
-## Related properties
-
-- https://myworldclass.net
-- https://wcs-art-verse.com
-- https://www.wcsflab.com/
-- https://creator.nightcafe.studio/u/CKRIZ
 
 ## Machine-readable
 
-- Sitemap: https://wcs-full.vercel.app/sitemap.xml
-- Robots: https://wcs-full.vercel.app/robots.txt
-- Extended: https://wcs-full.vercel.app/llms-full.txt
-- Beta manifest API: https://wcs-full.vercel.app/api/v1/commerce/beta-manifest
+- Sitemap: https://worldclassscholars.vercel.app/sitemap.xml
+- Robots: https://worldclassscholars.vercel.app/robots.txt
+- Extended index: https://worldclassscholars.vercel.app/llms-full.txt
 
 ## Topics
 
-dementia care, disability advocacy, mental health education, trauma-aware communication, micro-credentials, digital art, podcasts, App Store subscriptions, StoreKit, TestFlight betas.
+World Class Scholars, dementia care, disability consultancy, RSS.com podcasts, podcast referrals, TestFlight, App Store, CodeAdx, Australia.
