@@ -33,6 +33,7 @@ async function enroll(slug) {
   try {
     const e = await api.enroll(slug);
     enrollments.value.push(e);
+    api.track("enroll", "/my-courses", { courseSlug: slug });
   } catch (e) {
     error.value = e?.response?.data?.error ?? "Enrolment failed.";
   } finally { enrolling.value = null; }

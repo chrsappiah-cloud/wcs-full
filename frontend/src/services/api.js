@@ -1,4 +1,5 @@
 import axios from "axios";
+import { getAnalyticsSessionId } from "../lib/analyticsSession.js";
 
 const client = axios.create({ baseURL: "/api/v1" });
 const admin  = axios.create({ baseURL: "/api/admin" });
@@ -23,7 +24,49 @@ export const api = {
 
   // Analytics
   track: (event, path, meta = {}) =>
-    client.post("/analytics/track", { event, path, meta }).catch(() => {}),
+    client
+      .post("/analytics/track", {
+        event,
+        path,
+        meta,
+        sessionId: getAnalyticsSessionId(),
+      })
+      .catch(() => {}),
+  getAnalyticsDashboard: () =>
+    client.get("/analytics/dashboard", { headers: authHeader() }).then((r) => r.data),
+
+  getContactConfig: () => client.get("/contact").then((r) => r.data),
+  submitContact: (body) => client.post("/contact", body).then((r) => r.data),
+  adminListContactMessages: (status) =>
+    client
+      .get("/contact/admin/messages", {
+        params: status ? { status } : {},
+        headers: authHeader(),
+      })
+      .then((r) => r.data),
+  adminPatchContactMessage: (id, status) =>
+    client
+      .patch(`/contact/admin/messages/${id}`, { status }, { headers: authHeader() })
+      .then((r) => r.data),
+
+  getAdminSystem: () =>
+    client.get("/admin/system", { headers: authHeader() }).then((r) => r.data),
+  testAdminEmail: () =>
+    client.post("/admin/system/test-email", {}, { headers: authHeader() }).then((r) => r.data),
+  testAdminDatabase: () =>
+    client.post("/admin/system/test-database", {}, { headers: authHeader() }).then((r) => r.data),
+  activateAdminServices: () =>
+    client.post("/admin/system/activate", {}, { headers: authHeader() }).then((r) => r.data),
+  getPaymentsDashboard: () =>
+    client.get("/payments/admin/dashboard", { headers: authHeader() }).then((r) => r.data),
+  activatePaymentIntegrations: (service) =>
+    client
+      .post("/payments/admin/activate-integrations", service ? { service } : {}, {
+        headers: authHeader(),
+      })
+      .then((r) => r.data),
+  recordPaymentEvent: (body) =>
+    client.post("/payments/admin/events", body, { headers: authHeader() }).then((r) => r.data),
 
   // Auth
   login:    (email, password) => client.post("/auth/login",    { email, password }).then(r => r.data),
@@ -34,6 +77,27 @@ export const api = {
   enroll:         (courseSlug) => client.post("/enrollments", { courseSlug }, { headers: authHeader() }).then(r => r.data),
   myEnrollments:  () => client.get("/enrollments/mine", { headers: authHeader() }).then(r => r.data),
   updateProgress: (id, progress) => client.patch(`/enrollments/${id}`, { progress }, { headers: authHeader() }).then(r => r.data),
+
+  // Access & subscriptions
+  getAccessCatalog: () => client.get("/access/catalog").then(r => r.data),
+  getMyAccess:      () => client.get("/access/me", { headers: authHeader() }).then(r => r.data),
+  adminListAccess:  () => client.get("/access/admin/records", { headers: authHeader() }).then(r => r.data),
+  adminGetUserAccess: (userId) =>
+    client.get(`/access/admin/users/${userId}`, { headers: authHeader() }).then(r => r.data),
+  adminUpdateUserAccess: (userId, body) =>
+    client.patch(`/access/admin/users/${userId}`, body, { headers: authHeader() }).then(r => r.data),
+  adminGrantSubscription: (userId, productId, source = "manual") =>
+    client
+      .post(`/access/admin/users/${userId}/subscriptions`, { productId, source }, { headers: authHeader() })
+      .then(r => r.data),
+  adminPatchSubscription: (userId, productId, status) =>
+    client
+      .patch(`/access/admin/users/${userId}/subscriptions/${productId}`, { status }, { headers: authHeader() })
+      .then(r => r.data),
+  adminRevokeSubscription: (userId, productId) =>
+    client
+      .delete(`/access/admin/users/${userId}/subscriptions/${productId}`, { headers: authHeader() })
+      .then(r => r.data),
 };
 
 // ── Admin ─────────────────────────────────────────────────────────────────────

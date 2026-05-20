@@ -7,7 +7,9 @@ frontend/.vite/
 
 # Environment — never commit real secrets
 backend/.env
+backend/.env.production
 !backend/.env.example
+!backend/.env.production.example
 
 # OS / editor
 .DS_Store
@@ -20,6 +22,10 @@ backend/.env
 *.log
 npm-debug.log*
 
-# MongoDB data (if running locally inside project)
-data/
+# MongoDB data (if running locally inside project root only)
+/data/
+
+# Playwright / test artifacts
+frontend/test-results/
+frontend/playwright-report/
 .vercel

@@ -16,16 +16,23 @@ onMounted(() => {
   authStore.fetchMe();
 });
 
-watch(() => route.path, (path) => {
-  api.track("page_view", path);
-});
+watch(
+  () => route.fullPath,
+  (fullPath) => {
+    const path = fullPath.split("?")[0];
+    api.track("page_view", path, {
+      query: route.query && Object.keys(route.query).length ? { ...route.query } : undefined,
+    });
+  },
+  { immediate: true }
+);
 </script>
 
 <template>
   <div class="app-shell">
     <SiteHeader />
     <main class="main">
-      <RouterView />
+      <RouterView :key="route.fullPath" />
     </main>
     <SiteFooter />
   </div>

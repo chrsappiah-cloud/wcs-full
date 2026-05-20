@@ -4,7 +4,11 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "cd frontend && npm ci && npm run build"
+    "build": "cd frontend && npm ci && npm run build",
+    "test": "bash scripts/test-all.sh",
+    "test:ci": "cd backend && npm ci && npm run seed && npm test",
+    "configure:vercel": "bash scripts/configure-vercel-env.sh",
+    "sync:vercel": "node scripts/sync-vercel-env.mjs"
   },
   "dependencies": {
     "axios": "^1.7.9",
@@ -13,6 +17,7 @@
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "jsonwebtoken": "^9.0.2",
-    "mongodb": "^6.12.0"
+    "mongodb": "^6.12.0",
+    "nodemailer": "^6.10.0"
   }
 }

@@ -2,11 +2,18 @@
  * Marketing portal — sourced from https://christopherappiahthompson.link
  */
 
+import { DEFAULT_SITE_URL } from "./site.js";
+import { rssPodcasts } from "./podcasts.js";
+import { founderLinkPromotions, FOUNDER_PROFILE_URL } from "./founderLinkPromotions.js";
+
+export { FOUNDER_PROFILE_URL };
+
 export const founderProfile = {
   name: "Dr Christopher Appiah-Thompson",
   title: "Founder, World Class Scholars",
   location: "Australia",
   email: "christopher.appiahthompson@myworldclass.org",
+  personalEmail: "chrsappiah@gmail.com",
   phone: "0403138328",
   profileUrl: "https://christopherappiahthompson.link",
   avatar:
@@ -53,31 +60,29 @@ export const socialChannels = [
   },
 ];
 
+/** Promotional tiles with preview images from christopherappiahthompson.link */
 export const digitalArtworks = [
-  { label: "WCS Art Verse", category: "Gallery", url: "https://wcs-art-verse.com" },
-  { label: "NightCafe — CKRIZ", category: "AI digital art", url: "https://creator.nightcafe.studio/u/CKRIZ" },
-  { label: "Gumroad — healing arts", category: "Digital product", url: "https://chrspiah.gumroad.com/l/qylmdn" },
-  { label: "myworldclass.net", category: "Brand hub", url: "https://myworldclass.net" },
-  { label: "WCS Future Lab", category: "Research lab", url: "https://www.wcsflab.com/" },
-];
-
-export const podcasts = [
+  ...founderLinkPromotions,
   {
-    label: "Heartbeats Beyond Memory — Creative Care in Dementia",
-    url: "https://rss.com/podcasts/heartbeats-beyond-memory-creative-care-in-dementia/2357430",
+    id: "wcs-digital-marketing",
+    title: "Digital Marketing — WCS",
+    category: "On-site program",
+    url: `${DEFAULT_SITE_URL}/digital-marketing`,
+    imageUrl: founderLinkPromotions.find((p) => p.id === "wcs-art-verse")?.imageUrl,
   },
   {
-    label: "Decoding the Signs and Symbols of Freemasonry in the 21st Century",
-    url: "https://rss.com/podcasts/decoding-the-signs-and-symbols-of-freemasonry-in-the-21st-century/",
-  },
-  {
-    label: "Art, Culture and Philosophies of Tattoos",
-    url: "https://rss.com/podcasts/art-culture-and-philosophies-of-tattoos",
+    id: "codeadx-stats",
+    title: "CodeAdx Podcaster Stats",
+    category: "Advertising",
+    url: "https://app.codeadx.com/podcaster/stats",
+    imageUrl: founderLinkPromotions.find((p) => p.id === "freemasonry")?.imageUrl,
   },
 ];
 
-/** Apple commerce surfaces — App Store, TestFlight, Server API */
-export const appleStoreServices = [
+export { podcasts, rssPodcasts, findPodcast } from "./podcasts.js";
+
+/** Apple surfaces shown on the public marketing site (no developer/API links). */
+export const publicAppleStoreServices = [
   {
     id: "testflight",
     label: "TestFlight",
@@ -92,34 +97,6 @@ export const appleStoreServices = [
     url: "https://apps.apple.com/developer/world-class-scholars/id0",
     action: "Browse App Store",
     fallbackSearch: "https://apps.apple.com/search?term=World+Class+Scholars",
-  },
-  {
-    id: "app-store-connect",
-    label: "App Store Connect",
-    description: "Manage subscriptions, TestFlight builds, and in-app purchases.",
-    url: "https://appstoreconnect.apple.com/",
-    action: "App Store Connect",
-  },
-  {
-    id: "server-api",
-    label: "App Store Server API",
-    description: "Transaction history, subscription status, and notification verification.",
-    url: "https://developer.apple.com/documentation/appstoreserverapi",
-    action: "Server API docs",
-  },
-  {
-    id: "storekit",
-    label: "StoreKit",
-    description: "In-app purchases and subscriptions inside WCS iOS apps.",
-    url: "https://developer.apple.com/documentation/storekit",
-    action: "StoreKit docs",
-  },
-  {
-    id: "notifications",
-    label: "App Store Server Notifications",
-    description: "Webhook endpoint for purchase lifecycle events on the WCS commerce backend.",
-    url: "https://developer.apple.com/documentation/appstoreservernotifications",
-    action: "Notifications docs",
   },
 ];
 
@@ -160,8 +137,7 @@ export const commerceApiEndpoints = [
   { method: "POST", path: "/v1/offers/signature", purpose: "Signed offer for StoreKit" },
 ];
 
-const SITE_ORIGIN =
-  typeof window !== "undefined" ? window.location.origin : "https://wcs-full.vercel.app";
+const SITE_ORIGIN = typeof window !== "undefined" ? window.location.origin : DEFAULT_SITE_URL;
 
 export const iosApps = [
   {
@@ -169,7 +145,7 @@ export const iosApps = [
     name: "WCS Commerce",
     tagline: "Premium membership, tutor packs & specialist unlocks via the App Store",
     description:
-      "Purchase subscriptions and consumables through StoreKit. Entitlements sync with the WCS commerce backend and Apple Server API.",
+      "Purchase subscriptions and consumables through the App Store. Entitlements sync across your WCS account.",
     bundleId: "wcs.wcs-ios",
     appStoreSearchUrl: "https://apps.apple.com/search?term=WCS+Commerce",
     testFlightCode: null,
@@ -238,9 +214,29 @@ export function buildReferralLink(appSlug, channelId) {
   return marketingLandingUrl(appSlug, channelId);
 }
 
+export function podcastLandingUrl(podcastSlug, channelId) {
+  const params = new URLSearchParams();
+  if (channelId) params.set("ref", channelId);
+  const query = params.toString();
+  return `${SITE_ORIGIN}/podcasts/${podcastSlug}${query ? `?${query}` : ""}`;
+}
+
+export function buildPodcastReferralLink(podcastSlug, channelId) {
+  return podcastLandingUrl(podcastSlug, channelId);
+}
+
+function queryValue(searchParams, key) {
+  if (!searchParams) return undefined;
+  if (typeof searchParams.get === "function") return searchParams.get(key) ?? undefined;
+  const value = searchParams[key];
+  return Array.isArray(value) ? value[0] : value;
+}
+
+/** Accepts URLSearchParams or Vue Router `route.query` object. */
 export function resolveAttribution(searchParams) {
-  const ref = searchParams.get("ref") ?? searchParams.get("utm_source") ?? "direct";
-  const campaign = searchParams.get("utm_campaign") ?? searchParams.get("app") ?? "";
+  const ref = queryValue(searchParams, "ref") ?? queryValue(searchParams, "utm_source") ?? "direct";
+  const campaign =
+    queryValue(searchParams, "utm_campaign") ?? queryValue(searchParams, "app") ?? "";
   return { ref, campaign };
 }
 
@@ -269,8 +265,15 @@ export function buildBetaManifest() {
       products: app.products ?? [],
     })),
     storeProducts,
-    appleStoreServices,
-    commerceApiEndpoints,
+    appleStoreServices: publicAppleStoreServices,
+    podcasts: rssPodcasts.map((p) => ({
+      slug: p.slug,
+      label: p.label,
+      rssUrl: p.rssUrl,
+      referralLinks: Object.fromEntries(
+        socialChannels.map((ch) => [ch.id, buildPodcastReferralLink(p.slug, ch.id)])
+      ),
+    })),
   };
 }
 

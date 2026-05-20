@@ -2,7 +2,7 @@ name: CI
 
 on:
   push:
-    branches: [main]
+    branches: [main, feat/**]
   pull_request:
     branches: [main]
   workflow_call:    # allows deploy.yml to call this as a gate
@@ -13,7 +13,7 @@ env:
 jobs:
   # ── Frontend ──────────────────────────────────────────────────────────────
   frontend:
-    name: Frontend — install & build
+    name: Frontend — unit tests & build
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -34,6 +34,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Unit tests
+        run: npm run test:unit
+
       - name: Build
         run: npm run build
 
@@ -46,7 +49,7 @@ jobs:
 
   # ── Backend ───────────────────────────────────────────────────────────────
   backend:
-    name: Backend — install & smoke test
+    name: Backend — seed, smoke tests & API checks
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -60,6 +63,7 @@ jobs:
 
     env:
       PORT: 3001
+      TEST_API_BASE: http://127.0.0.1:3001
       MONGODB_URI: mongodb://127.0.0.1:27017
       MONGODB_NS: wcs_ci
       OPEN_LIBRARY_BASE: https://openlibrary.org
@@ -84,24 +88,20 @@ jobs:
       - name: Seed database
         run: npm run seed
 
-      - name: Start server and verify health endpoint
+      - name: Start server and run API smoke tests
         run: |
           npm run dev &
           SERVER_PID=$!
-          echo "Waiting for server..."
-          for i in $(seq 1 20); do
+          trap 'kill $SERVER_PID 2>/dev/null || true' EXIT
+          for i in $(seq 1 30); do
             if curl -sf http://localhost:3001/health; then
               echo "Server is up"
               break
             fi
             sleep 1
           done
+          npm test
           curl -sf http://localhost:3001/api/v1/platform | grep -q "World Class Scholars"
-          echo "Platform endpoint OK"
-          curl -sf "http://localhost:3001/api/v1/library/search?q=open&source=internal" | grep -q "query"
-          echo "Library search OK"
+          curl -sf "http://localhost:3001/api/v1/library/search?q=care&source=internal" | grep -q "internal"
           curl -sf http://localhost:3001/api/v1/commerce/beta-manifest | grep -q "wcs-ios-beta-manifest"
-          echo "Beta manifest OK"
-          curl -sf http://localhost:3001/api/v1/commerce/apple | grep -q "storeProducts"
-          echo "Apple commerce OK"
-          kill $SERVER_PID
+          curl -sf http://localhost:3001/api/v1/contact | grep -q "support@myworldclass.org"

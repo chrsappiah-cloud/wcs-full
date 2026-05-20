@@ -1,7 +1,26 @@
 {
+  "$schema": "https://openapi.vercel.sh/vercel.json",
   "version": 2,
   "buildCommand": "npm run build",
+  "installCommand": "npm install && cd frontend && npm install",
   "outputDirectory": "frontend/dist",
+  "framework": null,
+  "env": {
+    "VITE_SITE_URL": "https://worldclassscholars.vercel.app",
+    "OPEN_LIBRARY_BASE": "https://openlibrary.org",
+    "MONGODB_NS": "wcs",
+    "JWT_EXPIRES_IN": "7d",
+    "EMAIL_FROM": "World Class Scholars <noreply@myworldclass.org>",
+    "NOTIFY_EMAIL": "chrsappiah@gmail.com"
+  },
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "wcs-full.vercel.app" }],
+      "destination": "https://worldclassscholars.vercel.app/:path*",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/robots.txt",
@@ -25,7 +44,10 @@
   "rewrites": [
     { "source": "/health", "destination": "/api/index.js" },
     { "source": "/api/:path*", "destination": "/api/index.js" },
-    { "source": "/((?!api|robots\\.txt|sitemap\\.xml|llms\\.txt|llms-full\\.txt|assets).*)", "destination": "/index.html" }
+    {
+      "source": "/((?!api|robots\\.txt|sitemap\\.xml|llms\\.txt|llms-full\\.txt|assets|favicon\\.ico).*)",
+      "destination": "/index.html"
+    }
   ],
   "functions": {
     "api/index.js": {
