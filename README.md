@@ -16,6 +16,14 @@ A full MEVN-stack digital campus for **World Class Scholars**, founded by Dr Chr
 
 ---
 
+## Digital governance
+
+Founder-controlled staff console, RBAC, R&D evidence, and grant reporting live in **[wcs-governance](https://github.com/chrsappiah-cloud/wcs-governance)** with Supabase RLS. See [docs/GOVERNANCE.md](docs/GOVERNANCE.md).
+
+Supabase migrations for the shared governance schema are in **`supabase/migrations/`** at the repo root.
+
+---
+
 ## SEO & AI discovery
 
 See [docs/SEO_AND_AI_DISCOVERY.md](docs/SEO_AND_AI_DISCOVERY.md) for Google Search Console, Bing, and AI crawler setup (`robots.txt`, `sitemap.xml`, `llms.txt`).

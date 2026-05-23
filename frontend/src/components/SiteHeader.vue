@@ -11,6 +11,7 @@ const router = useRouter();
 const nav    = computed(() => platformStore.platform?.nav ?? []);
 const title  = computed(() => platformStore.platform?.name ?? "World Class Scholars");
 const avatar = computed(() => platformStore.founderAvatar);
+const governanceConsoleUrl = import.meta.env.VITE_GOVERNANCE_CONSOLE_URL || "https://wcs-governance.vercel.app";
 
 function toggleTheme() {
   const html = document.documentElement;
@@ -38,6 +39,7 @@ function logout() {
           {{ item.label }}
         </RouterLink>
         <RouterLink class="nav-link" to="/marketing?tab=app-store">App Store</RouterLink>
+        <a class="nav-link" :href="`${governanceConsoleUrl}/login`" rel="noopener">Staff</a>
         <template v-if="auth.isAdmin">
           <RouterLink class="nav-link admin-link" to="/admin">Dashboard</RouterLink>
           <RouterLink class="nav-link admin-link" to="/admin/cms">CMS</RouterLink>
