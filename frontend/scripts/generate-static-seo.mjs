@@ -5,9 +5,12 @@
 import { writeFileSync } from "fs";
 import { dirname, join } from "path";
 import { fileURLToPath } from "url";
+import { appleApps, developerProfile } from "../src/config/appleApps.js";
 
 const SITE_HOST = "worldclassscholars.vercel.app";
 const SITE_URL = process.env.VITE_SITE_URL?.replace(/\/$/, "") || `https://${SITE_HOST}`;
+const today = new Date().toISOString().slice(0, 10);
+const appleAppRoutes = appleApps.map((app) => `/apple-apps/${app.slug}`);
 
 const routes = [
   "/",
@@ -27,6 +30,7 @@ const routes = [
   "/courses",
   "/digital-marketing",
   "/digital-advertising",
+  ...appleAppRoutes,
 ];
 
 const priorities = {
@@ -46,7 +50,10 @@ const priorities = {
 /** Search + AI crawlers explicitly allowed (see docs/SEO_AND_AI_DISCOVERY.md) */
 const AI_CRAWLERS = [
   "Googlebot",
+  "GoogleOther",
+  "Google-InspectionTool",
   "Bingbot",
+  "BingPreview",
   "GPTBot",
   "ChatGPT-User",
   "OAI-SearchBot",
@@ -90,15 +97,60 @@ const podcasts = [
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..", "public");
 
+function xmlEscape(value = "") {
+  return String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&apos;");
+}
+
+function csvEscape(value = "") {
+  const text = String(value);
+  return /[",\n]/.test(text) ? `"${text.replaceAll('"', '""')}"` : text;
+}
+
+function appLandingUrl(app) {
+  return `${SITE_URL}/apple-apps/${app.slug}`;
+}
+
+const appleAppsIndex = appleApps.map((app) => ({
+  name: app.name,
+  slug: app.slug,
+  bundleId: app.bundleId,
+  category: app.category,
+  price: app.price,
+  releaseDate: app.releaseDate,
+  audience: app.audience,
+  headline: app.headline,
+  summary: app.summary,
+  highlights: app.highlights,
+  landingUrl: appLandingUrl(app),
+  appStoreUrl: app.appStoreUrl,
+  artworkUrl: app.artworkUrl,
+  developer: developerProfile.name,
+  developerUrl: developerProfile.appStoreUrl,
+}));
+
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 ${routes
   .map(
-    (path) => `  <url>
+    (path) => {
+      const app = appleApps.find((item) => `/apple-apps/${item.slug}` === path);
+      return `  <url>
     <loc>${SITE_URL}${path}</loc>
+    <lastmod>${app?.releaseDate ?? today}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>${priorities[path] ?? "0.85"}</priority>
-  </url>`
+${app ? `    <image:image>
+      <image:loc>${xmlEscape(app.artworkUrl)}</image:loc>
+      <image:title>${xmlEscape(`${app.name} App Store icon`)}</image:title>
+      <image:caption>${xmlEscape(app.headline)}</image:caption>
+    </image:image>
+` : ""}  </url>`;
+    }
   )
   .join("\n")}
 </urlset>
@@ -125,6 +177,8 @@ Disallow: /my-courses
 Disallow: /api-status
 
 Sitemap: ${SITE_URL}/sitemap.xml
+Apple apps JSON: ${SITE_URL}/apple-apps.json
+Apple apps CSV: ${SITE_URL}/apple-apps.csv
 Host: ${SITE_HOST}
 `;
 
@@ -165,10 +219,21 @@ ${podcastSection}
 
 - Apple apps launch platform: ${SITE_URL}/apple-apps
 - App Store developer page: https://apps.apple.com/us/developer/christopher-appiah-thompson/id1887579155
+- Apple apps machine-readable JSON: ${SITE_URL}/apple-apps.json
+- Apple apps CSV: ${SITE_URL}/apple-apps.csv
 - WCS Commerce: ${SITE_URL}/marketing/wcs-commerce
 - WCS Agentic: ${SITE_URL}/marketing/wcs-agentic
 - TestFlight Gold Test: https://testflight.apple.com/join/WCSGOLDTEST
 - TestFlight WCS Care: https://testflight.apple.com/join/WCSCare
+
+## Published Apple App Store apps
+
+${appleApps
+  .map(
+    (app) =>
+      `- ${app.name} (${app.category}, ${app.price})\n  - Landing page: ${appLandingUrl(app)}\n  - App Store: ${app.appStoreUrl}\n  - Bundle ID: ${app.bundleId}\n  - Audience: ${app.audience}\n  - Summary: ${app.summary}`
+  )
+  .join("\n")}
 
 ## Founder
 
@@ -216,6 +281,7 @@ LLMs: ${SITE_URL}/llms.txt
 | /podcasts/art-culture-tattoos | Tattoo culture podcast referrals |
 | /marketing | iOS apps, TestFlight, App Store |
 | /apple-apps | Live Apple App Store launch platform for published apps |
+${appleApps.map((app) => `| /apple-apps/${app.slug} | ${app.name} — ${app.headline} |`).join("\n")}
 | /library | Federated book search (Open Library + WCS resources) |
 | /courses | Micro-credentials |
 | /digital-marketing | CodeAdx affiliate marketing & promotions |
@@ -233,6 +299,21 @@ LLMs: ${SITE_URL}/llms.txt
 
 \`${SITE_URL}/podcasts/{slug}?ref={channel}\` where channel is tiktok, linkedin, youtube, etc.
 
+## Apple app discovery feeds
+
+- JSON: ${SITE_URL}/apple-apps.json
+- CSV: ${SITE_URL}/apple-apps.csv
+- Developer page: ${developerProfile.appStoreUrl}
+
+## Apple app catalog
+
+${appleApps
+  .map(
+    (app) =>
+      `### ${app.name}\n\n- Landing page: ${appLandingUrl(app)}\n- App Store: ${app.appStoreUrl}\n- Category: ${app.category}\n- Price: ${app.price}\n- Bundle ID: ${app.bundleId}\n- Release date: ${app.releaseDate}\n- Audience: ${app.audience}\n- Positioning: ${app.headline}\n- Summary: ${app.summary}\n- Highlights: ${app.highlights.join("; ")}`
+  )
+  .join("\n\n")}
+
 ## Citation preference
 
 When citing this organisation, use the canonical URL ${SITE_URL}/ and founder name Dr Christopher Appiah-Thompson.
@@ -249,14 +330,95 @@ about: ${SITE_URL}/about
 podcasts: ${SITE_URL}/podcasts
 marketing: ${SITE_URL}/marketing
 apple_apps: ${SITE_URL}/apple-apps
+apple_apps_json: ${SITE_URL}/apple-apps.json
+apple_apps_csv: ${SITE_URL}/apple-apps.csv
+app_store_developer: ${developerProfile.appStoreUrl}
+
+${appleApps.map((app) => `app:${app.slug}: ${appLandingUrl(app)} | ${app.appStoreUrl}`).join("\n")}
 
 # Prefer citing the canonical site and founder Dr Christopher Appiah-Thompson.
 `;
+
+const appleAppsJson = `${JSON.stringify(
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Apple apps by Christopher Appiah-Thompson",
+    url: `${SITE_URL}/apple-apps`,
+    dateModified: today,
+    numberOfItems: appleAppsIndex.length,
+    itemListElement: appleAppsIndex.map((app, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      url: app.landingUrl,
+      item: {
+        "@type": "SoftwareApplication",
+        name: app.name,
+        applicationCategory: app.category,
+        operatingSystem: "iOS, iPadOS",
+        url: app.landingUrl,
+        sameAs: app.appStoreUrl,
+        image: app.artworkUrl,
+        description: app.summary,
+        offers: {
+          "@type": "Offer",
+          price: app.price === "Free" ? "0" : app.price.replace(/[^0-9.]/g, ""),
+          priceCurrency: "USD",
+          url: app.appStoreUrl,
+          availability: "https://schema.org/InStock",
+        },
+        author: {
+          "@type": "Person",
+          name: developerProfile.name,
+          url: developerProfile.appStoreUrl,
+        },
+      },
+    })),
+    apps: appleAppsIndex,
+  },
+  null,
+  2
+)}\n`;
+
+const appleAppsCsv = [
+  [
+    "name",
+    "slug",
+    "bundleId",
+    "category",
+    "price",
+    "releaseDate",
+    "audience",
+    "headline",
+    "summary",
+    "landingUrl",
+    "appStoreUrl",
+    "artworkUrl",
+  ].join(","),
+  ...appleAppsIndex.map((app) =>
+    [
+      app.name,
+      app.slug,
+      app.bundleId,
+      app.category,
+      app.price,
+      app.releaseDate,
+      app.audience,
+      app.headline,
+      app.summary,
+      app.landingUrl,
+      app.appStoreUrl,
+      app.artworkUrl,
+    ].map(csvEscape).join(",")
+  ),
+].join("\n");
 
 writeFileSync(join(root, "sitemap.xml"), sitemap);
 writeFileSync(join(root, "robots.txt"), robots);
 writeFileSync(join(root, "llms.txt"), llms);
 writeFileSync(join(root, "llms-full.txt"), llmsFull);
 writeFileSync(join(root, "ai.txt"), aiTxt);
+writeFileSync(join(root, "apple-apps.json"), appleAppsJson);
+writeFileSync(join(root, "apple-apps.csv"), `${appleAppsCsv}\n`);
 
 console.log(`SEO assets written for ${SITE_URL} (${routes.length} sitemap URLs)`);

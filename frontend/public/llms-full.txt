@@ -17,6 +17,22 @@ LLMs: https://worldclassscholars.vercel.app/llms.txt
 | /podcasts/art-culture-tattoos | Tattoo culture podcast referrals |
 | /marketing | iOS apps, TestFlight, App Store |
 | /apple-apps | Live Apple App Store launch platform for published apps |
+| /apple-apps/agedcare-monitor | AgedCare Monitor — Non-clinical monitoring support for aged-care teams. |
+| /apple-apps/ai-real-investor | AI Real Investor — Property and investment decision-support workspace. |
+| /apple-apps/carelens-aged | CareLens Aged+ — Intelligent aged-care coordination and insight support. |
+| /apple-apps/legalaid | LegalAid — Legal-information workflows, document review, and draft reports. |
+| /apple-apps/peacelens | PeaceLens — Peace journalism analysis for election-related media. |
+| /apple-apps/prop-valulator | Prop-Valulator — AI-assisted property valuation exploration. |
+| /apple-apps/psychologic | PsychoLogic — Private journaling for everyday thoughts, feelings, and patterns. |
+| /apple-apps/psychosocial-analytics | Psychosocial Analytics — Structured psychosocial assessment and reporting support. |
+| /apple-apps/truthlens-global | TruthLens Global — Review public claims before you share, repeat, or act. |
+| /apple-apps/visionforge | VisionForge — Creative AI generation workspace. |
+| /apple-apps/wcs-agentic | WCS Agentic — Scholar programs, agent commands, approval gates, and reporting. |
+| /apple-apps/wcs-geo | WCS-GEO — Mineral exploration learning and demonstration tool. |
+| /apple-apps/wcs-pol | WCS-POL — Electoral governance simulation and institutional learning. |
+| /apple-apps/wcs-tatto | WCS-Tatto — Premium tattoo planning built on trust and compassion. |
+| /apple-apps/wcslib | WCSLIB — Scholarly workspace for learning and research. |
+| /apple-apps/wendy-safricanfash | Wendy'SAfricanFash — Premium African fashion marketplace and design support. |
 | /library | Federated book search (Open Library + WCS resources) |
 | /courses | Micro-credentials |
 | /digital-marketing | CodeAdx affiliate marketing & promotions |
@@ -33,6 +49,222 @@ LLMs: https://worldclassscholars.vercel.app/llms.txt
 ## Podcast referral pattern
 
 `https://worldclassscholars.vercel.app/podcasts/{slug}?ref={channel}` where channel is tiktok, linkedin, youtube, etc.
+
+## Apple app discovery feeds
+
+- JSON: https://worldclassscholars.vercel.app/apple-apps.json
+- CSV: https://worldclassscholars.vercel.app/apple-apps.csv
+- Developer page: https://apps.apple.com/us/developer/christopher-appiah-thompson/id1887579155?uo=4
+
+## Apple app catalog
+
+### AgedCare Monitor
+
+- Landing page: https://worldclassscholars.vercel.app/apple-apps/agedcare-monitor
+- App Store: https://apps.apple.com/us/app/agedcare-monitor/id6767978725?uo=4
+- Category: Medical
+- Price: Free
+- Bundle ID: wcs.Agedcare-shared
+- Release date: 2026-05-23
+- Audience: Professional carers, family carers, and aged-care facility staff
+- Positioning: Non-clinical monitoring support for aged-care teams.
+- Summary: A privacy-minded monitoring aid for resident safety workflows, incident review, carer dashboards, and Apple Watch alert support.
+- Highlights: Fall and distress-sound monitoring aid; Resident timeline and staff dashboard; Apple Watch alert companion
+
+### AI Real Investor
+
+- Landing page: https://worldclassscholars.vercel.app/apple-apps/ai-real-investor
+- App Store: https://apps.apple.com/us/app/ai-real-investor/id6779068906?uo=4
+- Category: Finance
+- Price: $3.99
+- Bundle ID: wcs.AI-Real-Investor
+- Release date: 2026-06-17
+- Audience: Property investors and finance decision-makers
+- Positioning: Property and investment decision-support workspace.
+- Summary: A premium workspace for reviewing property signals, investment considerations, and decision-support outputs before acting.
+- Highlights: Property investment review; Decision-support workflow; Premium finance workspace
+
+### CareLens Aged+
+
+- Landing page: https://worldclassscholars.vercel.app/apple-apps/carelens-aged
+- App Store: https://apps.apple.com/us/app/carelens-aged/id6767072418?uo=4
+- Category: Medical
+- Price: $7.99
+- Bundle ID: wcs.Carelens-Aged-
+- Release date: 2026-06-08
+- Audience: Clinicians, facility managers, and aged-care teams
+- Positioning: Intelligent aged-care coordination and insight support.
+- Summary: Designed for teams working with ageing, dementia, care planning, and resident-support workflows.
+- Highlights: Care planning support; Aged-care insight workspace; Professional team focus
+
+### LegalAid
+
+- Landing page: https://worldclassscholars.vercel.app/apple-apps/legalaid
+- App Store: https://apps.apple.com/us/app/legalaid/id6782532109?uo=4
+- Category: Productivity
+- Price: $0.49
+- Bundle ID: wcs.LegalAid
+- Release date: 2026-06-26
+- Audience: People and legal professionals preparing legal-information workflows
+- Positioning: Legal-information workflows, document review, and draft reports.
+- Summary: Structure legal facts, review pasted document text, identify risk signals, prepare jurisdiction-aware prompts, and generate draft reports for qualified review.
+- Highlights: Document understanding; Jurisdiction-aware prompts; Draft reports for review
+
+### PeaceLens
+
+- Landing page: https://worldclassscholars.vercel.app/apple-apps/peacelens
+- App Store: https://apps.apple.com/us/app/peacelens/id6776995376?uo=4
+- Category: Education
+- Price: $3.99
+- Bundle ID: wcs.PeaceLens
+- Release date: 2026-06-09
+- Audience: Researchers, journalists, election observers, trainers, and policy teams
+- Positioning: Peace journalism analysis for election-related media.
+- Summary: Capture media reports, score coverage with an explainable Peace Journalism Index, compare findings, and prepare research outputs.
+- Highlights: Peace Journalism Index; Election media coding; Research export workflow
+
+### Prop-Valulator
+
+- Landing page: https://worldclassscholars.vercel.app/apple-apps/prop-valulator
+- App Store: https://apps.apple.com/us/app/prop-valulator/id6780286834?uo=4
+- Category: Lifestyle
+- Price: $0.49
+- Bundle ID: wcs.Prop-Valulator
+- Release date: 2026-06-17
+- Audience: Homeowners, property watchers, and valuation explorers
+- Positioning: AI-assisted property valuation exploration.
+- Summary: Explore property value signals with AI-powered graph inference and heuristic valuation support.
+- Highlights: Property signal review; AI-assisted valuation; Scenario exploration
+
+### PsychoLogic
+
+- Landing page: https://worldclassscholars.vercel.app/apple-apps/psychologic
+- App Store: https://apps.apple.com/us/app/psychologic/id6778269526?uo=4
+- Category: Medical
+- Price: $7.99
+- Bundle ID: wcs.PsychoLogic
+- Release date: 2026-06-22
+- Audience: Journal users and reflective wellbeing workflows
+- Positioning: Private journaling for everyday thoughts, feelings, and patterns.
+- Summary: A general-purpose journal for recording experiences and reflecting on patterns without replacing professional care.
+- Highlights: Private reflective journaling; Pattern awareness; General wellbeing support
+
+### Psychosocial Analytics
+
+- Landing page: https://worldclassscholars.vercel.app/apple-apps/psychosocial-analytics
+- App Store: https://apps.apple.com/us/app/psychosocial-analytics/id6768490648?uo=4
+- Category: Medical
+- Price: $14.99
+- Bundle ID: wcs.Psychosocial--Analytics
+- Release date: 2026-06-01
+- Audience: Social workers and clinical teams
+- Positioning: Structured psychosocial assessment and reporting support.
+- Summary: Capture structured psychosocial information, organize analysis, and support professional documentation workflows.
+- Highlights: Structured capture; Clinical-team workflow; Report-ready outputs
+
+### TruthLens Global
+
+- Landing page: https://worldclassscholars.vercel.app/apple-apps/truthlens-global
+- App Store: https://apps.apple.com/us/app/truthlens-global/id6776208825?uo=4
+- Category: News
+- Price: $9.99
+- Bundle ID: wcs.TruthLens
+- Release date: 2026-06-08
+- Audience: Readers, civic teams, educators, and public-interest reviewers
+- Positioning: Review public claims before you share, repeat, or act.
+- Summary: Scan civic messages, speeches, social posts, and public-interest claims with verdicts, confidence, bias signals, and source credibility.
+- Highlights: Claim review support; Bias and credibility signals; Offline fallback heuristics
+
+### VisionForge
+
+- Landing page: https://worldclassscholars.vercel.app/apple-apps/visionforge
+- App Store: https://apps.apple.com/us/app/visionforge/id6777670360?uo=4
+- Category: Graphics & Design
+- Price: $5.99
+- Bundle ID: wcs.VisionForge
+- Release date: 2026-06-11
+- Audience: Creators, designers, and prompt-driven visual explorers
+- Positioning: Creative AI generation workspace.
+- Summary: Explore text-to-image and visual generation workflows in a focused creative design environment.
+- Highlights: Text-to-image exploration; Creative prompt workspace; Design ideation
+
+### WCS Agentic
+
+- Landing page: https://worldclassscholars.vercel.app/apple-apps/wcs-agentic
+- App Store: https://apps.apple.com/us/app/wcs-agentic/id6769985809?uo=4
+- Category: Business
+- Price: Free
+- Bundle ID: wcs.WCS-Agentic
+- Release date: 2026-06-24
+- Audience: World Class Scholars leaders and administrators
+- Positioning: Scholar programs, agent commands, approval gates, and reporting.
+- Summary: Manage scholar operations, supervised finance AI reporting, compliance tasks, and human approval controls in one mobile workspace.
+- Highlights: Program oversight; Governed agent activity; Board-ready finance briefs
+
+### WCS-GEO
+
+- Landing page: https://worldclassscholars.vercel.app/apple-apps/wcs-geo
+- App Store: https://apps.apple.com/us/app/wcs-geo/id6777616166?uo=4
+- Category: Business
+- Price: $9.99
+- Bundle ID: wcs.WCS-GEO
+- Release date: 2026-06-17
+- Audience: Geologists, students, educators, consultants, investors, and exploration professionals
+- Positioning: Mineral exploration learning and demonstration tool.
+- Summary: Explore explainable target scoring, project maps, ranked mineral targets, evidence provenance, imports, sync demos, and field observations.
+- Highlights: Explainable target scoring; Project maps and layers; Field observation workflows
+
+### WCS-POL
+
+- Landing page: https://worldclassscholars.vercel.app/apple-apps/wcs-pol
+- App Store: https://apps.apple.com/us/app/wcs-pol/id6779397120?uo=4
+- Category: Education
+- Price: $0.49
+- Bundle ID: wcs.WCS-POL
+- Release date: 2026-06-17
+- Audience: Civic educators, students, and governance learners
+- Positioning: Electoral governance simulation and institutional learning.
+- Summary: Explore how institutional rules, civic choices, and governance dynamics shape electoral outcomes.
+- Highlights: Governance simulation; Civic learning; Institutional scenarios
+
+### WCS-Tatto
+
+- Landing page: https://worldclassscholars.vercel.app/apple-apps/wcs-tatto
+- App Store: https://apps.apple.com/us/app/wcs-tatto/id6774959552?uo=4
+- Category: Lifestyle
+- Price: $2.99
+- Bundle ID: wcs.WCS-Tattoo-Studio
+- Release date: 2026-06-06
+- Audience: Tattoo clients, artists, and studios
+- Positioning: Premium tattoo planning built on trust and compassion.
+- Summary: Plan tattoo ideas, studio conversations, style direction, and client-centred preparation.
+- Highlights: Tattoo planning; Style direction; Studio conversation support
+
+### WCSLIB
+
+- Landing page: https://worldclassscholars.vercel.app/apple-apps/wcslib
+- App Store: https://apps.apple.com/us/app/wcslib/id6764653278?uo=4
+- Category: Education
+- Price: $3.99
+- Bundle ID: wcs.WCSLIB
+- Release date: 2026-06-05
+- Audience: Students, researchers, and lifelong learners
+- Positioning: Scholarly workspace for learning and research.
+- Summary: A focused educational workspace for organizing scholarly exploration, public resources, and lifelong learning.
+- Highlights: Scholarly workspace; Research organization; Learning support
+
+### Wendy'SAfricanFash
+
+- Landing page: https://worldclassscholars.vercel.app/apple-apps/wendy-safricanfash
+- App Store: https://apps.apple.com/us/app/wendysafricanfash/id6763326670?uo=4
+- Category: Shopping
+- Price: Free
+- Bundle ID: wcs.AfricanFashionApp
+- Release date: 2026-06-19
+- Audience: African fashion shoppers, designers, and marketplace visitors
+- Positioning: Premium African fashion marketplace and design support.
+- Summary: Discover African fashion collections, marketplace experiences, and AI-assisted design workflows.
+- Highlights: African fashion marketplace; Design inspiration; Shopping experience
 
 ## Citation preference
 

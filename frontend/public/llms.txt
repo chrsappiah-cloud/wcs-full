@@ -39,10 +39,111 @@
 
 - Apple apps launch platform: https://worldclassscholars.vercel.app/apple-apps
 - App Store developer page: https://apps.apple.com/us/developer/christopher-appiah-thompson/id1887579155
+- Apple apps machine-readable JSON: https://worldclassscholars.vercel.app/apple-apps.json
+- Apple apps CSV: https://worldclassscholars.vercel.app/apple-apps.csv
 - WCS Commerce: https://worldclassscholars.vercel.app/marketing/wcs-commerce
 - WCS Agentic: https://worldclassscholars.vercel.app/marketing/wcs-agentic
 - TestFlight Gold Test: https://testflight.apple.com/join/WCSGOLDTEST
 - TestFlight WCS Care: https://testflight.apple.com/join/WCSCare
+
+## Published Apple App Store apps
+
+- AgedCare Monitor (Medical, Free)
+  - Landing page: https://worldclassscholars.vercel.app/apple-apps/agedcare-monitor
+  - App Store: https://apps.apple.com/us/app/agedcare-monitor/id6767978725?uo=4
+  - Bundle ID: wcs.Agedcare-shared
+  - Audience: Professional carers, family carers, and aged-care facility staff
+  - Summary: A privacy-minded monitoring aid for resident safety workflows, incident review, carer dashboards, and Apple Watch alert support.
+- AI Real Investor (Finance, $3.99)
+  - Landing page: https://worldclassscholars.vercel.app/apple-apps/ai-real-investor
+  - App Store: https://apps.apple.com/us/app/ai-real-investor/id6779068906?uo=4
+  - Bundle ID: wcs.AI-Real-Investor
+  - Audience: Property investors and finance decision-makers
+  - Summary: A premium workspace for reviewing property signals, investment considerations, and decision-support outputs before acting.
+- CareLens Aged+ (Medical, $7.99)
+  - Landing page: https://worldclassscholars.vercel.app/apple-apps/carelens-aged
+  - App Store: https://apps.apple.com/us/app/carelens-aged/id6767072418?uo=4
+  - Bundle ID: wcs.Carelens-Aged-
+  - Audience: Clinicians, facility managers, and aged-care teams
+  - Summary: Designed for teams working with ageing, dementia, care planning, and resident-support workflows.
+- LegalAid (Productivity, $0.49)
+  - Landing page: https://worldclassscholars.vercel.app/apple-apps/legalaid
+  - App Store: https://apps.apple.com/us/app/legalaid/id6782532109?uo=4
+  - Bundle ID: wcs.LegalAid
+  - Audience: People and legal professionals preparing legal-information workflows
+  - Summary: Structure legal facts, review pasted document text, identify risk signals, prepare jurisdiction-aware prompts, and generate draft reports for qualified review.
+- PeaceLens (Education, $3.99)
+  - Landing page: https://worldclassscholars.vercel.app/apple-apps/peacelens
+  - App Store: https://apps.apple.com/us/app/peacelens/id6776995376?uo=4
+  - Bundle ID: wcs.PeaceLens
+  - Audience: Researchers, journalists, election observers, trainers, and policy teams
+  - Summary: Capture media reports, score coverage with an explainable Peace Journalism Index, compare findings, and prepare research outputs.
+- Prop-Valulator (Lifestyle, $0.49)
+  - Landing page: https://worldclassscholars.vercel.app/apple-apps/prop-valulator
+  - App Store: https://apps.apple.com/us/app/prop-valulator/id6780286834?uo=4
+  - Bundle ID: wcs.Prop-Valulator
+  - Audience: Homeowners, property watchers, and valuation explorers
+  - Summary: Explore property value signals with AI-powered graph inference and heuristic valuation support.
+- PsychoLogic (Medical, $7.99)
+  - Landing page: https://worldclassscholars.vercel.app/apple-apps/psychologic
+  - App Store: https://apps.apple.com/us/app/psychologic/id6778269526?uo=4
+  - Bundle ID: wcs.PsychoLogic
+  - Audience: Journal users and reflective wellbeing workflows
+  - Summary: A general-purpose journal for recording experiences and reflecting on patterns without replacing professional care.
+- Psychosocial Analytics (Medical, $14.99)
+  - Landing page: https://worldclassscholars.vercel.app/apple-apps/psychosocial-analytics
+  - App Store: https://apps.apple.com/us/app/psychosocial-analytics/id6768490648?uo=4
+  - Bundle ID: wcs.Psychosocial--Analytics
+  - Audience: Social workers and clinical teams
+  - Summary: Capture structured psychosocial information, organize analysis, and support professional documentation workflows.
+- TruthLens Global (News, $9.99)
+  - Landing page: https://worldclassscholars.vercel.app/apple-apps/truthlens-global
+  - App Store: https://apps.apple.com/us/app/truthlens-global/id6776208825?uo=4
+  - Bundle ID: wcs.TruthLens
+  - Audience: Readers, civic teams, educators, and public-interest reviewers
+  - Summary: Scan civic messages, speeches, social posts, and public-interest claims with verdicts, confidence, bias signals, and source credibility.
+- VisionForge (Graphics & Design, $5.99)
+  - Landing page: https://worldclassscholars.vercel.app/apple-apps/visionforge
+  - App Store: https://apps.apple.com/us/app/visionforge/id6777670360?uo=4
+  - Bundle ID: wcs.VisionForge
+  - Audience: Creators, designers, and prompt-driven visual explorers
+  - Summary: Explore text-to-image and visual generation workflows in a focused creative design environment.
+- WCS Agentic (Business, Free)
+  - Landing page: https://worldclassscholars.vercel.app/apple-apps/wcs-agentic
+  - App Store: https://apps.apple.com/us/app/wcs-agentic/id6769985809?uo=4
+  - Bundle ID: wcs.WCS-Agentic
+  - Audience: World Class Scholars leaders and administrators
+  - Summary: Manage scholar operations, supervised finance AI reporting, compliance tasks, and human approval controls in one mobile workspace.
+- WCS-GEO (Business, $9.99)
+  - Landing page: https://worldclassscholars.vercel.app/apple-apps/wcs-geo
+  - App Store: https://apps.apple.com/us/app/wcs-geo/id6777616166?uo=4
+  - Bundle ID: wcs.WCS-GEO
+  - Audience: Geologists, students, educators, consultants, investors, and exploration professionals
+  - Summary: Explore explainable target scoring, project maps, ranked mineral targets, evidence provenance, imports, sync demos, and field observations.
+- WCS-POL (Education, $0.49)
+  - Landing page: https://worldclassscholars.vercel.app/apple-apps/wcs-pol
+  - App Store: https://apps.apple.com/us/app/wcs-pol/id6779397120?uo=4
+  - Bundle ID: wcs.WCS-POL
+  - Audience: Civic educators, students, and governance learners
+  - Summary: Explore how institutional rules, civic choices, and governance dynamics shape electoral outcomes.
+- WCS-Tatto (Lifestyle, $2.99)
+  - Landing page: https://worldclassscholars.vercel.app/apple-apps/wcs-tatto
+  - App Store: https://apps.apple.com/us/app/wcs-tatto/id6774959552?uo=4
+  - Bundle ID: wcs.WCS-Tattoo-Studio
+  - Audience: Tattoo clients, artists, and studios
+  - Summary: Plan tattoo ideas, studio conversations, style direction, and client-centred preparation.
+- WCSLIB (Education, $3.99)
+  - Landing page: https://worldclassscholars.vercel.app/apple-apps/wcslib
+  - App Store: https://apps.apple.com/us/app/wcslib/id6764653278?uo=4
+  - Bundle ID: wcs.WCSLIB
+  - Audience: Students, researchers, and lifelong learners
+  - Summary: A focused educational workspace for organizing scholarly exploration, public resources, and lifelong learning.
+- Wendy'SAfricanFash (Shopping, Free)
+  - Landing page: https://worldclassscholars.vercel.app/apple-apps/wendy-safricanfash
+  - App Store: https://apps.apple.com/us/app/wendysafricanfash/id6763326670?uo=4
+  - Bundle ID: wcs.AfricanFashionApp
+  - Audience: African fashion shoppers, designers, and marketplace visitors
+  - Summary: Discover African fashion collections, marketplace experiences, and AI-assisted design workflows.
 
 ## Founder
 

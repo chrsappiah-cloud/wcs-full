@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import { useAuthStore } from "../stores/auth.js";
 import { applyPageSeo } from "../lib/seo.js";
+import { appleApps } from "../config/appleApps.js";
 
 import HomeView          from "../views/HomeView.vue";
 import LibraryView       from "../views/LibraryView.vue";
@@ -157,6 +158,16 @@ const router = createRouter({
       },
     },
     {
+      path: "/apple-apps/:slug",
+      name: "apple-app-detail",
+      component: AppleAppsLaunchView,
+      props: true,
+      meta: {
+        seoTitle: "Apple app",
+        seoDescription: "Official App Store landing page for an Apple app by Christopher Appiah-Thompson.",
+      },
+    },
+    {
       path: "/contact",
       name: "contact",
       component: ContactView,
@@ -233,10 +244,28 @@ router.beforeEach(async (to) => {
 });
 
 router.afterEach((to) => {
+  const appleApp = to.name === "apple-app-detail"
+    ? appleApps.find((app) => app.slug === to.params.slug)
+    : null;
   applyPageSeo({
-    title: to.meta.seoTitle,
-    description: to.meta.seoDescription,
+    title: appleApp ? `${appleApp.name} on the App Store` : to.meta.seoTitle,
+    description: appleApp
+      ? `${appleApp.headline} ${appleApp.summary} Download ${appleApp.name} from the App Store by Christopher Appiah-Thompson.`
+      : to.meta.seoDescription,
     path: to.fullPath.split("?")[0],
+    image: appleApp?.artworkUrl,
+    keywords: appleApp
+      ? [
+        appleApp.name,
+        appleApp.bundleId,
+        appleApp.category,
+        "App Store",
+        "Apple apps",
+        "Christopher Appiah-Thompson",
+        "World Class Scholars",
+        ...appleApp.highlights,
+      ].join(", ")
+      : undefined,
     robots: to.meta.robots,
     googleSiteVerification: import.meta.env.VITE_GOOGLE_SITE_VERIFICATION,
   });

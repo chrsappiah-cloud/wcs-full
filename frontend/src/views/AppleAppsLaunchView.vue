@@ -1,10 +1,13 @@
 <script setup>
-import { computed, ref } from "vue";
+import { computed, ref, watchEffect } from "vue";
+import { useRoute } from "vue-router";
 import { appleAppCategories, appleApps, appleLaunchStats, developerProfile } from "../config/appleApps.js";
+import { injectAppleAppsJsonLd } from "../lib/seo.js";
 
 const search = ref("");
 const selectedCategory = ref("All");
 const selectedPrice = ref("All");
+const route = useRoute();
 
 const launchChannels = [
   { label: "App Store", detail: "Direct product page with Apple-hosted artwork and pricing." },
@@ -14,8 +17,10 @@ const launchChannels = [
 
 const categoryOptions = computed(() => ["All", ...appleAppCategories]);
 const priceOptions = ["All", "Free", "Paid"];
+const selectedApp = computed(() => appleApps.find((app) => app.slug === route.params.slug) || null);
 
 const filteredApps = computed(() => {
+  if (selectedApp.value) return [selectedApp.value];
   const term = search.value.trim().toLowerCase();
   return appleApps.filter((app) => {
     const matchesTerm = !term
@@ -33,6 +38,10 @@ const filteredApps = computed(() => {
 function formatLaunchDate(date) {
   return new Intl.DateTimeFormat("en", { month: "short", day: "numeric", year: "numeric" }).format(new Date(date));
 }
+
+watchEffect(() => {
+  injectAppleAppsJsonLd(selectedApp.value?.slug);
+});
 </script>
 
 <template>
@@ -43,14 +52,21 @@ function formatLaunchDate(date) {
           <span class="eyebrow">Official App Store launch platform</span>
           <h1>Apple apps by Christopher Appiah-Thompson</h1>
           <p class="launch-lede">
-            A public marketing home for every live iPhone and iPad app, using Apple Store product links,
-            Apple-hosted icons, launch positioning, pricing, categories, and campaign-ready calls to action.
+            <template v-if="selectedApp">
+              {{ selectedApp.name }} is an App Store app by Christopher Appiah-Thompson. {{ selectedApp.headline }}
+            </template>
+            <template v-else>
+              A public marketing home for every live iPhone and iPad app, using Apple Store product links,
+              Apple-hosted icons, launch positioning, pricing, categories, and campaign-ready calls to action.
+            </template>
           </p>
           <div class="hero-actions">
-            <a class="btn primary" :href="developerProfile.appStoreUrl" target="_blank" rel="noopener noreferrer">
-              View developer page
+            <a class="btn primary" :href="selectedApp?.appStoreUrl || developerProfile.appStoreUrl" target="_blank" rel="noopener noreferrer">
+              {{ selectedApp ? "Download on App Store" : "View developer page" }}
             </a>
-            <a class="btn" href="#app-catalog">Explore apps</a>
+            <a class="btn" :href="selectedApp ? '/apple-apps' : '#app-catalog'">
+              {{ selectedApp ? "All apps" : "Explore apps" }}
+            </a>
           </div>
           <div class="apple-launch-stats" aria-label="App Store launch stats">
             <div class="apple-launch-stat">
@@ -74,11 +90,9 @@ function formatLaunchDate(date) {
 
         <aside class="apple-feature-wall" aria-label="Featured App Store artwork">
           <a
-            v-for="app in appleApps.slice(0, 9)"
+            v-for="app in (selectedApp ? [selectedApp, ...appleApps.filter((item) => item.slug !== selectedApp.slug).slice(0, 8)] : appleApps.slice(0, 9))"
             :key="app.slug"
-            :href="app.appStoreUrl"
-            target="_blank"
-            rel="noopener noreferrer"
+            :href="`/apple-apps/${app.slug}`"
             class="apple-icon-orbit"
             :aria-label="`${app.name} on the App Store`"
           >
@@ -104,14 +118,16 @@ function formatLaunchDate(date) {
         <div class="section-head apple-catalog-head">
           <div>
             <h2>Launch catalog</h2>
-            <p class="lede">Filter by category, price, app name, audience, or campaign message.</p>
+            <p class="lede">
+              {{ selectedApp ? "Canonical landing page, structured data, and App Store call to action." : "Filter by category, price, app name, audience, or campaign message." }}
+            </p>
           </div>
           <a class="btn" :href="developerProfile.appStoreUrl" target="_blank" rel="noopener noreferrer">
             Apple developer page
           </a>
         </div>
 
-        <div class="apple-filter-bar">
+        <div v-if="!selectedApp" class="apple-filter-bar">
           <input v-model="search" class="input" type="search" placeholder="Search apps, audiences, features..." />
           <select v-model="selectedCategory" class="select" aria-label="Filter by category">
             <option v-for="category in categoryOptions" :key="category" :value="category">{{ category }}</option>
@@ -153,8 +169,8 @@ function formatLaunchDate(date) {
               <a class="btn primary" :href="app.appStoreUrl" target="_blank" rel="noopener noreferrer">
                 Download on App Store
               </a>
-              <a class="btn" :href="`https://apps.apple.com/search?term=${encodeURIComponent(app.name)}`" target="_blank" rel="noopener noreferrer">
-                Search
+              <a class="btn" :href="`/apple-apps/${app.slug}`">
+                SEO page
               </a>
             </div>
           </article>

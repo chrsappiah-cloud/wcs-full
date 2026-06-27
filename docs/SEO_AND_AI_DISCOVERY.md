@@ -13,9 +13,12 @@ This project ships crawl-friendly assets for **Google**, **Bing**, and **AI sear
 | `llms.txt` | `/llms.txt` | Short index for AI crawlers ([llmstxt.org](https://llmstxt.org/)) |
 | `llms-full.txt` | `/llms-full.txt` | Extended machine-readable site map |
 | `ai.txt` | `/ai.txt` | Compact AI discovery alias (links to llms + key URLs) |
-| Meta + JSON-LD | `index.html` + runtime | Organization, Person, WebSite, **PodcastSeries** |
+| `apple-apps.json` | `/apple-apps.json` | Structured App Store catalog for AI/search ingestion |
+| `apple-apps.csv` | `/apple-apps.csv` | Lightweight Apple apps index for crawlers, partners, and audits |
+| Meta + JSON-LD | `index.html` + runtime | Organization, Person, WebSite, **PodcastSeries**, **SoftwareApplication**, **ItemList** |
 | Per-route SEO | `src/lib/seo.js` | Dynamic title, description, Open Graph, canonical |
 | Podcast referrals | `/podcasts`, `/podcasts/{slug}` | RSS.com shows with `?ref=` tracking |
+| Apple app pages | `/apple-apps`, `/apple-apps/{slug}` | Canonical website landing pages mapped to every App Store listing |
 
 Regenerated on each build via `frontend/scripts/generate-static-seo.mjs`.
 
@@ -33,6 +36,10 @@ Regenerated on each build via `frontend/scripts/generate-static-seo.mjs`.
    - `/podcasts`
    - `/podcasts/heartbeats-beyond-memory`
    - `/marketing`
+   - `/apple-apps`
+   - `/apple-apps/legalaid`
+   - `/apple-apps/truthlens-global`
+   - `/apple-apps/agedcare-monitor`
 6. Link from [christopherappiahthompson.link](https://christopherappiahthompson.link) and [myworldclass.net](https://www.myworldclass.net/) — see [SEARCH_CONSOLE_SETUP.md](./SEARCH_CONSOLE_SETUP.md)
 
 ## Submit to Bing (Copilot)
@@ -52,7 +59,7 @@ Regenerated on each build via `frontend/scripts/generate-static-seo.mjs`.
 - `cohere-ai`, `Meta-ExternalAgent`
 - `Amazonbot`, `YouBot`, `DuckAssistBot`, `Bytespider`, `CCBot`, `Diffbot`, `FacebookBot`, `PetalBot`
 
-Point agents to **`/llms.txt`** or **`/ai.txt`** for citations. Podcast URLs and referral patterns are listed there.
+Point agents to **`/llms.txt`**, **`/ai.txt`**, or **`/apple-apps.json`** for citations. Podcast URLs, referral patterns, Apple app landing pages, App Store links, bundle IDs, categories, pricing, and summaries are listed there.
 
 Admin, login, and account routes are **`noindex`** via `robots.txt`, `X-Robots-Tag` on Vercel, and SPA meta.
 
@@ -66,6 +73,25 @@ Admin, login, and account routes are **`noindex`** via `robots.txt`, `X-Robots-T
 
 Example campaign link: `https://worldclassscholars.vercel.app/podcasts/heartbeats-beyond-memory?ref=tiktok`
 
+## Apple App Store SEO
+
+Each published app has a canonical website landing page:
+
+```text
+https://worldclassscholars.vercel.app/apple-apps/{slug}
+```
+
+Those URLs are generated from `frontend/src/config/appleApps.js` and included in:
+
+- `/sitemap.xml` with image sitemap entries for Apple-hosted app icons
+- `/llms.txt` and `/llms-full.txt` for AI search/citation systems
+- `/ai.txt` as compact app-to-App-Store mappings
+- `/apple-apps.json` as schema-style structured app catalog
+- `/apple-apps.csv` as a crawlable tabular catalog
+- runtime JSON-LD as `SoftwareApplication` and `ItemList`
+
+After deploy, inspect and request indexing for priority App Store products in Google Search Console. Good first URLs are LegalAid, TruthLens Global, AgedCare Monitor, WCS Agentic, VisionForge, PsychoLogic, and CareLens Aged+.
+
 ## Build-time canonical URL
 
 ```bash
@@ -77,9 +103,11 @@ Set in Vercel → Environment Variables (Production).
 ## Checklist after deploy
 
 - [ ] `curl -s https://worldclassscholars.vercel.app/robots.txt` shows Sitemap and GPTBot Allow
-- [ ] `curl -s https://worldclassscholars.vercel.app/sitemap.xml` includes `/podcasts` URLs
+- [ ] `curl -s https://worldclassscholars.vercel.app/sitemap.xml` includes `/podcasts` and `/apple-apps/{slug}` URLs
 - [ ] `curl -s https://worldclassscholars.vercel.app/llms.txt` lists podcast referral hubs
 - [ ] `curl -s https://worldclassscholars.vercel.app/ai.txt` returns site + llms pointers
+- [ ] `curl -s https://worldclassscholars.vercel.app/apple-apps.json` returns App Store links and `SoftwareApplication`
+- [ ] `curl -s https://worldclassscholars.vercel.app/apple-apps.csv` returns app names, bundle IDs, landing URLs, and App Store URLs
 - [ ] `curl -s https://worldclassscholars.vercel.app/sitemap.xml` includes `/contact`
 - [ ] Google Search Console sitemap submitted
 - [ ] Bing Webmaster sitemap submitted

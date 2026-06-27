@@ -8,7 +8,16 @@ Allow: /
 User-agent: Googlebot
 Allow: /
 
+User-agent: GoogleOther
+Allow: /
+
+User-agent: Google-InspectionTool
+Allow: /
+
 User-agent: Bingbot
+Allow: /
+
+User-agent: BingPreview
 Allow: /
 
 User-agent: GPTBot
@@ -82,4 +91,6 @@ Disallow: /my-courses
 Disallow: /api-status
 
 Sitemap: https://worldclassscholars.vercel.app/sitemap.xml
+Apple apps JSON: https://worldclassscholars.vercel.app/apple-apps.json
+Apple apps CSV: https://worldclassscholars.vercel.app/apple-apps.csv
 Host: worldclassscholars.vercel.app

@@ -1,6 +1,7 @@
 import { resolveSiteUrl } from "../config/site.js";
 import { ADMIN_EMAIL, SUPPORT_EMAIL } from "../config/contactEmails.js";
 import { rssPodcasts } from "../config/podcasts.js";
+import { appleApps, developerProfile } from "../config/appleApps.js";
 
 /** Canonical site URL — override with VITE_SITE_URL at build time */
 export const SITE_URL = resolveSiteUrl(import.meta.env.VITE_SITE_URL);
@@ -24,6 +25,9 @@ export const defaultKeywords = [
   "RSS.com podcasts",
   "podcast referrals",
   "World Class Scholars podcasts",
+  "Christopher Appiah-Thompson Apple apps",
+  "World Class Scholars Apple apps",
+  "App Store apps",
 ].join(", ");
 
 export const founder = {
@@ -58,6 +62,12 @@ export const publicRoutes = [
   { path: "/marketing/wcs-agentic", priority: "0.85", changefreq: "weekly" },
   { path: "/marketing/wcs-goldtest", priority: "0.85", changefreq: "weekly" },
   { path: "/marketing/wcs-care", priority: "0.85", changefreq: "weekly" },
+  { path: "/apple-apps", priority: "0.95", changefreq: "weekly" },
+  ...appleApps.map((app) => ({
+    path: `/apple-apps/${app.slug}`,
+    priority: "0.86",
+    changefreq: "weekly",
+  })),
   { path: "/library", priority: "0.85", changefreq: "weekly" },
   { path: "/courses", priority: "0.8", changefreq: "monthly" },
   { path: "/digital-marketing", priority: "0.8", changefreq: "weekly" },
@@ -130,6 +140,64 @@ export function podcastsJsonLd() {
   }));
 }
 
+function appOffer(app) {
+  return {
+    "@type": "Offer",
+    price: app.price === "Free" ? "0" : app.price.replace(/[^0-9.]/g, ""),
+    priceCurrency: "USD",
+    availability: "https://schema.org/InStock",
+    url: app.appStoreUrl,
+  };
+}
+
+export function softwareApplicationJsonLd(app) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: app.name,
+    alternateName: app.bundleId,
+    applicationCategory: app.category,
+    operatingSystem: "iOS, iPadOS",
+    url: absoluteUrl(`/apple-apps/${app.slug}`),
+    sameAs: app.appStoreUrl,
+    image: app.artworkUrl,
+    datePublished: app.releaseDate,
+    description: app.summary,
+    audience: {
+      "@type": "Audience",
+      audienceType: app.audience,
+    },
+    featureList: app.highlights,
+    offers: appOffer(app),
+    author: {
+      "@type": "Person",
+      name: developerProfile.name,
+      url: developerProfile.appStoreUrl,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: siteName,
+      url: SITE_URL,
+    },
+  };
+}
+
+export function appleAppsItemListJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Apple apps by Christopher Appiah-Thompson",
+    url: absoluteUrl("/apple-apps"),
+    numberOfItems: appleApps.length,
+    itemListElement: appleApps.map((app, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      url: absoluteUrl(`/apple-apps/${app.slug}`),
+      item: softwareApplicationJsonLd(app),
+    })),
+  };
+}
+
 /** Inject podcast schema into document (SPA). */
 export function injectPodcastJsonLd() {
   if (typeof document === "undefined") return;
@@ -144,6 +212,26 @@ export function injectPodcastJsonLd() {
   el.textContent = JSON.stringify({
     "@context": "https://schema.org",
     "@graph": podcastsJsonLd(),
+  });
+}
+
+export function injectAppleAppsJsonLd(slug) {
+  if (typeof document === "undefined") return;
+  const id = "wcs-apple-apps-jsonld";
+  let el = document.getElementById(id);
+  if (!el) {
+    el = document.createElement("script");
+    el.id = id;
+    el.type = "application/ld+json";
+    document.head.appendChild(el);
+  }
+  const selectedApp = slug ? appleApps.find((app) => app.slug === slug) : null;
+  const graph = selectedApp
+    ? [softwareApplicationJsonLd(selectedApp), appleAppsItemListJsonLd()]
+    : [appleAppsItemListJsonLd(), ...appleApps.map(softwareApplicationJsonLd)];
+  el.textContent = JSON.stringify({
+    "@context": "https://schema.org",
+    "@graph": graph,
   });
 }
 
@@ -215,6 +303,7 @@ export function applyPageSeo(meta = {}) {
 
   upsertMeta("name", "googlebot", "index, follow");
   upsertMeta("name", "bingbot", "index, follow");
+  upsertMeta("name", "apple-mobile-web-app-title", siteName);
 
   upsertMeta("name", "ai-content-declaration", "public-indexable");
   upsertMeta("name", "google-site-verification", meta.googleSiteVerification || "");

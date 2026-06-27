@@ -1,88 +1,281 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://worldclassscholars.vercel.app/</loc>
+    <lastmod>2026-06-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://worldclassscholars.vercel.app/about</loc>
+    <lastmod>2026-06-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://worldclassscholars.vercel.app/contact</loc>
+    <lastmod>2026-06-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
     <loc>https://worldclassscholars.vercel.app/podcasts</loc>
+    <lastmod>2026-06-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://worldclassscholars.vercel.app/podcasts/heartbeats-beyond-memory</loc>
+    <lastmod>2026-06-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://worldclassscholars.vercel.app/podcasts/freemasonry-21st-century</loc>
+    <lastmod>2026-06-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://worldclassscholars.vercel.app/podcasts/art-culture-tattoos</loc>
+    <lastmod>2026-06-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://worldclassscholars.vercel.app/marketing</loc>
+    <lastmod>2026-06-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
     <loc>https://worldclassscholars.vercel.app/marketing/wcs-commerce</loc>
+    <lastmod>2026-06-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://worldclassscholars.vercel.app/marketing/wcs-agentic</loc>
+    <lastmod>2026-06-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://worldclassscholars.vercel.app/marketing/wcs-goldtest</loc>
+    <lastmod>2026-06-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://worldclassscholars.vercel.app/marketing/wcs-care</loc>
+    <lastmod>2026-06-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://worldclassscholars.vercel.app/apple-apps</loc>
+    <lastmod>2026-06-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
     <loc>https://worldclassscholars.vercel.app/library</loc>
+    <lastmod>2026-06-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://worldclassscholars.vercel.app/courses</loc>
+    <lastmod>2026-06-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://worldclassscholars.vercel.app/digital-marketing</loc>
+    <lastmod>2026-06-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://worldclassscholars.vercel.app/digital-advertising</loc>
+    <lastmod>2026-06-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://worldclassscholars.vercel.app/apple-apps/agedcare-monitor</loc>
+    <lastmod>2026-05-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/47/25/63/47256317-38da-982e-7089-a7755c697226/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/512x512bb.jpg</image:loc>
+      <image:title>AgedCare Monitor App Store icon</image:title>
+      <image:caption>Non-clinical monitoring support for aged-care teams.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://worldclassscholars.vercel.app/apple-apps/ai-real-investor</loc>
+    <lastmod>2026-06-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/49/21/1d/49211d29-e411-8329-a998-6f1f04c5dd83/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg</image:loc>
+      <image:title>AI Real Investor App Store icon</image:title>
+      <image:caption>Property and investment decision-support workspace.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://worldclassscholars.vercel.app/apple-apps/carelens-aged</loc>
+    <lastmod>2026-06-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/65/00/17/65001740-baaa-f2b0-d936-63af36925ac0/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg</image:loc>
+      <image:title>CareLens Aged+ App Store icon</image:title>
+      <image:caption>Intelligent aged-care coordination and insight support.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://worldclassscholars.vercel.app/apple-apps/legalaid</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/00/a2/6f/00a26fcb-947a-5c2b-bc7d-032ebacd99f8/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg</image:loc>
+      <image:title>LegalAid App Store icon</image:title>
+      <image:caption>Legal-information workflows, document review, and draft reports.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://worldclassscholars.vercel.app/apple-apps/peacelens</loc>
+    <lastmod>2026-06-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/62/f1/01/62f10117-eb93-0f0e-dcc4-03a9caf27e69/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg</image:loc>
+      <image:title>PeaceLens App Store icon</image:title>
+      <image:caption>Peace journalism analysis for election-related media.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://worldclassscholars.vercel.app/apple-apps/prop-valulator</loc>
+    <lastmod>2026-06-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/97/c4/ee/97c4ee87-5fa8-650a-d60f-7e794380ca4c/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg</image:loc>
+      <image:title>Prop-Valulator App Store icon</image:title>
+      <image:caption>AI-assisted property valuation exploration.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://worldclassscholars.vercel.app/apple-apps/psychologic</loc>
+    <lastmod>2026-06-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/11/79/73/117973b1-dc85-c2d1-d53f-6f824d853ae0/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg</image:loc>
+      <image:title>PsychoLogic App Store icon</image:title>
+      <image:caption>Private journaling for everyday thoughts, feelings, and patterns.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://worldclassscholars.vercel.app/apple-apps/psychosocial-analytics</loc>
+    <lastmod>2026-06-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/10/71/89/107189f0-48ac-636e-5944-2d24bfce9596/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg</image:loc>
+      <image:title>Psychosocial Analytics App Store icon</image:title>
+      <image:caption>Structured psychosocial assessment and reporting support.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://worldclassscholars.vercel.app/apple-apps/truthlens-global</loc>
+    <lastmod>2026-06-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/26/2d/fd/262dfd09-dba1-7347-89fc-1cb06e4df670/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg</image:loc>
+      <image:title>TruthLens Global App Store icon</image:title>
+      <image:caption>Review public claims before you share, repeat, or act.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://worldclassscholars.vercel.app/apple-apps/visionforge</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/15/33/4b/15334b12-841d-4750-9b53-154057662b78/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg</image:loc>
+      <image:title>VisionForge App Store icon</image:title>
+      <image:caption>Creative AI generation workspace.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://worldclassscholars.vercel.app/apple-apps/wcs-agentic</loc>
+    <lastmod>2026-06-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/a4/03/89/a4038925-593e-8233-e40c-3f16b648233b/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg</image:loc>
+      <image:title>WCS Agentic App Store icon</image:title>
+      <image:caption>Scholar programs, agent commands, approval gates, and reporting.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://worldclassscholars.vercel.app/apple-apps/wcs-geo</loc>
+    <lastmod>2026-06-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/d7/c0/d5/d7c0d5bd-1602-56a2-2b0c-a7b0f0ec8456/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg</image:loc>
+      <image:title>WCS-GEO App Store icon</image:title>
+      <image:caption>Mineral exploration learning and demonstration tool.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://worldclassscholars.vercel.app/apple-apps/wcs-pol</loc>
+    <lastmod>2026-06-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/b9/ad/40/b9ad401f-96b2-b1e5-cb3e-f550d63a3c0f/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg</image:loc>
+      <image:title>WCS-POL App Store icon</image:title>
+      <image:caption>Electoral governance simulation and institutional learning.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://worldclassscholars.vercel.app/apple-apps/wcs-tatto</loc>
+    <lastmod>2026-06-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/36/a6/a6/36a6a647-18ef-8d68-6c25-d94748cc3d25/AppIcon-0-0-1x_U007emarketing-0-5-85-220.png/512x512bb.jpg</image:loc>
+      <image:title>WCS-Tatto App Store icon</image:title>
+      <image:caption>Premium tattoo planning built on trust and compassion.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://worldclassscholars.vercel.app/apple-apps/wcslib</loc>
+    <lastmod>2026-06-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/f7/44/b1/f744b1a4-dffa-e504-4b3c-d34d353a228c/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg</image:loc>
+      <image:title>WCSLIB App Store icon</image:title>
+      <image:caption>Scholarly workspace for learning and research.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://worldclassscholars.vercel.app/apple-apps/wendy-safricanfash</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/0c/5e/ec/0c5eec30-a25f-0636-cf88-91584383e756/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/512x512bb.jpg</image:loc>
+      <image:title>Wendy&apos;SAfricanFash App Store icon</image:title>
+      <image:caption>Premium African fashion marketplace and design support.</image:caption>
+    </image:image>
   </url>
 </urlset>
