@@ -5,7 +5,18 @@ import * as auth from "../controllers/authController.js";
 import * as analytics from "../controllers/analyticsController.js";
 import * as enrollment from "../controllers/enrollmentController.js";
 import * as commerce from "../controllers/commerceController.js";
-import { requireAuth } from "../middleware/requireAuth.js";
+import * as access from "../controllers/accessController.js";
+import * as contact from "../controllers/contactController.js";
+import * as payments from "../controllers/paymentsController.js";
+import * as system from "../controllers/systemController.js";
+import { requireAuth, requireAdmin } from "../middleware/requireAuth.js";
+import {
+  contactPostLimit,
+  analyticsPostLimit,
+  authPostLimit,
+  searchGetLimit,
+} from "../middleware/rateLimit.js";
+import { clampQuery, validateAnalyticsBody } from "../middleware/validate.js";
 
 const router = Router();
 
@@ -17,19 +28,53 @@ router.get("/labs",               content.getLabs);
 router.get("/art-verse",          content.getArtVerse);
 router.get("/resources/featured", content.getFeaturedResources);
 router.get("/resources/:slug",    content.getResourceBySlug);
-router.get("/library/search",     library.librarySearch);
+router.get("/library/search",     clampQuery, searchGetLimit, library.librarySearch);
 
 // ── Apple commerce & TestFlight beta data ─────────────────────────────────────
 router.get("/commerce/apple",     commerce.getAppleCommerce);
 router.get("/commerce/beta-manifest", commerce.getBetaManifest);
 
+// ── Subscriptions & access (works with MongoDB or fallback) ───────────────────
+router.get("/access/catalog", access.getCatalog);
+router.get("/access/me", requireAuth, access.getMyAccess);
+router.get("/access/admin/records", requireAdmin, access.listAllAccess);
+router.get("/access/admin/users/:userId", requireAdmin, access.getUserAccess);
+router.patch("/access/admin/users/:userId", requireAdmin, access.updateUserAccess);
+router.post("/access/admin/users/:userId/subscriptions", requireAdmin, access.grantSubscription);
+router.patch(
+  "/access/admin/users/:userId/subscriptions/:productId",
+  requireAdmin,
+  access.patchSubscription
+);
+router.delete(
+  "/access/admin/users/:userId/subscriptions/:productId",
+  requireAdmin,
+  access.revokeSubscription
+);
+
 // ── Auth ──────────────────────────────────────────────────────────────────────
-router.post("/auth/register", auth.register);
-router.post("/auth/login",    auth.login);
+router.post("/auth/register", authPostLimit, auth.register);
+router.post("/auth/login",    authPostLimit, auth.login);
 router.get("/auth/me",        requireAuth, auth.me);
 
-// ── Analytics (public write, admin read is in adminRoutes) ────────────────────
-router.post("/analytics/track", analytics.track);
+// ── Contact & enquiries ───────────────────────────────────────────────────────
+router.get("/contact", contact.getEmails);
+router.post("/contact", contactPostLimit, contact.submit);
+router.get("/contact/admin/messages", requireAdmin, contact.listAdmin);
+router.patch("/contact/admin/messages/:id", requireAdmin, contact.patchAdmin);
+
+// ── System, payments & integrations (admin) ───────────────────────────────────
+router.get("/admin/system", requireAdmin, system.getStatus);
+router.post("/admin/system/test-email", requireAdmin, system.testEmail);
+router.post("/admin/system/test-database", requireAdmin, system.testDatabase);
+router.post("/admin/system/activate", requireAdmin, system.activateServices);
+router.get("/payments/admin/dashboard", requireAdmin, payments.getPaymentsDashboard);
+router.post("/payments/admin/activate-integrations", requireAdmin, payments.activateIntegrations);
+router.post("/payments/admin/events", requireAdmin, payments.recordPaymentEvent);
+
+// ── Analytics ─────────────────────────────────────────────────────────────────
+router.post("/analytics/track", analyticsPostLimit, validateAnalyticsBody, analytics.track);
+router.get("/analytics/dashboard", requireAdmin, analytics.getDashboard);
 
 // ── Enrollments (authenticated) ───────────────────────────────────────────────
 router.post("/enrollments",          requireAuth, enrollment.enroll);

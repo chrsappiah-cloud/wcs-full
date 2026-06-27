@@ -417,6 +417,55 @@ h3 { font-size: clamp(17px, 2vw, 22px); }
 
 /* ── Form fields ──────────────────────────────────────────────── */
 .field { display: flex; flex-direction: column; gap: 6px; }
+.contact-form { display: flex; flex-direction: column; gap: 16px; }
+.contact-form textarea.input { resize: vertical; min-height: 120px; }
+.contact-emails { line-height: 1.6; }
+
+/* ── Promotional gallery (christopherappiahthompson.link) ─────── */
+.promo-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+}
+.promo-card {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.promo-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+}
+.promo-card-image-wrap {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: rgba(142, 242, 255, 0.06);
+}
+.promo-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.promo-card .tag,
+.promo-card-title,
+.promo-card .accent-link {
+  margin-left: 14px;
+  margin-right: 14px;
+}
+.promo-card .tag { margin-top: 12px; }
+.promo-card-title {
+  font-size: 1rem;
+  margin: 8px 14px 4px;
+  line-height: 1.35;
+}
+.promo-card .accent-link {
+  margin-bottom: 14px;
+}
 
 /* ── Progress bar ─────────────────────────────────────────────── */
 .progress-bar-wrap {
@@ -454,6 +503,66 @@ h3 { font-size: clamp(17px, 2vw, 22px); }
 
 /* ── Admin nav links ──────────────────────────────────────────── */
 .admin-link { color: var(--accent) !important; }
+
+/* ── Analytics world map ──────────────────────────────────────── */
+.world-map-wrap { margin-top: 16px; }
+.world-map {
+  width: 100%;
+  height: auto;
+  min-height: 220px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+}
+.map-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 20px;
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.map-legend li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.map-legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+/* ── Traffic bar chart ────────────────────────────────────────── */
+.traffic-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  height: 160px;
+  padding-top: 8px;
+}
+.traffic-bar-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  min-width: 0;
+}
+.traffic-bar {
+  width: 100%;
+  max-width: 36px;
+  min-height: 4px;
+  border-radius: 6px 6px 2px 2px;
+  background: linear-gradient(180deg, var(--accent), var(--primary));
+  margin-top: auto;
+}
+.traffic-label {
+  font-size: 10px;
+  color: var(--muted);
+  margin-top: 6px;
+  white-space: nowrap;
+}
 
 /* ── Inline text button ───────────────────────────────────────── */
 .btn-text {
@@ -628,4 +737,234 @@ h3 { font-size: clamp(17px, 2vw, 22px); }
 .apple-service-card:hover {
   border-color: var(--accent);
   transform: translateY(-2px);
+}
+
+/* ── Apple apps launch platform ───────────────────────────────── */
+.apple-launch-page {
+  background:
+    radial-gradient(circle at 15% 10%, rgba(142, 242, 255, .14), transparent 30%),
+    radial-gradient(circle at 88% 4%, rgba(255, 255, 255, .08), transparent 28%);
+}
+
+.apple-launch-hero {
+  padding-bottom: 28px;
+}
+
+.apple-launch-hero-grid {
+  display: grid;
+  gap: 34px;
+  grid-template-columns: minmax(0, 1.05fr) minmax(320px, .75fr);
+  align-items: center;
+}
+
+.launch-lede {
+  font-size: clamp(18px, 2vw, 22px);
+  max-width: 760px;
+}
+
+.apple-launch-stats {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-top: 28px;
+}
+
+.apple-launch-stat {
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, .04);
+}
+
+.apple-launch-stat strong {
+  display: block;
+  font-family: Orbitron, sans-serif;
+  color: var(--accent);
+  font-size: clamp(24px, 4vw, 36px);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.apple-launch-stat span {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.apple-feature-wall {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(76px, 1fr));
+  gap: 16px;
+  padding: 22px;
+  border: 1px solid var(--border);
+  border-radius: 30px;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, .08), transparent),
+    var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.apple-icon-orbit {
+  display: block;
+  padding: 8px;
+  border-radius: 26px;
+  background: rgba(255, 255, 255, .05);
+  border: 1px solid rgba(255, 255, 255, .08);
+  transition: transform .2s, border-color .2s;
+}
+
+.apple-icon-orbit:hover {
+  transform: translateY(-3px);
+  border-color: rgba(142, 242, 255, .42);
+}
+
+.apple-icon-orbit img,
+.apple-app-icon {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 22%;
+  box-shadow: 0 18px 34px rgba(0, 0, 0, .24);
+}
+
+.apple-channel-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.apple-channel-card p {
+  margin: 0;
+}
+
+.apple-catalog-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  align-items: end;
+}
+
+.apple-filter-bar {
+  display: grid;
+  grid-template-columns: minmax(260px, 1fr) 220px 160px;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.apple-app-grid {
+  display: grid;
+  gap: 22px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.apple-app-card {
+  display: grid;
+  gap: 16px;
+  align-content: start;
+}
+
+.apple-app-card-top {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 96px minmax(0, 1fr);
+  align-items: center;
+}
+
+.apple-app-card h3 {
+  margin-bottom: 6px;
+}
+
+.apple-app-headline {
+  color: var(--text);
+  font-size: 18px;
+  font-weight: 800;
+  margin: 0;
+}
+
+.apple-app-meta,
+.apple-app-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.apple-app-audience {
+  display: grid;
+  gap: 4px;
+  padding: 12px 14px;
+  border-radius: 16px;
+  background: rgba(142, 242, 255, .07);
+}
+
+.apple-app-audience strong {
+  color: var(--accent);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+
+.apple-app-audience span {
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.apple-highlight-list {
+  display: grid;
+  gap: 8px;
+  padding-left: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.apple-highlight-list li {
+  position: relative;
+  padding-left: 22px;
+  color: var(--muted);
+}
+
+.apple-highlight-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: .65em;
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--accent);
+}
+
+.apple-campaign-section {
+  padding-bottom: 80px;
+}
+
+@media (max-width: 980px) {
+  .apple-launch-hero-grid,
+  .apple-channel-grid,
+  .apple-app-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .apple-filter-bar {
+    grid-template-columns: 1fr;
+  }
+
+  .apple-catalog-head {
+    display: grid;
+    align-items: start;
+  }
+}
+
+@media (max-width: 620px) {
+  .apple-launch-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .apple-feature-wall {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+    padding: 14px;
+  }
+
+  .apple-app-card-top {
+    grid-template-columns: 74px minmax(0, 1fr);
+  }
 }

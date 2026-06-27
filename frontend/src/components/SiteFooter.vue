@@ -2,11 +2,14 @@
 import { computed } from "vue";
 import { usePlatformStore } from "../stores/platform.js";
 import { founderProfile, socialChannels } from "../config/marketingPortal.js";
+import FounderContactLinks from "./FounderContactLinks.vue";
+import { externalPartnerSites } from "../config/partnerSites.js";
+
+const partnerLinks = externalPartnerSites();
 
 const store  = usePlatformStore();
 const name   = computed(() => store.platform?.name ?? "World Class Scholars");
-const nav    = computed(() => store.platform?.nav ?? []);
-const avatar = computed(() => store.founderAvatar);
+const nav    = computed(() => store.displayNav);
 </script>
 
 <template>
@@ -22,15 +25,11 @@ const avatar = computed(() => store.founderAvatar);
           <span>{{ name }}</span>
         </div>
         <p class="small">{{ founderProfile.bio }}</p>
-        <div style="display:flex;align-items:center;gap:12px;margin-top:14px">
-          <img :src="avatar" :alt="founderProfile.name" class="footer-avatar" />
-          <div>
-            <a :href="`mailto:${founderProfile.email}`" class="accent-link small">{{ founderProfile.email }}</a>
-            <br />
-            <a :href="founderProfile.profileUrl" target="_blank" rel="noopener noreferrer" class="accent-link small">
-              christopherappiahthompson.link
-            </a>
-          </div>
+        <div style="margin-top:14px">
+          <FounderContactLinks />
+          <a :href="founderProfile.profileUrl" target="_blank" rel="noopener noreferrer" class="accent-link small" style="display:block;margin-top:8px">
+            christopherappiahthompson.link
+          </a>
         </div>
       </div>
 
@@ -52,10 +51,24 @@ const avatar = computed(() => store.founderAvatar);
             </a>
           </li>
           <li>
+            <RouterLink to="/podcasts" class="footer-col-link">RSS.com podcasts</RouterLink>
+          </li>
+          <li>
             <RouterLink to="/marketing?tab=testflight" class="footer-col-link">TestFlight beta data</RouterLink>
           </li>
           <li>
             <RouterLink to="/marketing?tab=app-store" class="footer-col-link">App Store purchase</RouterLink>
+          </li>
+          <li>
+            <RouterLink to="/contact" class="footer-col-link">Contact & feedback</RouterLink>
+          </li>
+        </ul>
+        <h3 class="footer-col-heading" style="margin-top:20px">Also on</h3>
+        <ul class="footer-col-list">
+          <li v-for="site in partnerLinks" :key="site.id">
+            <a :href="site.url" target="_blank" rel="noopener noreferrer" class="footer-col-link">
+              {{ site.label }}
+            </a>
           </li>
         </ul>
       </div>

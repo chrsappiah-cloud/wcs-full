@@ -1,8 +1,8 @@
 # SEO & AI discovery — World Class Scholars
 
-Public site: **https://wcs-full.vercel.app**
+**Canonical site:** https://worldclassscholars.vercel.app
 
-This project ships crawl-friendly assets for **Google**, **Bing**, and **AI search engines** (ChatGPT, Perplexity, Claude, Apple Intelligence, etc.).
+This project ships crawl-friendly assets for **Google**, **Bing**, and **AI search engines** (ChatGPT, Perplexity, Claude, Google AI Overviews, Apple Intelligence, etc.).
 
 ## What is included
 
@@ -12,17 +12,35 @@ This project ships crawl-friendly assets for **Google**, **Bing**, and **AI sear
 | `sitemap.xml` | `/sitemap.xml` | XML sitemap for Google Search Console & Bing Webmaster Tools |
 | `llms.txt` | `/llms.txt` | Short index for AI crawlers ([llmstxt.org](https://llmstxt.org/)) |
 | `llms-full.txt` | `/llms-full.txt` | Extended machine-readable site map |
-| Meta + JSON-LD | `index.html` | Organization, Person, WebSite schema |
+| `ai.txt` | `/ai.txt` | Compact AI discovery alias (links to llms + key URLs) |
+| `apple-apps.json` | `/apple-apps.json` | Structured App Store catalog for AI/search ingestion |
+| `apple-apps.csv` | `/apple-apps.csv` | Lightweight Apple apps index for crawlers, partners, and audits |
+| Meta + JSON-LD | `index.html` + runtime | Organization, Person, WebSite, **PodcastSeries**, **SoftwareApplication**, **ItemList** |
 | Per-route SEO | `src/lib/seo.js` | Dynamic title, description, Open Graph, canonical |
+| Podcast referrals | `/podcasts`, `/podcasts/{slug}` | RSS.com shows with `?ref=` tracking |
+| Apple app pages | `/apple-apps`, `/apple-apps/{slug}` | Canonical website landing pages mapped to every App Store listing |
+
+Regenerated on each build via `frontend/scripts/generate-static-seo.mjs`.
 
 ## Submit to Google
 
+**Step-by-step:** [SEARCH_CONSOLE_SETUP.md](./SEARCH_CONSOLE_SETUP.md) (verification tokens, Bing, cross-links to myworldclass.net).
+
 1. Open [Google Search Console](https://search.google.com/search-console)
-2. Add property: `https://wcs-full.vercel.app`
-3. Verify ownership (HTML tag or DNS — use Vercel DNS if on custom domain)
-4. **Sitemaps** → submit: `https://wcs-full.vercel.app/sitemap.xml`
-5. **URL inspection** → request indexing for `/`, `/about`, `/marketing`
-6. Optional: link from [christopherappiahthompson.link](https://christopherappiahthompson.link) and [myworldclass.net](https://myworldclass.net) for faster discovery
+2. Add property: `https://worldclassscholars.vercel.app`
+3. Verify ownership: set `VITE_GOOGLE_SITE_VERIFICATION` in Vercel → redeploy (HTML meta injected at build)
+4. **Sitemaps** → submit: `https://worldclassscholars.vercel.app/sitemap.xml`
+5. **URL inspection** → request indexing for:
+   - `/`
+   - `/about`
+   - `/podcasts`
+   - `/podcasts/heartbeats-beyond-memory`
+   - `/marketing`
+   - `/apple-apps`
+   - `/apple-apps/legalaid`
+   - `/apple-apps/truthlens-global`
+   - `/apple-apps/agedcare-monitor`
+6. Link from [christopherappiahthompson.link](https://christopherappiahthompson.link) and [myworldclass.net](https://www.myworldclass.net/) — see [SEARCH_CONSOLE_SETUP.md](./SEARCH_CONSOLE_SETUP.md)
 
 ## Submit to Bing (Copilot)
 
@@ -31,43 +49,66 @@ This project ships crawl-friendly assets for **Google**, **Bing**, and **AI sear
 
 ## AI engines
 
-Most AI crawlers read `robots.txt` and public HTML. This site explicitly allows:
+`robots.txt` explicitly allows:
 
 - `GPTBot`, `ChatGPT-User`, `OAI-SearchBot` (OpenAI)
 - `ClaudeBot`, `Claude-Web`, `anthropic-ai` (Anthropic)
 - `PerplexityBot` (Perplexity)
 - `Google-Extended` (Google AI overviews)
 - `Applebot-Extended` (Apple Intelligence)
+- `cohere-ai`, `Meta-ExternalAgent`
+- `Amazonbot`, `YouBot`, `DuckAssistBot`, `Bytespider`, `CCBot`, `Diffbot`, `FacebookBot`, `PetalBot`
 
-Point agents to **`/llms.txt`** for a concise citation index.
+Point agents to **`/llms.txt`**, **`/ai.txt`**, or **`/apple-apps.json`** for citations. Podcast URLs, referral patterns, Apple app landing pages, App Store links, bundle IDs, categories, pricing, and summaries are listed there.
+
+Admin, login, and account routes are **`noindex`** via `robots.txt`, `X-Robots-Tag` on Vercel, and SPA meta.
+
+## Podcast referrals (RSS.com)
+
+| Show | Referral hub | RSS.com listen |
+|------|----------------|----------------|
+| Heartbeats Beyond Memory | `/podcasts/heartbeats-beyond-memory` | [RSS.com show](https://rss.com/podcasts/heartbeats-beyond-memory-creative-care-in-dementia/2357430) |
+| Freemasonry 21st Century | `/podcasts/freemasonry-21st-century` | [RSS.com show](https://rss.com/podcasts/decoding-the-signs-and-symbols-of-freemasonry-in-the-21st-century/) |
+| Art, Culture & Tattoos | `/podcasts/art-culture-tattoos` | [RSS.com show](https://rss.com/podcasts/art-culture-and-philosophies-of-tattoos) |
+
+Example campaign link: `https://worldclassscholars.vercel.app/podcasts/heartbeats-beyond-memory?ref=tiktok`
+
+## Apple App Store SEO
+
+Each published app has a canonical website landing page:
+
+```text
+https://worldclassscholars.vercel.app/apple-apps/{slug}
+```
+
+Those URLs are generated from `frontend/src/config/appleApps.js` and included in:
+
+- `/sitemap.xml` with image sitemap entries for Apple-hosted app icons
+- `/llms.txt` and `/llms-full.txt` for AI search/citation systems
+- `/ai.txt` as compact app-to-App-Store mappings
+- `/apple-apps.json` as schema-style structured app catalog
+- `/apple-apps.csv` as a crawlable tabular catalog
+- runtime JSON-LD as `SoftwareApplication` and `ItemList`
+
+After deploy, inspect and request indexing for priority App Store products in Google Search Console. Good first URLs are LegalAid, TruthLens Global, AgedCare Monitor, WCS Agentic, VisionForge, PsychoLogic, and CareLens Aged+.
 
 ## Build-time canonical URL
 
-Set in Vercel (or `.env` for local builds):
-
 ```bash
-VITE_SITE_URL=https://wcs-full.vercel.app
+VITE_SITE_URL=https://worldclassscholars.vercel.app
 ```
 
-If you add a custom domain (e.g. `myworldclass.net`), update:
-
-- `VITE_SITE_URL`
-- `frontend/public/sitemap.xml`
-- `frontend/public/robots.txt` Host / Sitemap lines
-- `frontend/public/llms.txt` URLs
-
-## Custom domain on Vercel
-
-1. Vercel project → **Settings** → **Domains**
-2. Add `myworldclass.net` or subdomain
-3. Update `VITE_SITE_URL` and redeploy
-4. Re-submit sitemap in Search Console under the new property
+Set in Vercel → Environment Variables (Production).
 
 ## Checklist after deploy
 
-- [ ] `curl -s https://wcs-full.vercel.app/robots.txt` shows Sitemap line
-- [ ] `curl -s https://wcs-full.vercel.app/sitemap.xml` returns XML
-- [ ] `curl -s https://wcs-full.vercel.app/llms.txt` returns markdown index
+- [ ] `curl -s https://worldclassscholars.vercel.app/robots.txt` shows Sitemap and GPTBot Allow
+- [ ] `curl -s https://worldclassscholars.vercel.app/sitemap.xml` includes `/podcasts` and `/apple-apps/{slug}` URLs
+- [ ] `curl -s https://worldclassscholars.vercel.app/llms.txt` lists podcast referral hubs
+- [ ] `curl -s https://worldclassscholars.vercel.app/ai.txt` returns site + llms pointers
+- [ ] `curl -s https://worldclassscholars.vercel.app/apple-apps.json` returns App Store links and `SoftwareApplication`
+- [ ] `curl -s https://worldclassscholars.vercel.app/apple-apps.csv` returns app names, bundle IDs, landing URLs, and App Store URLs
+- [ ] `curl -s https://worldclassscholars.vercel.app/sitemap.xml` includes `/contact`
 - [ ] Google Search Console sitemap submitted
 - [ ] Bing Webmaster sitemap submitted
-- [ ] Founder link-in-bio links to `https://wcs-full.vercel.app`
+- [ ] Founder link-in-bio links to `https://worldclassscholars.vercel.app`

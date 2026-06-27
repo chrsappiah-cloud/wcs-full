@@ -2,16 +2,23 @@
 import { onMounted, ref } from "vue";
 import { api } from "../services/api.js";
 import { founderProfile, iosApps, podcasts, socialChannels } from "../config/marketingPortal.js";
+import { featuredResourcesFallback } from "../config/featuredResources.js";
+import FounderContactLinks from "../components/FounderContactLinks.vue";
 
 const featured = ref([]);
-const error = ref(null);
+const usingFallback = ref(false);
 
 onMounted(async () => {
-  error.value = null;
+  usingFallback.value = false;
   try {
     featured.value = await api.getFeaturedResources();
-  } catch (e) {
-    error.value = e;
+    if (!featured.value?.length) {
+      featured.value = featuredResourcesFallback;
+      usingFallback.value = true;
+    }
+  } catch {
+    featured.value = featuredResourcesFallback;
+    usingFallback.value = true;
   }
 });
 </script>
@@ -55,9 +62,7 @@ onMounted(async () => {
         <a :href="founderProfile.profileUrl" target="_blank" rel="noopener noreferrer" class="accent-link small">
           christopherappiahthompson.link
         </a>
-        <a :href="`mailto:${founderProfile.email}`" class="accent-link small" style="display:block;margin-top:8px">
-          {{ founderProfile.email }}
-        </a>
+        <FounderContactLinks style="display:block;margin-top:8px" />
       </aside>
     </div>
   </section>
@@ -87,7 +92,7 @@ onMounted(async () => {
         </RouterLink>
         <RouterLink to="/marketing?tab=app-store" class="card feature">
           <h3>App Store purchases</h3>
-          <p>Premium monthly, AI tutor packs, and exam unlocks via StoreKit and Apple Server API.</p>
+          <p>Premium monthly, AI tutor packs, and exam unlocks on the App Store.</p>
         </RouterLink>
         <RouterLink to="/courses" class="card feature">
           <h3>Courses &amp; micro-credentials</h3>
@@ -103,8 +108,10 @@ onMounted(async () => {
         <h2>Featured resources</h2>
         <p>Curated toolkit pages from the WCS library.</p>
       </div>
-      <p v-if="error" class="alert">Could not load resources. Sign in or check the API connection.</p>
-      <div v-else class="list">
+      <p v-if="usingFallback" class="small muted" style="margin-bottom:12px">
+        Showing curated library highlights (live database sync pending).
+      </p>
+      <div class="list">
         <RouterLink
           v-for="item in featured"
           :key="item.slug"
@@ -131,13 +138,18 @@ onMounted(async () => {
           <RouterLink to="/about" class="btn" style="margin-top:16px">Full profile &rarr;</RouterLink>
         </div>
         <div class="card">
-          <span class="tag">Listen</span>
+          <span class="tag">Listen · RSS.com</span>
           <h3>Podcasts</h3>
           <ul class="podcast-list">
-            <li v-for="pod in podcasts" :key="pod.url">
-              <a :href="pod.url" target="_blank" rel="noopener noreferrer" class="accent-link">{{ pod.label }}</a>
+            <li v-for="pod in podcasts" :key="pod.slug">
+              <RouterLink :to="`/podcasts/${pod.slug}`" class="accent-link">{{ pod.label }}</RouterLink>
+              <span class="small muted">
+                —
+                <a :href="pod.url" target="_blank" rel="noopener noreferrer" class="accent-link">RSS.com</a>
+              </span>
             </li>
           </ul>
+          <RouterLink to="/podcasts" class="btn" style="margin-top:16px">All podcast referral kits &rarr;</RouterLink>
           <a href="https://paypal.me/christopherappiahthompson" target="_blank" rel="noopener noreferrer" class="btn primary" style="margin-top:16px">
             Support via PayPal
           </a>

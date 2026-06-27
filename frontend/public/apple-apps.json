@@ -1,0 +1,780 @@
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Apple apps by Christopher Appiah-Thompson",
+  "url": "https://worldclassscholars.vercel.app/apple-apps",
+  "dateModified": "2026-06-27",
+  "numberOfItems": 16,
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "url": "https://worldclassscholars.vercel.app/apple-apps/agedcare-monitor",
+      "item": {
+        "@type": "SoftwareApplication",
+        "name": "AgedCare Monitor",
+        "applicationCategory": "Medical",
+        "operatingSystem": "iOS, iPadOS",
+        "url": "https://worldclassscholars.vercel.app/apple-apps/agedcare-monitor",
+        "sameAs": "https://apps.apple.com/us/app/agedcare-monitor/id6767978725?uo=4",
+        "image": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/47/25/63/47256317-38da-982e-7089-a7755c697226/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/512x512bb.jpg",
+        "description": "A privacy-minded monitoring aid for resident safety workflows, incident review, carer dashboards, and Apple Watch alert support.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD",
+          "url": "https://apps.apple.com/us/app/agedcare-monitor/id6767978725?uo=4",
+          "availability": "https://schema.org/InStock"
+        },
+        "author": {
+          "@type": "Person",
+          "name": "Christopher Appiah-Thompson",
+          "url": "https://apps.apple.com/us/developer/christopher-appiah-thompson/id1887579155?uo=4"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "url": "https://worldclassscholars.vercel.app/apple-apps/ai-real-investor",
+      "item": {
+        "@type": "SoftwareApplication",
+        "name": "AI Real Investor",
+        "applicationCategory": "Finance",
+        "operatingSystem": "iOS, iPadOS",
+        "url": "https://worldclassscholars.vercel.app/apple-apps/ai-real-investor",
+        "sameAs": "https://apps.apple.com/us/app/ai-real-investor/id6779068906?uo=4",
+        "image": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/49/21/1d/49211d29-e411-8329-a998-6f1f04c5dd83/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
+        "description": "A premium workspace for reviewing property signals, investment considerations, and decision-support outputs before acting.",
+        "offers": {
+          "@type": "Offer",
+          "price": "3.99",
+          "priceCurrency": "USD",
+          "url": "https://apps.apple.com/us/app/ai-real-investor/id6779068906?uo=4",
+          "availability": "https://schema.org/InStock"
+        },
+        "author": {
+          "@type": "Person",
+          "name": "Christopher Appiah-Thompson",
+          "url": "https://apps.apple.com/us/developer/christopher-appiah-thompson/id1887579155?uo=4"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "url": "https://worldclassscholars.vercel.app/apple-apps/carelens-aged",
+      "item": {
+        "@type": "SoftwareApplication",
+        "name": "CareLens Aged+",
+        "applicationCategory": "Medical",
+        "operatingSystem": "iOS, iPadOS",
+        "url": "https://worldclassscholars.vercel.app/apple-apps/carelens-aged",
+        "sameAs": "https://apps.apple.com/us/app/carelens-aged/id6767072418?uo=4",
+        "image": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/65/00/17/65001740-baaa-f2b0-d936-63af36925ac0/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
+        "description": "Designed for teams working with ageing, dementia, care planning, and resident-support workflows.",
+        "offers": {
+          "@type": "Offer",
+          "price": "7.99",
+          "priceCurrency": "USD",
+          "url": "https://apps.apple.com/us/app/carelens-aged/id6767072418?uo=4",
+          "availability": "https://schema.org/InStock"
+        },
+        "author": {
+          "@type": "Person",
+          "name": "Christopher Appiah-Thompson",
+          "url": "https://apps.apple.com/us/developer/christopher-appiah-thompson/id1887579155?uo=4"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "url": "https://worldclassscholars.vercel.app/apple-apps/legalaid",
+      "item": {
+        "@type": "SoftwareApplication",
+        "name": "LegalAid",
+        "applicationCategory": "Productivity",
+        "operatingSystem": "iOS, iPadOS",
+        "url": "https://worldclassscholars.vercel.app/apple-apps/legalaid",
+        "sameAs": "https://apps.apple.com/us/app/legalaid/id6782532109?uo=4",
+        "image": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/00/a2/6f/00a26fcb-947a-5c2b-bc7d-032ebacd99f8/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
+        "description": "Structure legal facts, review pasted document text, identify risk signals, prepare jurisdiction-aware prompts, and generate draft reports for qualified review.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0.49",
+          "priceCurrency": "USD",
+          "url": "https://apps.apple.com/us/app/legalaid/id6782532109?uo=4",
+          "availability": "https://schema.org/InStock"
+        },
+        "author": {
+          "@type": "Person",
+          "name": "Christopher Appiah-Thompson",
+          "url": "https://apps.apple.com/us/developer/christopher-appiah-thompson/id1887579155?uo=4"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 5,
+      "url": "https://worldclassscholars.vercel.app/apple-apps/peacelens",
+      "item": {
+        "@type": "SoftwareApplication",
+        "name": "PeaceLens",
+        "applicationCategory": "Education",
+        "operatingSystem": "iOS, iPadOS",
+        "url": "https://worldclassscholars.vercel.app/apple-apps/peacelens",
+        "sameAs": "https://apps.apple.com/us/app/peacelens/id6776995376?uo=4",
+        "image": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/62/f1/01/62f10117-eb93-0f0e-dcc4-03a9caf27e69/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
+        "description": "Capture media reports, score coverage with an explainable Peace Journalism Index, compare findings, and prepare research outputs.",
+        "offers": {
+          "@type": "Offer",
+          "price": "3.99",
+          "priceCurrency": "USD",
+          "url": "https://apps.apple.com/us/app/peacelens/id6776995376?uo=4",
+          "availability": "https://schema.org/InStock"
+        },
+        "author": {
+          "@type": "Person",
+          "name": "Christopher Appiah-Thompson",
+          "url": "https://apps.apple.com/us/developer/christopher-appiah-thompson/id1887579155?uo=4"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 6,
+      "url": "https://worldclassscholars.vercel.app/apple-apps/prop-valulator",
+      "item": {
+        "@type": "SoftwareApplication",
+        "name": "Prop-Valulator",
+        "applicationCategory": "Lifestyle",
+        "operatingSystem": "iOS, iPadOS",
+        "url": "https://worldclassscholars.vercel.app/apple-apps/prop-valulator",
+        "sameAs": "https://apps.apple.com/us/app/prop-valulator/id6780286834?uo=4",
+        "image": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/97/c4/ee/97c4ee87-5fa8-650a-d60f-7e794380ca4c/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
+        "description": "Explore property value signals with AI-powered graph inference and heuristic valuation support.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0.49",
+          "priceCurrency": "USD",
+          "url": "https://apps.apple.com/us/app/prop-valulator/id6780286834?uo=4",
+          "availability": "https://schema.org/InStock"
+        },
+        "author": {
+          "@type": "Person",
+          "name": "Christopher Appiah-Thompson",
+          "url": "https://apps.apple.com/us/developer/christopher-appiah-thompson/id1887579155?uo=4"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 7,
+      "url": "https://worldclassscholars.vercel.app/apple-apps/psychologic",
+      "item": {
+        "@type": "SoftwareApplication",
+        "name": "PsychoLogic",
+        "applicationCategory": "Medical",
+        "operatingSystem": "iOS, iPadOS",
+        "url": "https://worldclassscholars.vercel.app/apple-apps/psychologic",
+        "sameAs": "https://apps.apple.com/us/app/psychologic/id6778269526?uo=4",
+        "image": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/11/79/73/117973b1-dc85-c2d1-d53f-6f824d853ae0/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
+        "description": "A general-purpose journal for recording experiences and reflecting on patterns without replacing professional care.",
+        "offers": {
+          "@type": "Offer",
+          "price": "7.99",
+          "priceCurrency": "USD",
+          "url": "https://apps.apple.com/us/app/psychologic/id6778269526?uo=4",
+          "availability": "https://schema.org/InStock"
+        },
+        "author": {
+          "@type": "Person",
+          "name": "Christopher Appiah-Thompson",
+          "url": "https://apps.apple.com/us/developer/christopher-appiah-thompson/id1887579155?uo=4"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 8,
+      "url": "https://worldclassscholars.vercel.app/apple-apps/psychosocial-analytics",
+      "item": {
+        "@type": "SoftwareApplication",
+        "name": "Psychosocial Analytics",
+        "applicationCategory": "Medical",
+        "operatingSystem": "iOS, iPadOS",
+        "url": "https://worldclassscholars.vercel.app/apple-apps/psychosocial-analytics",
+        "sameAs": "https://apps.apple.com/us/app/psychosocial-analytics/id6768490648?uo=4",
+        "image": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/10/71/89/107189f0-48ac-636e-5944-2d24bfce9596/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
+        "description": "Capture structured psychosocial information, organize analysis, and support professional documentation workflows.",
+        "offers": {
+          "@type": "Offer",
+          "price": "14.99",
+          "priceCurrency": "USD",
+          "url": "https://apps.apple.com/us/app/psychosocial-analytics/id6768490648?uo=4",
+          "availability": "https://schema.org/InStock"
+        },
+        "author": {
+          "@type": "Person",
+          "name": "Christopher Appiah-Thompson",
+          "url": "https://apps.apple.com/us/developer/christopher-appiah-thompson/id1887579155?uo=4"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 9,
+      "url": "https://worldclassscholars.vercel.app/apple-apps/truthlens-global",
+      "item": {
+        "@type": "SoftwareApplication",
+        "name": "TruthLens Global",
+        "applicationCategory": "News",
+        "operatingSystem": "iOS, iPadOS",
+        "url": "https://worldclassscholars.vercel.app/apple-apps/truthlens-global",
+        "sameAs": "https://apps.apple.com/us/app/truthlens-global/id6776208825?uo=4",
+        "image": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/26/2d/fd/262dfd09-dba1-7347-89fc-1cb06e4df670/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
+        "description": "Scan civic messages, speeches, social posts, and public-interest claims with verdicts, confidence, bias signals, and source credibility.",
+        "offers": {
+          "@type": "Offer",
+          "price": "9.99",
+          "priceCurrency": "USD",
+          "url": "https://apps.apple.com/us/app/truthlens-global/id6776208825?uo=4",
+          "availability": "https://schema.org/InStock"
+        },
+        "author": {
+          "@type": "Person",
+          "name": "Christopher Appiah-Thompson",
+          "url": "https://apps.apple.com/us/developer/christopher-appiah-thompson/id1887579155?uo=4"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 10,
+      "url": "https://worldclassscholars.vercel.app/apple-apps/visionforge",
+      "item": {
+        "@type": "SoftwareApplication",
+        "name": "VisionForge",
+        "applicationCategory": "Graphics & Design",
+        "operatingSystem": "iOS, iPadOS",
+        "url": "https://worldclassscholars.vercel.app/apple-apps/visionforge",
+        "sameAs": "https://apps.apple.com/us/app/visionforge/id6777670360?uo=4",
+        "image": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/15/33/4b/15334b12-841d-4750-9b53-154057662b78/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
+        "description": "Explore text-to-image and visual generation workflows in a focused creative design environment.",
+        "offers": {
+          "@type": "Offer",
+          "price": "5.99",
+          "priceCurrency": "USD",
+          "url": "https://apps.apple.com/us/app/visionforge/id6777670360?uo=4",
+          "availability": "https://schema.org/InStock"
+        },
+        "author": {
+          "@type": "Person",
+          "name": "Christopher Appiah-Thompson",
+          "url": "https://apps.apple.com/us/developer/christopher-appiah-thompson/id1887579155?uo=4"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 11,
+      "url": "https://worldclassscholars.vercel.app/apple-apps/wcs-agentic",
+      "item": {
+        "@type": "SoftwareApplication",
+        "name": "WCS Agentic",
+        "applicationCategory": "Business",
+        "operatingSystem": "iOS, iPadOS",
+        "url": "https://worldclassscholars.vercel.app/apple-apps/wcs-agentic",
+        "sameAs": "https://apps.apple.com/us/app/wcs-agentic/id6769985809?uo=4",
+        "image": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/a4/03/89/a4038925-593e-8233-e40c-3f16b648233b/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
+        "description": "Manage scholar operations, supervised finance AI reporting, compliance tasks, and human approval controls in one mobile workspace.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD",
+          "url": "https://apps.apple.com/us/app/wcs-agentic/id6769985809?uo=4",
+          "availability": "https://schema.org/InStock"
+        },
+        "author": {
+          "@type": "Person",
+          "name": "Christopher Appiah-Thompson",
+          "url": "https://apps.apple.com/us/developer/christopher-appiah-thompson/id1887579155?uo=4"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 12,
+      "url": "https://worldclassscholars.vercel.app/apple-apps/wcs-geo",
+      "item": {
+        "@type": "SoftwareApplication",
+        "name": "WCS-GEO",
+        "applicationCategory": "Business",
+        "operatingSystem": "iOS, iPadOS",
+        "url": "https://worldclassscholars.vercel.app/apple-apps/wcs-geo",
+        "sameAs": "https://apps.apple.com/us/app/wcs-geo/id6777616166?uo=4",
+        "image": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/d7/c0/d5/d7c0d5bd-1602-56a2-2b0c-a7b0f0ec8456/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
+        "description": "Explore explainable target scoring, project maps, ranked mineral targets, evidence provenance, imports, sync demos, and field observations.",
+        "offers": {
+          "@type": "Offer",
+          "price": "9.99",
+          "priceCurrency": "USD",
+          "url": "https://apps.apple.com/us/app/wcs-geo/id6777616166?uo=4",
+          "availability": "https://schema.org/InStock"
+        },
+        "author": {
+          "@type": "Person",
+          "name": "Christopher Appiah-Thompson",
+          "url": "https://apps.apple.com/us/developer/christopher-appiah-thompson/id1887579155?uo=4"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 13,
+      "url": "https://worldclassscholars.vercel.app/apple-apps/wcs-pol",
+      "item": {
+        "@type": "SoftwareApplication",
+        "name": "WCS-POL",
+        "applicationCategory": "Education",
+        "operatingSystem": "iOS, iPadOS",
+        "url": "https://worldclassscholars.vercel.app/apple-apps/wcs-pol",
+        "sameAs": "https://apps.apple.com/us/app/wcs-pol/id6779397120?uo=4",
+        "image": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/b9/ad/40/b9ad401f-96b2-b1e5-cb3e-f550d63a3c0f/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
+        "description": "Explore how institutional rules, civic choices, and governance dynamics shape electoral outcomes.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0.49",
+          "priceCurrency": "USD",
+          "url": "https://apps.apple.com/us/app/wcs-pol/id6779397120?uo=4",
+          "availability": "https://schema.org/InStock"
+        },
+        "author": {
+          "@type": "Person",
+          "name": "Christopher Appiah-Thompson",
+          "url": "https://apps.apple.com/us/developer/christopher-appiah-thompson/id1887579155?uo=4"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 14,
+      "url": "https://worldclassscholars.vercel.app/apple-apps/wcs-tatto",
+      "item": {
+        "@type": "SoftwareApplication",
+        "name": "WCS-Tatto",
+        "applicationCategory": "Lifestyle",
+        "operatingSystem": "iOS, iPadOS",
+        "url": "https://worldclassscholars.vercel.app/apple-apps/wcs-tatto",
+        "sameAs": "https://apps.apple.com/us/app/wcs-tatto/id6774959552?uo=4",
+        "image": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/36/a6/a6/36a6a647-18ef-8d68-6c25-d94748cc3d25/AppIcon-0-0-1x_U007emarketing-0-5-85-220.png/512x512bb.jpg",
+        "description": "Plan tattoo ideas, studio conversations, style direction, and client-centred preparation.",
+        "offers": {
+          "@type": "Offer",
+          "price": "2.99",
+          "priceCurrency": "USD",
+          "url": "https://apps.apple.com/us/app/wcs-tatto/id6774959552?uo=4",
+          "availability": "https://schema.org/InStock"
+        },
+        "author": {
+          "@type": "Person",
+          "name": "Christopher Appiah-Thompson",
+          "url": "https://apps.apple.com/us/developer/christopher-appiah-thompson/id1887579155?uo=4"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 15,
+      "url": "https://worldclassscholars.vercel.app/apple-apps/wcslib",
+      "item": {
+        "@type": "SoftwareApplication",
+        "name": "WCSLIB",
+        "applicationCategory": "Education",
+        "operatingSystem": "iOS, iPadOS",
+        "url": "https://worldclassscholars.vercel.app/apple-apps/wcslib",
+        "sameAs": "https://apps.apple.com/us/app/wcslib/id6764653278?uo=4",
+        "image": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/f7/44/b1/f744b1a4-dffa-e504-4b3c-d34d353a228c/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
+        "description": "A focused educational workspace for organizing scholarly exploration, public resources, and lifelong learning.",
+        "offers": {
+          "@type": "Offer",
+          "price": "3.99",
+          "priceCurrency": "USD",
+          "url": "https://apps.apple.com/us/app/wcslib/id6764653278?uo=4",
+          "availability": "https://schema.org/InStock"
+        },
+        "author": {
+          "@type": "Person",
+          "name": "Christopher Appiah-Thompson",
+          "url": "https://apps.apple.com/us/developer/christopher-appiah-thompson/id1887579155?uo=4"
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 16,
+      "url": "https://worldclassscholars.vercel.app/apple-apps/wendy-safricanfash",
+      "item": {
+        "@type": "SoftwareApplication",
+        "name": "Wendy'SAfricanFash",
+        "applicationCategory": "Shopping",
+        "operatingSystem": "iOS, iPadOS",
+        "url": "https://worldclassscholars.vercel.app/apple-apps/wendy-safricanfash",
+        "sameAs": "https://apps.apple.com/us/app/wendysafricanfash/id6763326670?uo=4",
+        "image": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/0c/5e/ec/0c5eec30-a25f-0636-cf88-91584383e756/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/512x512bb.jpg",
+        "description": "Discover African fashion collections, marketplace experiences, and AI-assisted design workflows.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD",
+          "url": "https://apps.apple.com/us/app/wendysafricanfash/id6763326670?uo=4",
+          "availability": "https://schema.org/InStock"
+        },
+        "author": {
+          "@type": "Person",
+          "name": "Christopher Appiah-Thompson",
+          "url": "https://apps.apple.com/us/developer/christopher-appiah-thompson/id1887579155?uo=4"
+        }
+      }
+    }
+  ],
+  "apps": [
+    {
+      "name": "AgedCare Monitor",
+      "slug": "agedcare-monitor",
+      "bundleId": "wcs.Agedcare-shared",
+      "category": "Medical",
+      "price": "Free",
+      "releaseDate": "2026-05-23",
+      "audience": "Professional carers, family carers, and aged-care facility staff",
+      "headline": "Non-clinical monitoring support for aged-care teams.",
+      "summary": "A privacy-minded monitoring aid for resident safety workflows, incident review, carer dashboards, and Apple Watch alert support.",
+      "highlights": [
+        "Fall and distress-sound monitoring aid",
+        "Resident timeline and staff dashboard",
+        "Apple Watch alert companion"
+      ],
+      "landingUrl": "https://worldclassscholars.vercel.app/apple-apps/agedcare-monitor",
+      "appStoreUrl": "https://apps.apple.com/us/app/agedcare-monitor/id6767978725?uo=4",
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/47/25/63/47256317-38da-982e-7089-a7755c697226/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/512x512bb.jpg",
+      "developer": "Christopher Appiah-Thompson",
+      "developerUrl": "https://apps.apple.com/us/developer/christopher-appiah-thompson/id1887579155?uo=4"
+    },
+    {
+      "name": "AI Real Investor",
+      "slug": "ai-real-investor",
+      "bundleId": "wcs.AI-Real-Investor",
+      "category": "Finance",
+      "price": "$3.99",
+      "releaseDate": "2026-06-17",
+      "audience": "Property investors and finance decision-makers",
+      "headline": "Property and investment decision-support workspace.",
+      "summary": "A premium workspace for reviewing property signals, investment considerations, and decision-support outputs before acting.",
+      "highlights": [
+        "Property investment review",
+        "Decision-support workflow",
+        "Premium finance workspace"
+      ],
+      "landingUrl": "https://worldclassscholars.vercel.app/apple-apps/ai-real-investor",
+      "appStoreUrl": "https://apps.apple.com/us/app/ai-real-investor/id6779068906?uo=4",
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/49/21/1d/49211d29-e411-8329-a998-6f1f04c5dd83/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
+      "developer": "Christopher Appiah-Thompson",
+      "developerUrl": "https://apps.apple.com/us/developer/christopher-appiah-thompson/id1887579155?uo=4"
+    },
+    {
+      "name": "CareLens Aged+",
+      "slug": "carelens-aged",
+      "bundleId": "wcs.Carelens-Aged-",
+      "category": "Medical",
+      "price": "$7.99",
+      "releaseDate": "2026-06-08",
+      "audience": "Clinicians, facility managers, and aged-care teams",
+      "headline": "Intelligent aged-care coordination and insight support.",
+      "summary": "Designed for teams working with ageing, dementia, care planning, and resident-support workflows.",
+      "highlights": [
+        "Care planning support",
+        "Aged-care insight workspace",
+        "Professional team focus"
+      ],
+      "landingUrl": "https://worldclassscholars.vercel.app/apple-apps/carelens-aged",
+      "appStoreUrl": "https://apps.apple.com/us/app/carelens-aged/id6767072418?uo=4",
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/65/00/17/65001740-baaa-f2b0-d936-63af36925ac0/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
+      "developer": "Christopher Appiah-Thompson",
+      "developerUrl": "https://apps.apple.com/us/developer/christopher-appiah-thompson/id1887579155?uo=4"
+    },
+    {
+      "name": "LegalAid",
+      "slug": "legalaid",
+      "bundleId": "wcs.LegalAid",
+      "category": "Productivity",
+      "price": "$0.49",
+      "releaseDate": "2026-06-26",
+      "audience": "People and legal professionals preparing legal-information workflows",
+      "headline": "Legal-information workflows, document review, and draft reports.",
+      "summary": "Structure legal facts, review pasted document text, identify risk signals, prepare jurisdiction-aware prompts, and generate draft reports for qualified review.",
+      "highlights": [
+        "Document understanding",
+        "Jurisdiction-aware prompts",
+        "Draft reports for review"
+      ],
+      "landingUrl": "https://worldclassscholars.vercel.app/apple-apps/legalaid",
+      "appStoreUrl": "https://apps.apple.com/us/app/legalaid/id6782532109?uo=4",
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/00/a2/6f/00a26fcb-947a-5c2b-bc7d-032ebacd99f8/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
+      "developer": "Christopher Appiah-Thompson",
+      "developerUrl": "https://apps.apple.com/us/developer/christopher-appiah-thompson/id1887579155?uo=4"
+    },
+    {
+      "name": "PeaceLens",
+      "slug": "peacelens",
+      "bundleId": "wcs.PeaceLens",
+      "category": "Education",
+      "price": "$3.99",
+      "releaseDate": "2026-06-09",
+      "audience": "Researchers, journalists, election observers, trainers, and policy teams",
+      "headline": "Peace journalism analysis for election-related media.",
+      "summary": "Capture media reports, score coverage with an explainable Peace Journalism Index, compare findings, and prepare research outputs.",
+      "highlights": [
+        "Peace Journalism Index",
+        "Election media coding",
+        "Research export workflow"
+      ],
+      "landingUrl": "https://worldclassscholars.vercel.app/apple-apps/peacelens",
+      "appStoreUrl": "https://apps.apple.com/us/app/peacelens/id6776995376?uo=4",
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/62/f1/01/62f10117-eb93-0f0e-dcc4-03a9caf27e69/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
+      "developer": "Christopher Appiah-Thompson",
+      "developerUrl": "https://apps.apple.com/us/developer/christopher-appiah-thompson/id1887579155?uo=4"
+    },
+    {
+      "name": "Prop-Valulator",
+      "slug": "prop-valulator",
+      "bundleId": "wcs.Prop-Valulator",
+      "category": "Lifestyle",
+      "price": "$0.49",
+      "releaseDate": "2026-06-17",
+      "audience": "Homeowners, property watchers, and valuation explorers",
+      "headline": "AI-assisted property valuation exploration.",
+      "summary": "Explore property value signals with AI-powered graph inference and heuristic valuation support.",
+      "highlights": [
+        "Property signal review",
+        "AI-assisted valuation",
+        "Scenario exploration"
+      ],
+      "landingUrl": "https://worldclassscholars.vercel.app/apple-apps/prop-valulator",
+      "appStoreUrl": "https://apps.apple.com/us/app/prop-valulator/id6780286834?uo=4",
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/97/c4/ee/97c4ee87-5fa8-650a-d60f-7e794380ca4c/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
+      "developer": "Christopher Appiah-Thompson",
+      "developerUrl": "https://apps.apple.com/us/developer/christopher-appiah-thompson/id1887579155?uo=4"
+    },
+    {
+      "name": "PsychoLogic",
+      "slug": "psychologic",
+      "bundleId": "wcs.PsychoLogic",
+      "category": "Medical",
+      "price": "$7.99",
+      "releaseDate": "2026-06-22",
+      "audience": "Journal users and reflective wellbeing workflows",
+      "headline": "Private journaling for everyday thoughts, feelings, and patterns.",
+      "summary": "A general-purpose journal for recording experiences and reflecting on patterns without replacing professional care.",
+      "highlights": [
+        "Private reflective journaling",
+        "Pattern awareness",
+        "General wellbeing support"
+      ],
+      "landingUrl": "https://worldclassscholars.vercel.app/apple-apps/psychologic",
+      "appStoreUrl": "https://apps.apple.com/us/app/psychologic/id6778269526?uo=4",
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/11/79/73/117973b1-dc85-c2d1-d53f-6f824d853ae0/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
+      "developer": "Christopher Appiah-Thompson",
+      "developerUrl": "https://apps.apple.com/us/developer/christopher-appiah-thompson/id1887579155?uo=4"
+    },
+    {
+      "name": "Psychosocial Analytics",
+      "slug": "psychosocial-analytics",
+      "bundleId": "wcs.Psychosocial--Analytics",
+      "category": "Medical",
+      "price": "$14.99",
+      "releaseDate": "2026-06-01",
+      "audience": "Social workers and clinical teams",
+      "headline": "Structured psychosocial assessment and reporting support.",
+      "summary": "Capture structured psychosocial information, organize analysis, and support professional documentation workflows.",
+      "highlights": [
+        "Structured capture",
+        "Clinical-team workflow",
+        "Report-ready outputs"
+      ],
+      "landingUrl": "https://worldclassscholars.vercel.app/apple-apps/psychosocial-analytics",
+      "appStoreUrl": "https://apps.apple.com/us/app/psychosocial-analytics/id6768490648?uo=4",
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/10/71/89/107189f0-48ac-636e-5944-2d24bfce9596/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
+      "developer": "Christopher Appiah-Thompson",
+      "developerUrl": "https://apps.apple.com/us/developer/christopher-appiah-thompson/id1887579155?uo=4"
+    },
+    {
+      "name": "TruthLens Global",
+      "slug": "truthlens-global",
+      "bundleId": "wcs.TruthLens",
+      "category": "News",
+      "price": "$9.99",
+      "releaseDate": "2026-06-08",
+      "audience": "Readers, civic teams, educators, and public-interest reviewers",
+      "headline": "Review public claims before you share, repeat, or act.",
+      "summary": "Scan civic messages, speeches, social posts, and public-interest claims with verdicts, confidence, bias signals, and source credibility.",
+      "highlights": [
+        "Claim review support",
+        "Bias and credibility signals",
+        "Offline fallback heuristics"
+      ],
+      "landingUrl": "https://worldclassscholars.vercel.app/apple-apps/truthlens-global",
+      "appStoreUrl": "https://apps.apple.com/us/app/truthlens-global/id6776208825?uo=4",
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/26/2d/fd/262dfd09-dba1-7347-89fc-1cb06e4df670/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
+      "developer": "Christopher Appiah-Thompson",
+      "developerUrl": "https://apps.apple.com/us/developer/christopher-appiah-thompson/id1887579155?uo=4"
+    },
+    {
+      "name": "VisionForge",
+      "slug": "visionforge",
+      "bundleId": "wcs.VisionForge",
+      "category": "Graphics & Design",
+      "price": "$5.99",
+      "releaseDate": "2026-06-11",
+      "audience": "Creators, designers, and prompt-driven visual explorers",
+      "headline": "Creative AI generation workspace.",
+      "summary": "Explore text-to-image and visual generation workflows in a focused creative design environment.",
+      "highlights": [
+        "Text-to-image exploration",
+        "Creative prompt workspace",
+        "Design ideation"
+      ],
+      "landingUrl": "https://worldclassscholars.vercel.app/apple-apps/visionforge",
+      "appStoreUrl": "https://apps.apple.com/us/app/visionforge/id6777670360?uo=4",
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/15/33/4b/15334b12-841d-4750-9b53-154057662b78/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
+      "developer": "Christopher Appiah-Thompson",
+      "developerUrl": "https://apps.apple.com/us/developer/christopher-appiah-thompson/id1887579155?uo=4"
+    },
+    {
+      "name": "WCS Agentic",
+      "slug": "wcs-agentic",
+      "bundleId": "wcs.WCS-Agentic",
+      "category": "Business",
+      "price": "Free",
+      "releaseDate": "2026-06-24",
+      "audience": "World Class Scholars leaders and administrators",
+      "headline": "Scholar programs, agent commands, approval gates, and reporting.",
+      "summary": "Manage scholar operations, supervised finance AI reporting, compliance tasks, and human approval controls in one mobile workspace.",
+      "highlights": [
+        "Program oversight",
+        "Governed agent activity",
+        "Board-ready finance briefs"
+      ],
+      "landingUrl": "https://worldclassscholars.vercel.app/apple-apps/wcs-agentic",
+      "appStoreUrl": "https://apps.apple.com/us/app/wcs-agentic/id6769985809?uo=4",
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/a4/03/89/a4038925-593e-8233-e40c-3f16b648233b/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
+      "developer": "Christopher Appiah-Thompson",
+      "developerUrl": "https://apps.apple.com/us/developer/christopher-appiah-thompson/id1887579155?uo=4"
+    },
+    {
+      "name": "WCS-GEO",
+      "slug": "wcs-geo",
+      "bundleId": "wcs.WCS-GEO",
+      "category": "Business",
+      "price": "$9.99",
+      "releaseDate": "2026-06-17",
+      "audience": "Geologists, students, educators, consultants, investors, and exploration professionals",
+      "headline": "Mineral exploration learning and demonstration tool.",
+      "summary": "Explore explainable target scoring, project maps, ranked mineral targets, evidence provenance, imports, sync demos, and field observations.",
+      "highlights": [
+        "Explainable target scoring",
+        "Project maps and layers",
+        "Field observation workflows"
+      ],
+      "landingUrl": "https://worldclassscholars.vercel.app/apple-apps/wcs-geo",
+      "appStoreUrl": "https://apps.apple.com/us/app/wcs-geo/id6777616166?uo=4",
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/d7/c0/d5/d7c0d5bd-1602-56a2-2b0c-a7b0f0ec8456/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
+      "developer": "Christopher Appiah-Thompson",
+      "developerUrl": "https://apps.apple.com/us/developer/christopher-appiah-thompson/id1887579155?uo=4"
+    },
+    {
+      "name": "WCS-POL",
+      "slug": "wcs-pol",
+      "bundleId": "wcs.WCS-POL",
+      "category": "Education",
+      "price": "$0.49",
+      "releaseDate": "2026-06-17",
+      "audience": "Civic educators, students, and governance learners",
+      "headline": "Electoral governance simulation and institutional learning.",
+      "summary": "Explore how institutional rules, civic choices, and governance dynamics shape electoral outcomes.",
+      "highlights": [
+        "Governance simulation",
+        "Civic learning",
+        "Institutional scenarios"
+      ],
+      "landingUrl": "https://worldclassscholars.vercel.app/apple-apps/wcs-pol",
+      "appStoreUrl": "https://apps.apple.com/us/app/wcs-pol/id6779397120?uo=4",
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/b9/ad/40/b9ad401f-96b2-b1e5-cb3e-f550d63a3c0f/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
+      "developer": "Christopher Appiah-Thompson",
+      "developerUrl": "https://apps.apple.com/us/developer/christopher-appiah-thompson/id1887579155?uo=4"
+    },
+    {
+      "name": "WCS-Tatto",
+      "slug": "wcs-tatto",
+      "bundleId": "wcs.WCS-Tattoo-Studio",
+      "category": "Lifestyle",
+      "price": "$2.99",
+      "releaseDate": "2026-06-06",
+      "audience": "Tattoo clients, artists, and studios",
+      "headline": "Premium tattoo planning built on trust and compassion.",
+      "summary": "Plan tattoo ideas, studio conversations, style direction, and client-centred preparation.",
+      "highlights": [
+        "Tattoo planning",
+        "Style direction",
+        "Studio conversation support"
+      ],
+      "landingUrl": "https://worldclassscholars.vercel.app/apple-apps/wcs-tatto",
+      "appStoreUrl": "https://apps.apple.com/us/app/wcs-tatto/id6774959552?uo=4",
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/36/a6/a6/36a6a647-18ef-8d68-6c25-d94748cc3d25/AppIcon-0-0-1x_U007emarketing-0-5-85-220.png/512x512bb.jpg",
+      "developer": "Christopher Appiah-Thompson",
+      "developerUrl": "https://apps.apple.com/us/developer/christopher-appiah-thompson/id1887579155?uo=4"
+    },
+    {
+      "name": "WCSLIB",
+      "slug": "wcslib",
+      "bundleId": "wcs.WCSLIB",
+      "category": "Education",
+      "price": "$3.99",
+      "releaseDate": "2026-06-05",
+      "audience": "Students, researchers, and lifelong learners",
+      "headline": "Scholarly workspace for learning and research.",
+      "summary": "A focused educational workspace for organizing scholarly exploration, public resources, and lifelong learning.",
+      "highlights": [
+        "Scholarly workspace",
+        "Research organization",
+        "Learning support"
+      ],
+      "landingUrl": "https://worldclassscholars.vercel.app/apple-apps/wcslib",
+      "appStoreUrl": "https://apps.apple.com/us/app/wcslib/id6764653278?uo=4",
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/f7/44/b1/f744b1a4-dffa-e504-4b3c-d34d353a228c/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
+      "developer": "Christopher Appiah-Thompson",
+      "developerUrl": "https://apps.apple.com/us/developer/christopher-appiah-thompson/id1887579155?uo=4"
+    },
+    {
+      "name": "Wendy'SAfricanFash",
+      "slug": "wendy-safricanfash",
+      "bundleId": "wcs.AfricanFashionApp",
+      "category": "Shopping",
+      "price": "Free",
+      "releaseDate": "2026-06-19",
+      "audience": "African fashion shoppers, designers, and marketplace visitors",
+      "headline": "Premium African fashion marketplace and design support.",
+      "summary": "Discover African fashion collections, marketplace experiences, and AI-assisted design workflows.",
+      "highlights": [
+        "African fashion marketplace",
+        "Design inspiration",
+        "Shopping experience"
+      ],
+      "landingUrl": "https://worldclassscholars.vercel.app/apple-apps/wendy-safricanfash",
+      "appStoreUrl": "https://apps.apple.com/us/app/wendysafricanfash/id6763326670?uo=4",
+      "artworkUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/0c/5e/ec/0c5eec30-a25f-0636-cf88-91584383e756/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/512x512bb.jpg",
+      "developer": "Christopher Appiah-Thompson",
+      "developerUrl": "https://apps.apple.com/us/developer/christopher-appiah-thompson/id1887579155?uo=4"
+    }
+  ]
+}

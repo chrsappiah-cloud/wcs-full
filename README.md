@@ -12,9 +12,15 @@ A full MEVN-stack digital campus for **World Class Scholars**, founded by Dr Chr
 | Backend | Node.js · Express · MongoDB (native driver) |
 | Auth | JWT (jsonwebtoken) · bcryptjs |
 | Search | MongoDB text index + Open Library API |
-| CI/CD | GitHub Actions |
+| CI/CD | GitHub Actions → Vercel (SPA + serverless API) |
 
 ---
+
+## Latest features & hardening
+
+See [docs/RELEASE_FEATURES.md](docs/RELEASE_FEATURES.md) for account/access, analytics, contact, admin payments, CI smoke tests, and production URLs.
+
+Run all tests locally: `npm test` (requires MongoDB on `:27017`).
 
 ## SEO & AI discovery
 
@@ -24,7 +30,9 @@ See [docs/SEO_AND_AI_DISCOVERY.md](docs/SEO_AND_AI_DISCOVERY.md) for Google Sear
 
 ## iOS marketing portal
 
-Public route: **`/marketing`** on [wcs-full.vercel.app](https://wcs-full.vercel.app).
+**Production (single Vercel site):** [worldclassscholars.vercel.app](https://worldclassscholars.vercel.app) — see [docs/DEPLOY_VERCEL.md](docs/DEPLOY_VERCEL.md).
+
+Public route: **`/marketing`** on the live site.
 
 | Tab | Purpose |
 | --- | --- |
@@ -113,8 +121,8 @@ Vite proxies `/api` → `http://localhost:3001` so no CORS config is needed duri
 | GET | `/platform` | Site identity & nav |
 | GET | `/about` | About page + founder profile |
 | GET | `/courses` | Course catalogue |
-| GET | `/labs` | Future Lab initiatives |
-| GET | `/art-verse` | Art collections |
+| GET | `/labs` | Digital marketing modules (legacy collection name) |
+| GET | `/art-verse` | Digital advertising modules (legacy collection name) |
 | GET | `/resources/featured` | Featured resources |
 | GET | `/resources/:slug` | Single resource |
 | GET | `/library/search?q=&source=` | Federated search |
