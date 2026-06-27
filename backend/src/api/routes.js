@@ -10,6 +10,13 @@ import * as contact from "../controllers/contactController.js";
 import * as payments from "../controllers/paymentsController.js";
 import * as system from "../controllers/systemController.js";
 import { requireAuth, requireAdmin } from "../middleware/requireAuth.js";
+import {
+  contactPostLimit,
+  analyticsPostLimit,
+  authPostLimit,
+  searchGetLimit,
+} from "../middleware/rateLimit.js";
+import { clampQuery, validateAnalyticsBody } from "../middleware/validate.js";
 
 const router = Router();
 
@@ -21,7 +28,7 @@ router.get("/labs",               content.getLabs);
 router.get("/art-verse",          content.getArtVerse);
 router.get("/resources/featured", content.getFeaturedResources);
 router.get("/resources/:slug",    content.getResourceBySlug);
-router.get("/library/search",     library.librarySearch);
+router.get("/library/search",     clampQuery, searchGetLimit, library.librarySearch);
 
 // ── Apple commerce & TestFlight beta data ─────────────────────────────────────
 router.get("/commerce/apple",     commerce.getAppleCommerce);
@@ -46,13 +53,13 @@ router.delete(
 );
 
 // ── Auth ──────────────────────────────────────────────────────────────────────
-router.post("/auth/register", auth.register);
-router.post("/auth/login",    auth.login);
+router.post("/auth/register", authPostLimit, auth.register);
+router.post("/auth/login",    authPostLimit, auth.login);
 router.get("/auth/me",        requireAuth, auth.me);
 
 // ── Contact & enquiries ───────────────────────────────────────────────────────
 router.get("/contact", contact.getEmails);
-router.post("/contact", contact.submit);
+router.post("/contact", contactPostLimit, contact.submit);
 router.get("/contact/admin/messages", requireAdmin, contact.listAdmin);
 router.patch("/contact/admin/messages/:id", requireAdmin, contact.patchAdmin);
 
@@ -66,7 +73,7 @@ router.post("/payments/admin/activate-integrations", requireAdmin, payments.acti
 router.post("/payments/admin/events", requireAdmin, payments.recordPaymentEvent);
 
 // ── Analytics ─────────────────────────────────────────────────────────────────
-router.post("/analytics/track", analytics.track);
+router.post("/analytics/track", analyticsPostLimit, validateAnalyticsBody, analytics.track);
 router.get("/analytics/dashboard", requireAdmin, analytics.getDashboard);
 
 // ── Enrollments (authenticated) ───────────────────────────────────────────────

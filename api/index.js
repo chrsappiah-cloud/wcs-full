@@ -6,11 +6,20 @@ import cors from "cors";
 import routes from "../backend/src/api/routes.js";
 import adminRoutes from "../backend/src/api/adminRoutes.js";
 import { dbOrFallback, requireDatabase } from "../backend/src/middleware/dbOrFallback.js";
-import { securityHeaders, jsonBodyLimit } from "../backend/src/middleware/security.js";
+import {
+  securityHeaders,
+  jsonBodyLimit,
+  productionHardening,
+  blockSuspiciousPaths,
+} from "../backend/src/middleware/security.js";
 
 const app = express();
+app.set("trust proxy", 1);
+app.disable("x-powered-by");
 
+app.use(blockSuspiciousPaths);
 app.use(securityHeaders);
+app.use(productionHardening);
 app.use(cors({ origin: true, credentials: true }));
 app.use(jsonBodyLimit());
 app.use(express.json({ limit: "64kb" }));

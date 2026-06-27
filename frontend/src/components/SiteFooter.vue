@@ -3,6 +3,9 @@ import { computed } from "vue";
 import { usePlatformStore } from "../stores/platform.js";
 import { founderProfile, socialChannels } from "../config/marketingPortal.js";
 import FounderContactLinks from "./FounderContactLinks.vue";
+import { externalPartnerSites } from "../config/partnerSites.js";
+
+const partnerLinks = externalPartnerSites();
 
 const store  = usePlatformStore();
 const name   = computed(() => store.platform?.name ?? "World Class Scholars");
@@ -58,6 +61,14 @@ const nav    = computed(() => store.displayNav);
           </li>
           <li>
             <RouterLink to="/contact" class="footer-col-link">Contact & feedback</RouterLink>
+          </li>
+        </ul>
+        <h3 class="footer-col-heading" style="margin-top:20px">Also on</h3>
+        <ul class="footer-col-list">
+          <li v-for="site in partnerLinks" :key="site.id">
+            <a :href="site.url" target="_blank" rel="noopener noreferrer" class="footer-col-link">
+              {{ site.label }}
+            </a>
           </li>
         </ul>
       </div>

@@ -8,19 +8,28 @@ import { existsSync } from "fs";
 import routes from "./api/routes.js";
 import adminRoutes from "./api/adminRoutes.js";
 import { dbOrFallback, requireDatabase } from "./middleware/dbOrFallback.js";
-import { securityHeaders, jsonBodyLimit } from "./middleware/security.js";
+import {
+  securityHeaders,
+  jsonBodyLimit,
+  productionHardening,
+  blockSuspiciousPaths,
+} from "./middleware/security.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const isProd    = process.env.NODE_ENV === "production";
 const PORT      = Number(process.env.PORT) || 3001;
 const app = express();
+app.set("trust proxy", 1);
+app.disable("x-powered-by");
 
 // In dev allow Vite dev server (port 5173) to call the API
 const allowedOrigins = isProd
   ? []
   : ["http://localhost:5173", "http://127.0.0.1:5173"];
 
+app.use(blockSuspiciousPaths);
 app.use(securityHeaders);
+app.use(productionHardening);
 app.use(cors({
   origin: isProd ? false : allowedOrigins,
   credentials: true,

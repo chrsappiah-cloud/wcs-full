@@ -35,6 +35,26 @@
       "headers": [{ "key": "Content-Type", "value": "text/plain; charset=utf-8" }]
     },
     {
+      "source": "/llms-full.txt",
+      "headers": [{ "key": "Content-Type", "value": "text/plain; charset=utf-8" }]
+    },
+    {
+      "source": "/ai.txt",
+      "headers": [{ "key": "Content-Type", "value": "text/plain; charset=utf-8" }]
+    },
+    {
+      "source": "/admin/:path*",
+      "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }]
+    },
+    {
+      "source": "/account",
+      "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }]
+    },
+    {
+      "source": "/login",
+      "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }]
+    },
+    {
       "source": "/(.*)",
       "headers": [
         { "key": "X-Robots-Tag", "value": "index, follow" }
@@ -45,7 +65,7 @@
     { "source": "/health", "destination": "/api/index.js" },
     { "source": "/api/:path*", "destination": "/api/index.js" },
     {
-      "source": "/((?!api|robots\\.txt|sitemap\\.xml|llms\\.txt|llms-full\\.txt|assets|favicon\\.ico).*)",
+      "source": "/((?!api|robots\\.txt|sitemap\\.xml|llms\\.txt|llms-full\\.txt|ai\\.txt|assets|favicon\\.ico).*)",
       "destination": "/index.html"
     }
   ],

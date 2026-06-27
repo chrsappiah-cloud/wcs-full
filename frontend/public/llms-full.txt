@@ -2,6 +2,7 @@
 
 URL: https://worldclassscholars.vercel.app/
 Sitemap: https://worldclassscholars.vercel.app/sitemap.xml
+LLMs: https://worldclassscholars.vercel.app/llms.txt
 
 ## Public routes
 
@@ -9,15 +10,25 @@ Sitemap: https://worldclassscholars.vercel.app/sitemap.xml
 |------|---------|
 | / | Home — founder, featured resources, podcasts, iOS CTAs |
 | /about | Founder profile, pillars, social, works |
+| /contact | Public enquiries to support@myworldclass.org and admin@myworldclass.org |
 | /podcasts | RSS.com shows with trackable referral links |
 | /podcasts/heartbeats-beyond-memory | Dementia creative care podcast referrals |
 | /podcasts/freemasonry-21st-century | Freemasonry podcast referrals |
 | /podcasts/art-culture-tattoos | Tattoo culture podcast referrals |
 | /marketing | iOS apps, TestFlight, App Store |
-| /library | Federated book search |
+| /apple-apps | Live Apple App Store launch platform for published apps |
+| /library | Federated book search (Open Library + WCS resources) |
 | /courses | Micro-credentials |
-| /digital-marketing | CodeAdx affiliate marketing |
-| /digital-advertising | CodeAdx podcaster stats |
+| /digital-marketing | CodeAdx affiliate marketing & promotions |
+| /digital-advertising | CodeAdx podcaster stats & ad inventory |
+
+## Sister sites
+
+| URL | Role |
+|-----|------|
+| https://www.myworldclass.net/ | School / organisation hub |
+| https://www.myworldclass.net/onboarding-for-schools | School onboarding |
+| https://christopherappiahthompson.link/ | Founder campaigns & apps |
 
 ## Podcast referral pattern
 

@@ -37,7 +37,8 @@ export const founder = {
     "https://tiktok.com/@chrsappiah",
     "https://www.youtube.com/channel/UC2a-_QUygsGAKWzEdKHEP9Q",
     "https://christopherappiahthompson.link",
-    "https://myworldclass.net",
+    "https://www.myworldclass.net",
+    "https://www.myworldclass.net/onboarding-for-schools",
     "https://app.codeadx.com",
     "https://rss.com",
   ],
@@ -216,5 +217,15 @@ export function applyPageSeo(meta = {}) {
   upsertMeta("name", "bingbot", "index, follow");
 
   upsertMeta("name", "ai-content-declaration", "public-indexable");
-  upsertLink("alternate", `${SITE_URL}/llms.txt`);
+  upsertMeta("name", "google-site-verification", meta.googleSiteVerification || "");
+
+  let llmsLink = document.querySelector('link[rel="alternate"][type="text/plain"]');
+  if (!llmsLink) {
+    llmsLink = document.createElement("link");
+    llmsLink.setAttribute("rel", "alternate");
+    llmsLink.setAttribute("type", "text/plain");
+    llmsLink.setAttribute("title", "LLMs discovery");
+    document.head.appendChild(llmsLink);
+  }
+  llmsLink.setAttribute("href", `${SITE_URL}/llms.txt`);
 }

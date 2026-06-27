@@ -6,11 +6,12 @@ describe("seo", () => {
     expect(absoluteUrl("/marketing")).toMatch(/\/marketing$/);
   });
 
-  it("includes marketing in public routes", () => {
+  it("includes key public routes for indexing", () => {
     const paths = publicRoutes.map((r) => r.path);
     expect(paths).toContain("/");
     expect(paths).toContain("/marketing");
     expect(paths).toContain("/about");
+    expect(paths).toContain("/contact");
   });
 
   it("has site name", () => {

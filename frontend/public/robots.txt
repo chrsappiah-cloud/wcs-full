@@ -1,5 +1,6 @@
 # World Class Scholars — https://worldclassscholars.vercel.app
-# Allow search engines and AI crawlers
+# Search engines + AI discovery: allow public pages; block admin/account.
+# LLM index: https://worldclassscholars.vercel.app/llms.txt  |  AI alias: https://worldclassscholars.vercel.app/ai.txt
 
 User-agent: *
 Allow: /
@@ -43,9 +44,40 @@ Allow: /
 User-agent: Meta-ExternalAgent
 Allow: /
 
+User-agent: Amazonbot
+Allow: /
+
+User-agent: YouBot
+Allow: /
+
+User-agent: DuckAssistBot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Diffbot
+Allow: /
+
+User-agent: FacebookBot
+Allow: /
+
+User-agent: ImagesiftBot
+Allow: /
+
+User-agent: omgilibot
+Allow: /
+
+User-agent: PetalBot
+Allow: /
+
 Disallow: /admin
 Disallow: /api/admin
 Disallow: /login
+Disallow: /account
 Disallow: /my-courses
 Disallow: /api-status
 

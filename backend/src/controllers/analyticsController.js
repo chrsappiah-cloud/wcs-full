@@ -24,9 +24,12 @@ function buildEventDoc(req, { event, path, meta, sessionId }) {
 export async function track(req, res, next) {
   try {
     const { event, path, meta, sessionId } = req.body ?? {};
-    if (!event) return res.status(400).json({ error: "event is required" });
-
-    const doc = buildEventDoc(req, { event, path, meta, sessionId });
+    const doc = buildEventDoc(req, {
+      event: String(event).trim(),
+      path: path != null ? String(path).trim().slice(0, 512) : undefined,
+      meta: meta && typeof meta === "object" ? meta : {},
+      sessionId: sessionId != null ? String(sessionId).trim().slice(0, 128) : undefined,
+    });
 
     if (req.fallbackMode) {
       appendRuntimeEvent(doc);

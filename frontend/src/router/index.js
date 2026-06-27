@@ -15,6 +15,7 @@ import MyCoursesView     from "../views/MyCoursesView.vue";
 import AccountAccessView from "../views/AccountAccessView.vue";
 import ApiStatusView     from "../views/ApiStatusView.vue";
 import MarketingPortalView from "../views/MarketingPortalView.vue";
+import AppleAppsLaunchView from "../views/AppleAppsLaunchView.vue";
 import DashboardView     from "../views/admin/DashboardView.vue";
 import CmsView           from "../views/admin/CmsView.vue";
 import PublishingView    from "../views/admin/PublishingView.vue";
@@ -146,6 +147,16 @@ const router = createRouter({
       },
     },
     {
+      path: "/apple-apps",
+      name: "apple-apps",
+      component: AppleAppsLaunchView,
+      meta: {
+        seoTitle: "Apple apps by Christopher Appiah-Thompson",
+        seoDescription:
+          "Official launch platform for live Apple App Store apps by Christopher Appiah-Thompson, with App Store icons, pricing, categories, and download links.",
+      },
+    },
+    {
       path: "/contact",
       name: "contact",
       component: ContactView,
@@ -227,6 +238,7 @@ router.afterEach((to) => {
     description: to.meta.seoDescription,
     path: to.fullPath.split("?")[0],
     robots: to.meta.robots,
+    googleSiteVerification: import.meta.env.VITE_GOOGLE_SITE_VERIFICATION,
   });
 });
 

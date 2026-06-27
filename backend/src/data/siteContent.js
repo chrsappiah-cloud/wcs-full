@@ -79,7 +79,7 @@ export const aboutPage = {
     works: [
       {
         label: "myworldclass.net",
-        url: "https://myworldclass.net",
+        url: "https://www.myworldclass.net/",
         category: "Website",
       },
       {

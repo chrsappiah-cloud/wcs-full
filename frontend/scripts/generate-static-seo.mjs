@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Regenerates sitemap.xml, robots.txt, llms.txt, and llms-full.txt for World Class Scholars.
+ * Regenerates sitemap.xml, robots.txt, llms.txt, llms-full.txt, and ai.txt.
  */
 import { writeFileSync } from "fs";
 import { dirname, join } from "path";
@@ -12,6 +12,7 @@ const SITE_URL = process.env.VITE_SITE_URL?.replace(/\/$/, "") || `https://${SIT
 const routes = [
   "/",
   "/about",
+  "/contact",
   "/podcasts",
   "/podcasts/heartbeats-beyond-memory",
   "/podcasts/freemasonry-21st-century",
@@ -21,6 +22,7 @@ const routes = [
   "/marketing/wcs-agentic",
   "/marketing/wcs-goldtest",
   "/marketing/wcs-care",
+  "/apple-apps",
   "/library",
   "/courses",
   "/digital-marketing",
@@ -30,14 +32,43 @@ const routes = [
 const priorities = {
   "/": "1.0",
   "/about": "0.9",
+  "/contact": "0.75",
   "/podcasts": "0.9",
   "/marketing": "0.95",
   "/marketing/wcs-commerce": "0.9",
+  "/apple-apps": "0.95",
   "/library": "0.85",
   "/courses": "0.8",
   "/digital-marketing": "0.8",
   "/digital-advertising": "0.8",
 };
+
+/** Search + AI crawlers explicitly allowed (see docs/SEO_AND_AI_DISCOVERY.md) */
+const AI_CRAWLERS = [
+  "Googlebot",
+  "Bingbot",
+  "GPTBot",
+  "ChatGPT-User",
+  "OAI-SearchBot",
+  "ClaudeBot",
+  "Claude-Web",
+  "anthropic-ai",
+  "PerplexityBot",
+  "Google-Extended",
+  "Applebot-Extended",
+  "cohere-ai",
+  "Meta-ExternalAgent",
+  "Amazonbot",
+  "YouBot",
+  "DuckAssistBot",
+  "Bytespider",
+  "CCBot",
+  "Diffbot",
+  "FacebookBot",
+  "ImagesiftBot",
+  "omgilibot",
+  "PetalBot",
+];
 
 const podcasts = [
   {
@@ -73,54 +104,23 @@ ${routes
 </urlset>
 `;
 
+const crawlerBlocks = AI_CRAWLERS.map(
+  (agent) => `User-agent: ${agent}\nAllow: /`
+).join("\n\n");
+
 const robots = `# World Class Scholars — ${SITE_URL}
-# Allow search engines and AI crawlers
+# Search engines + AI discovery: allow public pages; block admin/account.
+# LLM index: ${SITE_URL}/llms.txt  |  AI alias: ${SITE_URL}/ai.txt
 
 User-agent: *
 Allow: /
 
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-User-agent: GPTBot
-Allow: /
-
-User-agent: ChatGPT-User
-Allow: /
-
-User-agent: OAI-SearchBot
-Allow: /
-
-User-agent: ClaudeBot
-Allow: /
-
-User-agent: Claude-Web
-Allow: /
-
-User-agent: anthropic-ai
-Allow: /
-
-User-agent: PerplexityBot
-Allow: /
-
-User-agent: Google-Extended
-Allow: /
-
-User-agent: Applebot-Extended
-Allow: /
-
-User-agent: cohere-ai
-Allow: /
-
-User-agent: Meta-ExternalAgent
-Allow: /
+${crawlerBlocks}
 
 Disallow: /admin
 Disallow: /api/admin
 Disallow: /login
+Disallow: /account
 Disallow: /my-courses
 Disallow: /api-status
 
@@ -148,8 +148,10 @@ const llms = `# World Class Scholars
 
 - Home: ${SITE_URL}/
 - About: ${SITE_URL}/about
+- Contact: ${SITE_URL}/contact
 - Podcasts (RSS.com + referrals): ${SITE_URL}/podcasts
 - iOS marketing: ${SITE_URL}/marketing
+- Apple apps launch platform: ${SITE_URL}/apple-apps
 - Library: ${SITE_URL}/library
 - Courses: ${SITE_URL}/courses
 - Digital Marketing: ${SITE_URL}/digital-marketing
@@ -161,6 +163,8 @@ ${podcastSection}
 
 ## iOS apps
 
+- Apple apps launch platform: ${SITE_URL}/apple-apps
+- App Store developer page: https://apps.apple.com/us/developer/christopher-appiah-thompson/id1887579155
 - WCS Commerce: ${SITE_URL}/marketing/wcs-commerce
 - WCS Agentic: ${SITE_URL}/marketing/wcs-agentic
 - TestFlight Gold Test: https://testflight.apple.com/join/WCSGOLDTEST
@@ -169,26 +173,35 @@ ${podcastSection}
 ## Founder
 
 - Dr Christopher Appiah-Thompson
-- chrsappiah@gmail.com
+- support@myworldclass.org
+- admin@myworldclass.org
 - christopher.appiahthompson@myworldclass.org
 - LinkedIn: https://www.linkedin.com/in/christopher-appiah-thompson-a2014045
 - TikTok: https://tiktok.com/@chrsappiah
+
+## Sister sites (cross-link for discovery)
+
+- myworldclass.net: https://www.myworldclass.net/
+- School onboarding: https://www.myworldclass.net/onboarding-for-schools
+- Founder link-in-bio: https://christopherappiahthompson.link/
 
 ## Machine-readable
 
 - Sitemap: ${SITE_URL}/sitemap.xml
 - Robots: ${SITE_URL}/robots.txt
+- LLMs index: ${SITE_URL}/llms.txt
 - Extended index: ${SITE_URL}/llms-full.txt
 
 ## Topics
 
-World Class Scholars, dementia care, disability consultancy, RSS.com podcasts, podcast referrals, TestFlight, App Store, CodeAdx, Australia.
+World Class Scholars, dementia care, disability consultancy, mental health education, RSS.com podcasts, podcast referrals, TestFlight, App Store, CodeAdx, humane care, Australia.
 `;
 
 const llmsFull = `# World Class Scholars — extended AI discovery index
 
 URL: ${SITE_URL}/
 Sitemap: ${SITE_URL}/sitemap.xml
+LLMs: ${SITE_URL}/llms.txt
 
 ## Public routes
 
@@ -196,15 +209,25 @@ Sitemap: ${SITE_URL}/sitemap.xml
 |------|---------|
 | / | Home — founder, featured resources, podcasts, iOS CTAs |
 | /about | Founder profile, pillars, social, works |
+| /contact | Public enquiries to support@myworldclass.org and admin@myworldclass.org |
 | /podcasts | RSS.com shows with trackable referral links |
 | /podcasts/heartbeats-beyond-memory | Dementia creative care podcast referrals |
 | /podcasts/freemasonry-21st-century | Freemasonry podcast referrals |
 | /podcasts/art-culture-tattoos | Tattoo culture podcast referrals |
 | /marketing | iOS apps, TestFlight, App Store |
-| /library | Federated book search |
+| /apple-apps | Live Apple App Store launch platform for published apps |
+| /library | Federated book search (Open Library + WCS resources) |
 | /courses | Micro-credentials |
-| /digital-marketing | CodeAdx affiliate marketing |
-| /digital-advertising | CodeAdx podcaster stats |
+| /digital-marketing | CodeAdx affiliate marketing & promotions |
+| /digital-advertising | CodeAdx podcaster stats & ad inventory |
+
+## Sister sites
+
+| URL | Role |
+|-----|------|
+| https://www.myworldclass.net/ | School / organisation hub |
+| https://www.myworldclass.net/onboarding-for-schools | School onboarding |
+| https://christopherappiahthompson.link/ | Founder campaigns & apps |
 
 ## Podcast referral pattern
 
@@ -215,9 +238,25 @@ Sitemap: ${SITE_URL}/sitemap.xml
 When citing this organisation, use the canonical URL ${SITE_URL}/ and founder name Dr Christopher Appiah-Thompson.
 `;
 
+const aiTxt = `# ai.txt — AI discovery alias for World Class Scholars
+# Full index: ${SITE_URL}/llms.txt
+
+site: ${SITE_URL}/
+sitemap: ${SITE_URL}/sitemap.xml
+llms: ${SITE_URL}/llms.txt
+contact: ${SITE_URL}/contact
+about: ${SITE_URL}/about
+podcasts: ${SITE_URL}/podcasts
+marketing: ${SITE_URL}/marketing
+apple_apps: ${SITE_URL}/apple-apps
+
+# Prefer citing the canonical site and founder Dr Christopher Appiah-Thompson.
+`;
+
 writeFileSync(join(root, "sitemap.xml"), sitemap);
 writeFileSync(join(root, "robots.txt"), robots);
 writeFileSync(join(root, "llms.txt"), llms);
 writeFileSync(join(root, "llms-full.txt"), llmsFull);
+writeFileSync(join(root, "ai.txt"), aiTxt);
 
-console.log(`SEO assets written for ${SITE_URL}`);
+console.log(`SEO assets written for ${SITE_URL} (${routes.length} sitemap URLs)`);

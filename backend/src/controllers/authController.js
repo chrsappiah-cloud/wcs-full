@@ -2,6 +2,7 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import * as userDao from "../dao/userDao.js";
 import { verifyFallbackAdmin } from "../data/authFallback.js";
+import { validatePassword } from "../middleware/validate.js";
 
 function jwtSecret() {
   const secret = (process.env.JWT_SECRET || "").trim();
@@ -32,6 +33,8 @@ export async function register(req, res, next) {
     const { name, email, password } = req.body ?? {};
     if (!name || !email || !password)
       return res.status(400).json({ error: "name, email and password are required" });
+    if (!validatePassword(password))
+      return res.status(400).json({ error: "password must be 8–128 characters" });
 
     const existing = await userDao.findByEmail(email);
     if (existing) return res.status(409).json({ error: "Email already registered" });

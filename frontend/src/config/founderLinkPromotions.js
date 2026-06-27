@@ -58,8 +58,8 @@ export const founderLinkPromotions = [
     id: "myworldclass",
     title: "myworldclass.net",
     category: "Brand hub",
-    url: "https://myworldclass.net",
-    imageUrl: mshot("https://myworldclass.net"),
+    url: "https://www.myworldclass.net/",
+    imageUrl: mshot("https://www.myworldclass.net"),
   },
   {
     id: "wcs-art-verse",
